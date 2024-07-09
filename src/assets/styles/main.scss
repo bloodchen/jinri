@@ -1,0 +1,52 @@
+// reset
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: none;
+  outline: none;
+}
+body {
+  font-family: "Segoe UI", tahoma, geneva, verdana, "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  color: #222;
+  background-color: #f7f7f7;
+}
+a {
+  color: #222;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: #07f;
+  }
+}
+button {
+  cursor: pointer;
+}
+
+// margin
+$sizes: 5, 10, 15, 20, 25, 30;
+$positions: "mt", "mr", "mb", "ml";
+
+@each $size in $sizes {
+  @each $position in $positions {
+    @if $position == "mt" {
+      .mx-#{$position}-#{$size} {
+        margin-top: #{$size}px !important;
+      }
+    } @else if $position == "mr" {
+      .mx-#{$position}-#{$size} {
+        margin-right: #{$size}px !important;
+      }
+    } @else if $position == "mb" {
+      .mx-#{$position}-#{$size} {
+        margin-bottom: #{$size}px !important;
+      }
+    } @else if $position == "ml" {
+      .mx-#{$position}-#{$size} {
+        margin-left: #{$size}px !important;
+      }
+    }
+  }
+}
