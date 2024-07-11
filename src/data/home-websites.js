@@ -234,7 +234,7 @@ export default [
       {
         title: '头条军事',
         titleImg: '',
-        url: 'http://military.miercn.com/?maxthon',
+        url: 'https://ay.miercn.com/?maxthon',
         icon: './images/home-websites/miercn.png',
         bubbleImg: ''
       },

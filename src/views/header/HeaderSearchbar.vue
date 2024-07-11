@@ -15,19 +15,18 @@
           :alt="currentEngine.engineTitle"
         >
       </a>
-      <!-- 按钮 -->
-      <span
-        class="mx-search-engine-trigger"
+      <!-- 下拉列表 -->
+      <MxIcon
+        class="mx-search-trigger"
         @click="engineListVisible = true"
       />
-      <!-- 下拉列表 -->
       <div
         v-if="engineListVisible"
         ref="engineListRef"
         class="mx-search-dropdown-list"
       >
         <div
-          v-for="item in currentGroup.engines"
+          v-for="item in currentEngineGroup.engines"
           :key="item.engineName"
           class="mx-search-dropdown-item"
           @click="changeEngine(item)"
@@ -41,77 +40,139 @@
       </div>
     </div>
     <!-- 搜索表单 -->
-    <div class="mx-search-form">
-      <span class="mx-search-group-title">{{ currentGroup.groupTitle }}</span>
-      <!-- 按钮 -->
-      <span
-        class="mx-search-group-trigger"
-        @click="groupListVisible = true"
-      />
+    <div
+      class="mx-search-form"
+      :class="{ 'is-focus': inputIsFoucs }"
+    >
+      <!-- 分组标题 -->
+      <span class="mx-search-engine-label">{{ currentEngineGroup.groupTitle }}</span>
       <!-- 下拉列表 -->
+      <MxIcon
+        class="mx-search-trigger"
+        @click="engineGroupVisible = true"
+      />
       <div
-        v-if="groupListVisible"
-        ref="groupListRef"
+        v-if="engineGroupVisible"
+        ref="engineGroupRef"
         class="mx-search-dropdown-list"
       >
         <div
-          v-for="item in searchEngines"
+          v-for="item in engineGroupList"
           :key="item.groupName"
           class="mx-search-dropdown-item"
-          @click="changeGroup(item)"
+          @click="changeEngineGroup(item)"
         >
           {{ item.groupTitle }}
         </div>
       </div>
-      <!-- 输入框 -->
-      <input
-        v-model.trim="searchKeyword"
-        type="text"
+      <div
+        ref="suggestRef"
         class="mx-search-input"
       >
+        <!-- 输入框 -->
+        <input
+          v-model.trim="keyword"
+          type="text"
+          class="mx-search-input-inner"
+          @focus="inputIsFoucs = true"
+          @input="getServerSuggectList"
+        >
+        <!-- 搜索建议 -->
+        <div
+          v-show="inputIsFoucs"
+          class="mx-search-suggest"
+        >
+          <div
+            v-if="historyListRef.length"
+            class="mx-search-suggest-list"
+          >
+            <div
+              v-for="text in historyListRef"
+              :key="text"
+              class="mx-search-suggest-item is-history"
+              @click="onClickSuggest(text)"
+            >
+              {{ text }}
+            </div>
+          </div>
+          <div
+            v-if="suggestListRef.length"
+            class="mx-search-suggest-list"
+          >
+            <div
+              v-for="text in suggestListRef"
+              :key="text"
+              class="mx-search-suggest-item"
+              @click="onClickSuggest(text)"
+            >
+              {{ text }}
+            </div>
+          </div>
+          <div class="mx-search-suggest-tools">
+            <label
+              for="searchHistoryCheckbox"
+              class="mx-search-suggest-btn"
+            >
+              <input
+                id="searchHistoryCheckbox"
+                v-model="historyVisible"
+                type="checkbox"
+                @change="changeHistoryVisible"
+              >
+              <span class="mx-ml-5">显示历史记录</span>
+            </label>
+            <span
+              class="mx-search-suggest-btn"
+              @click="clearHistory"
+            >清空历史</span>
+          </div>
+        </div>
+      </div>
       <!-- 提交按钮 -->
-      <button
+      <MxBtn
         class="mx-search-submit"
+        size="custom"
         @click="searchSubmit"
       >
         搜索
-      </button>
+      </MxBtn>
     </div>
+    <!-- 后缀 -->
+    <div class="mx-search-engine" />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useCookies } from '@vueuse/integrations/useCookies';
 import { onClickOutside } from '@vueuse/core';
 
-import searchEngines from '@/data/header-search-engines';
+import api from '@/api';
+import engineGroupList from '@/data/header-search-engines';
 
-// 获取配置 {groupName: 'website', engineName_website: 'baidu'}
 const cookies = useCookies();
-const searchConfig = cookies.get('search-config') || {};
 
-// 更新配置
-function updateSearchConfig() {
-  searchConfig.groupName = currentGroup.value.groupName;
-  searchConfig[`engineName_${currentGroup.value.groupName}`] = currentEngine.value.engineName;
-  cookies.set('search-config', searchConfig);
+// 搜索引擎配置 {groupName: 'website', engineName_website: 'baidu'}
+const engineConfig = cookies.get('search-engine-config') || {};
+function updateEngineConfig() {
+  engineConfig.groupName = currentEngineGroup.value.groupName;
+  engineConfig[`engineName_${currentEngineGroup.value.groupName}`] = currentEngine.value.engineName;
+  cookies.set('search-engine-config', engineConfig);
 }
 
-// 获取当前分组
-const currentGroup = ref({});
-const groupName = searchConfig?.groupName;
-currentGroup.value = searchEngines.find(item => item.groupName === groupName) || searchEngines[0];
+// 当前搜索引擎分组
+const currentEngineGroup = ref({});
+currentEngineGroup.value = engineGroupList.find(item => item.groupName === engineConfig?.groupName) || engineGroupList[0];
 
-// 获取当前搜索引擎
+// 当前搜索引擎
 const currentEngine = ref({});
 getCurrentEngine();
 function getCurrentEngine() {
-  const engineName = searchConfig[`engineName_${currentGroup.value.groupName}`];
-  currentEngine.value = currentGroup.value.engines.find(item => item.engineName === engineName) || currentGroup.value.engines[0];
+  const engineName = engineConfig[`engineName_${currentEngineGroup.value.groupName}`];
+  currentEngine.value = currentEngineGroup.value.engines.find(item => item.engineName === engineName) || currentEngineGroup.value.engines[0];
 }
 
-// 打开搜索引擎下拉框
+// 搜索引擎下拉框
 const engineListVisible = ref(false);
 const engineListRef = ref(null);
 onClickOutside(engineListRef, event => {
@@ -122,30 +183,30 @@ onClickOutside(engineListRef, event => {
 function changeEngine(item) {
   engineListVisible.value = false;
   currentEngine.value = item;
-  updateSearchConfig();
+  updateEngineConfig();
 }
 
-// 打开分组下拉框
-const groupListVisible = ref(false);
-const groupListRef = ref(null);
-onClickOutside(groupListRef, event => {
-  groupListVisible.value = false;
+// 搜索引擎分组下拉框
+const engineGroupVisible = ref(false);
+const engineGroupRef = ref(null);
+onClickOutside(engineGroupRef, event => {
+  engineGroupVisible.value = false;
 });
 
-// 切换分组
-function changeGroup(item) {
-  groupListVisible.value = false;
-  currentGroup.value = item;
+// 切换搜索引擎分组
+function changeEngineGroup(item) {
+  engineGroupVisible.value = false;
+  currentEngineGroup.value = item;
   getCurrentEngine();
-  updateSearchConfig();
+  updateEngineConfig();
 }
 
 // 搜索
-const searchKeyword = ref('');
+const keyword = ref('');
 function searchSubmit() {
   // 空打开主页
-  if (!searchKeyword.value) {
-    window.open(currentEngine.value.engineUrl, '_self');
+  if (!keyword.value) {
+    window.open(currentEngine.value.engineUrl, '_target');
     return;
   }
   // 否则搜索
@@ -154,8 +215,83 @@ function searchSubmit() {
     const val = currentEngine.value.searchParams[key];
     params.append(key, val);
   }
-  const url = `${currentEngine.value.searchUrl}?${params.toString().replace('%7BKEY%7D', searchKeyword.value)}`;
-  window.open(url, '_self');
+  const url = `${currentEngine.value.searchUrl}?${params.toString().replace('%7BKEY%7D', keyword.value)}`;
+  window.open(url, '_target');
+  addHistory(keyword.value);
+}
+
+// 输入框
+const inputIsFoucs = ref(false);
+const suggestRef = ref(null);
+onClickOutside(suggestRef, event => {
+  inputIsFoucs.value = false;
+});
+
+// 搜索历史
+const historyVisible = ref(cookies.get('search-show-history'));
+const historyList = ref(cookies.get('search-history-list') || []);
+const historyListRef = computed(() => {
+  if (!keyword.value) {
+    return historyVisible.value ? historyList.value.slice(0, 10) : [];
+  }
+  const reg = new RegExp(keyword.value);
+  return historyVisible.value ? historyList.value.filter(item => reg.test(item)).slice(0, 3) : [];
+});
+
+// 是否显示搜索历史
+function changeHistoryVisible() {
+  cookies.set('search-show-history', historyVisible.value);
+}
+
+// 添加搜索历史
+function addHistory(key) {
+  // 删除旧的
+  const index = historyList.value.findIndex(item => item === key);
+  if (index > -1) {
+    historyList.value.splice(index, 1);
+  }
+  // 保留前100位
+  if (historyList.value.length > 99) {
+    historyList.value = historyList.value.slice(0, 99);
+  }
+  // 添加新的
+  historyList.value.unshift(key);
+  cookies.set('search-history-list', historyList.value);
+}
+
+// 清空搜索历史
+function clearHistory() {
+  historyList.value = [];
+  cookies.set('search-history-list', []);
+}
+
+// 搜索建议
+const suggestList = ref([]);
+const suggestListRef = computed(() => {
+  const length = 10 - historyListRef.value.length;
+  return suggestList.value.slice(0, length);
+});
+
+// 获取搜索建议
+async function getServerSuggectList() {
+  if (!keyword.value) {
+    suggestList.value = [];
+  }
+  if (currentEngine.value.engineTitle === '汽车之家') {
+    api.getAutohomeSuggest(keyword.value, res => {
+      suggestList.value = res.split(',');
+    });
+  } else {
+    const res = await api.getBaiduSuggest(keyword.value);
+    suggestList.value = res.s;
+  }
+}
+
+// 点击搜索建议
+function onClickSuggest(item) {
+  keyword.value = item;
+  inputIsFoucs.value = false;
+  searchSubmit();
 }
 </script>
 
@@ -163,6 +299,7 @@ function searchSubmit() {
 .mx-search {
   &-bar {
     display: flex;
+    align-items: center;
     justify-content: center;
   }
 
@@ -171,32 +308,34 @@ function searchSubmit() {
     position: relative;
     display: flex;
     align-items: center;
+    width: 160px;
+    padding-left: 16px;
     &-logo {
       display: block;
       width: 120px;
       height: 40px;
     }
-    &-trigger {
-      width: 18px;
-      height: 18px;
-      margin-left: 5px;
-      cursor: pointer;
-      background-image: url('@/assets/icons/header-sprite.png');
-      background-repeat: no-repeat;
-      background-position: 0 -240px;
-      &:hover {
-        opacity: .6;
-      }
+    &-label {
+      font-size: 12px;
+      color: #b2b2b2;
     }
   }
 
   // 下拉列表
+  &-trigger {
+    --icon-base: 0 -320px;
+    --icon-active: 0 -332px;
+    --icon-size: 12px;
+
+    margin: 0 5px;
+    background-image: url('@/assets/icons/header-sprite.png');
+  }
   &-dropdown {
     &-list {
       position: absolute;
       top: 40px;
       left: 0;
-      z-index: 1;
+      z-index: 100;
       padding: 8px 0;
       background-color: #fff;
       border: 1px solid #e7e7e7;
@@ -220,55 +359,85 @@ function searchSubmit() {
     width: 600px;
     height: 40px;
     padding-left: 10px;
-    margin-left: 10px;
     background-color: #fff;
     border: 2px solid #7bf;
-    &:hover {
-      border-color: #08f;
-    }
   }
-
-  // 分组
-  &-group {
-    &-title {
-      font-size: 12px;
-      color: #b2b2b2;
+  &-form:hover,
+  &-form.is-focus {
+    border-color: #08f;
+    .mx-search-input {
+      background-color: #f7f7f7;
     }
-    &-trigger {
-      width: 12px;
-      height: 12px;
-      margin: 0 5px;
-      cursor: pointer;
-      background-image: url('@/assets/icons/header-sprite.png');
-      background-repeat: no-repeat;
-      background-position: 0 -320px;
-      &:hover {
-        background-position: 0 -332px;
-      }
+    .mx-search-submit {
+      background-color: #08f;
     }
   }
 
   // 输入框
   &-input {
+    position: relative;
     flex: auto;
     height: 100%;
-    padding: 0 10px;
-    &:hover,
-    &:focus {
-      background-color: #f7f7f7;
+    &-inner {
+      width: 100%;
+      height: 100%;
+      padding: 0 10px;
     }
   }
 
   // 提交按钮
   &-submit {
-    width: 100px;
     height: 100%;
-    font-size: 18px;
-    color: #fff;
-    background-color: #7bf;
+    font-size: 16px;
   }
-  &-form:hover &-submit {
-    background-color: #08f;
+
+  // 搜索建议
+  &-suggest {
+    position: absolute;
+    top: 36px;
+    right: -2px;
+    left: -60px;
+    z-index: 9999;
+    font-size: 12px;
+    line-height: 30px;
+    background-color: #fff;
+    border: 2px solid #08f;
+    border-top: 0;
+    &-list {
+      padding: 5px 0;
+      border-top: 1px solid #eee;
+    }
+    &-item {
+      display: block;
+      padding: 0 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+      &.is-history {
+        color: #7bf;
+      }
+      &:hover {
+        color: #7bf;
+        background-color: #f7f7f7;
+      }
+    }
+    &-tools {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 5px 20px;
+      border-top: 1px solid #f7f7f7;
+    }
+    &-btn {
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+      cursor: pointer;
+      &:hover {
+        color: #7bf;
+      }
+    }
   }
 }
 </style>

@@ -13,7 +13,10 @@
     >
       <template v-if="item.data">
         <!-- 轮播图 -->
-        <HomeNewsFocus :data="item.data" />
+        <HomeNewsFocus
+          class="mx-rnews-focus"
+          :data="item.data"
+        />
         <!-- 列表 -->
         <div class="mx-rnews-list">
           <a
@@ -65,7 +68,7 @@ async function getDataList(name) {
   // 图片轮播
   &-focus {
     width: 100%;
-    height: 212px;
+    height: 120px;
   }
 
   // 列表

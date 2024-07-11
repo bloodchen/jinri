@@ -23,7 +23,7 @@
       </a>
     </div>
     <!-- 展开按钮 -->
-    <span
+    <MxIcon
       class="mx-hotword-toggle"
       @click="isExpend = !isExpend"
     />
@@ -38,29 +38,31 @@ const dataList = ref([]);
 const isExpend = ref(false);
 
 api.getHotword().then(({ data }) => {
-  dataList.value = data.success ? data.data.cards[0].content : [];
+  dataList.value = data.success ? data.data.cards[0].content.slice(0, 18) : [];
 });
 </script>
 
 <style lang="scss">
 .mx-hotword {
   position: relative;
+  width: 600px;
   height: 48px;
+  margin: 0 auto;
   &-list {
     position: absolute;
     top: 0;
     right: 0;
-    left: 31%;
+    z-index: 99;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0 10px;
     height: 48px;
     padding: 4px 10px;
     overflow: hidden;
-    background-color: #fff;
-    border: 1px solid #fff;
+    border: 1px solid transparent;
     &.is-expend {
       height: auto;
+      background-color: #fff;
       border-color: #e7e7e7;
     }
   }
@@ -86,18 +88,15 @@ api.getHotword().then(({ data }) => {
     margin-left: 4px;
   }
   &-toggle {
+    --icon-base: 0 -296px;
+    --icon-active: 0 -308px;
+    --icon-size: 12px;
+
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 12px;
-    height: 12px;
-    cursor: pointer;
+    top: 5px;
+    right: 5px;
+    z-index: 99;
     background-image: url('@/assets/icons/header-sprite.png');
-    background-repeat: no-repeat;
-    background-position: 0 -296px;
-    &:hover {
-      background-position: 0 -308px;
-    }
   }
 }
 </style>
