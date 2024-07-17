@@ -1,30 +1,33 @@
 <template>
   <!-- 顶栏部分 -->
-  <LayoutHeader class="mx-layout" />
+  <LayoutHeader class="mx-auto-width" />
   <!-- 分割线 -->
   <div class="mx-devide" />
+  <!-- 导航 -->
+  <LayoutNav class="mx-auto-width" />
   <!-- 中间内容 -->
-  <RouterView class="mx-layout" />
+  <RouterView class="mx-auto-width" />
   <!-- 底栏部分 -->
-  <LayoutFooter class="mx-layout mx-mt-20 mx-mb-20" />
+  <LayoutFooter class="mx-auto-width" />
 </template>
 
 <script setup>
 import { RouterView } from 'vue-router';
 import LayoutHeader from '@/views/header/index.vue';
+import LayoutNav from '@/views/nav/index.vue';
 import LayoutFooter from '@/views/footer/index.vue';
 </script>
 
 <style>
-.mx-layout {
+.mx-auto-width {
   min-width: 1000px;
   max-width: 1200px;
   padding: 0 20px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .mx-devide {
   height: 1px;
-  margin: 10px 0;
+  margin: 10px auto;
   background-color: #7bf;
 }
 </style>

@@ -9,10 +9,14 @@
         <!-- 工具 -->
         <HomeTools />
         <!-- 广告 -->
-        <div
-          ref="adWrap"
-          class="mx-home-ad mx-mt-10"
-        />
+        <div class="mx-mt-10">
+          <iframe
+            scrolling="no"
+            frameborder="0"
+            class="mx-home-ad"
+            src="./ad.html"
+          />
+        </div>
       </div>
     </div>
     <!-- 第二部分 -->
@@ -38,25 +42,19 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 import HomeWebsite from './HomeWebsite.vue';
 import HomeTools from './HomeTools.vue';
 import HomeNewsMain from './HomeNewsMain.vue';
 import HomeNewsHot from './HomeNewsHot.vue';
 import HomeNewsRecommend from './HomeNewsRecommend.vue';
 
-const adWrap = ref(null);
 onMounted(() => {
-  // 京东广告
-  const $el = document.getElementById('jdAd');
-  adWrap.value.appendChild($el);
-  $el.style.display = 'block';
-
   // 游戏专区
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = 'https://res.dashet.com/da/da.js?cid=450B6ED0&skey=120fa11b';
-  document.getElementById('homeGame').append(script);
+  const gameScript = document.createElement('script');
+  gameScript.async = true;
+  gameScript.src = 'https://res.dashet.com/da/da.js?cid=450B6ED0&skey=120fa11b';
+  document.getElementById('homeGame').append(gameScript);
 });
 </script>
 
@@ -74,6 +72,10 @@ onMounted(() => {
     flex: none;
     width: 300px;
     margin-left: 10px;
+  }
+  &-ad {
+    width: 100%;
+    height: 272px;
   }
 }
 </style>
