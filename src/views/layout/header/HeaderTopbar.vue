@@ -1,41 +1,41 @@
-<!-- 顶栏工具栏 -->
+<!-- 顶栏-工具栏 -->
 <template>
-  <div class="mx-top-bar">
+  <div class="mx-topbar">
     <!-- logo -->
     <a
       href="/"
-      class="mx-top-logo"
+      class="mx-topbar-logo"
     >
       <img
-        class="mx-top-logo-img"
-        src="@/assets/images/logo.png"
+        class="mx-topbar-logo-img"
+        src="@/assets/images/header-topbar-logo.png"
         alt="logo"
       >
     </a>
     <!-- 工具 -->
-    <div class="mx-top-tools">
-      <div class="mx-top-tools-item">
+    <div class="mx-topbar-tools">
+      <div class="mx-topbar-tools-item">
         <div
-          class="mx-top-tools-icon"
+          class="mx-topbar-tools-icon"
           @click="emailDialogVisible = true"
         >
           <MxIcon class="is-email" />
           <span>邮箱登录</span>
         </div>
         <div
-          class="mx-top-tools-icon"
+          class="mx-topbar-tools-icon"
           @click="homeDialogVisible = true"
         >
           <MxIcon class="is-home" />
           <span>设为首页</span>
         </div>
       </div>
-      <div class="mx-top-tools-item">
+      <div class="mx-topbar-tools-item">
         <div>{{ solarDate }}</div>
         <div>
           <span>{{ lunarDate }}</span>
           <a
-            class="mx-top-tools-toggle"
+            class="mx-topbar-tools-toggle"
             href="http://qq.ip138.com/day/"
             target="_blank"
           >[万年历]</a>
@@ -43,12 +43,12 @@
       </div>
       <div
         v-if="weatherData.city"
-        class="mx-top-tools-item"
+        class="mx-topbar-tools-item"
       >
         <div>
           <span>{{ weatherData.city }}</span>
           <span
-            class="mx-top-tools-toggle"
+            class="mx-topbar-tools-toggle"
             @click="openAreaDialog"
           >[切换]</span>
         </div>
@@ -59,36 +59,36 @@
       </div>
       <a
         v-if="weatherData.today"
-        class="mx-top-tools-item mx-top-weather-row"
+        class="mx-topbar-tools-item mx-topbar-weather-row"
         href="/weater"
         target="_blank"
       >
         <img
-          class="mx-top-weather-icon"
+          class="mx-topbar-weather-icon"
           :src="weatherData.today.icon"
           :alt="weatherData.today.iconTitle"
         >
         <div class="mx-ml-5">
-          <div class="mx-top-weather-row">
+          <div class="mx-topbar-weather-row">
             <span>{{ weatherData.today.iconTitle }}</span>
             <span
-              class="mx-top-weather-aqi"
+              class="mx-topbar-weather-aqi"
               :style="weatherAqiStyle"
             />
           </div>
           <div>{{ weatherData.today.ltemp }}~{{ weatherData.today.htemp }}</div>
         </div>
       </a>
-      <div class="mx-top-tools-item">
+      <div class="mx-topbar-tools-item">
         <div
-          class="mx-top-tools-icon"
+          class="mx-topbar-tools-icon"
           @click="changeSkin"
         >
           <MxIcon class="is-skin" />
           <span>换肤</span>
         </div>
         <a
-          class="mx-top-tools-icon"
+          class="mx-topbar-tools-icon"
           href="https://report.maxthon.com/mx/bug/post/"
           target="_blank"
         >
@@ -102,7 +102,7 @@
       v-model="emailDialogVisible"
       title="邮箱登录"
     >
-      <div class="mx-top-email">
+      <div class="mx-topbar-email">
         <a
           v-for="item in emailList"
           :key="item.key"
@@ -127,7 +127,7 @@
       <div>把傲游今日下载到桌面，访问更方便</div>
       <template #footer>
         <a
-          class="mx-top-home-link"
+          class="mx-topbar-home-link"
           href="/desktop/傲游今日.url"
           download="傲游今日.url"
           target="_blank"
@@ -147,11 +147,11 @@
       v-model="areaDialogVisible"
       title="切换城市"
     >
-      <div class="mx-top-weather-row">
+      <div class="mx-topbar-weather-row">
         <span>省：</span>
         <select
           v-model="provinceId"
-          class="mx-top-weather-select"
+          class="mx-topbar-weather-select"
           @change="getCityMap('change')"
         >
           <option
@@ -163,11 +163,11 @@
           </option>
         </select>
       </div>
-      <div class="mx-top-weather-row mx-mt-10">
+      <div class="mx-topbar-weather-row mx-mt-10">
         <span>市：</span>
         <select
           v-model="cityId"
-          class="mx-top-weather-select"
+          class="mx-topbar-weather-select"
           @change="getDistrictMap('change')"
         >
           <option
@@ -179,11 +179,11 @@
           </option>
         </select>
       </div>
-      <div class="mx-top-weather-row mx-mt-10">
+      <div class="mx-topbar-weather-row mx-mt-10">
         <span>区：</span>
         <select
           v-model="districtId"
-          class="mx-top-weather-select"
+          class="mx-topbar-weather-select"
         >
           <option
             v-for="(item, key) in districtMap"
@@ -205,7 +205,7 @@
       </template>
     </MxDialog>
     <!-- 广告 -->
-    <MxSwiper class="mx-top-ad">
+    <MxSwiper class="mx-topbar-ad">
       <MxSwiperSlide
         v-for="item in adList"
         :key="item.name"
@@ -229,8 +229,8 @@ import { ref } from 'vue';
 import solarLunar from 'solarLunar';
 
 import api from '@/api';
-import adList from '@/data/header-ads.js';
-import emailList from '@/data/header-emails.js';
+import adList from '@/data/header-topbar-ads.js';
+import emailList from '@/data/header-topbar-emails.js';
 
 // 邮箱
 const emailDialogVisible = ref(false);
@@ -264,7 +264,7 @@ async function getCityData() {
   if (localId) {
     weatherCityId.value = localId;
   } else {
-    const res = await api.getCityByIp();
+    const res = await api.getWeatherCityByIp();
     weatherCityId.value = res._weather_cityid;
   }
   getWeatherData();
@@ -272,7 +272,7 @@ async function getCityData() {
 
 // 获取天气
 async function getWeatherData() {
-  weatherData.value = await api.getWeatherByCityId(weatherCityId.value);
+  weatherData.value = await api.getWeatherDetailByCityId(weatherCityId.value);
   getAqiStyle();
 }
 
@@ -327,14 +327,14 @@ function openAreaDialog() {
 
 // 获取省
 async function getProvinceMap() {
-  const { data } = await api.getAreaById('provinces');
+  const { data } = await api.getWeatherAreaById('provinces');
   provinceMap.value = data;
 }
 // 获取市
 // 'init'（初始化时）'change'（修改时）
 async function getCityMap(type) {
   const path = `cities?province-id=${provinceId.value}`;
-  const { data } = await api.getAreaById(path);
+  const { data } = await api.getWeatherAreaById(path);
   cityMap.value = data;
   if (type === 'init') return;
   // 如果是修改省份后重新获取城市，需要获取默认选中的城市，然后再获取区县
@@ -345,7 +345,7 @@ async function getCityMap(type) {
 // 'init'（初始化时）'change'（修改时）
 async function getDistrictMap(type) {
   const path = `districts?province-id=${provinceId.value}&city-id=${cityId.value}`;
-  const { data } = await api.getAreaById(path);
+  const { data } = await api.getWeatherAreaById(path);
   districtMap.value = data;
   if (type === 'init') return;
   // 如果是修改城市后重新获取区县，需要获取默认选中的区县
@@ -374,12 +374,10 @@ function changeCity() {
 </script>
 
 <style lang="scss">
-.mx-top {
-  &-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+.mx-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   // logo
   &-logo {
@@ -413,7 +411,7 @@ function changeCity() {
       .mx-icon {
         --icon-size: 18px;
 
-        background-image: url('@/assets/icons/header-sprite.png');
+        background-image: url('@/assets/sprites/header-common.png');
       }
       .is-email {
         --icon-base: 0 0;
@@ -431,7 +429,7 @@ function changeCity() {
     &-icon:hover {
       color: #07f;
       .mx-icon {
-        background-image: url('@/assets/icons/topbar-sprite.png');
+        background-image: url('@/assets/sprites/header-topbar-common.png');
       }
       .is-home {
         --icon-base: 0 -36px;
@@ -464,7 +462,7 @@ function changeCity() {
     display: inline-block;
     width: 146px;
     height: 25px;
-    background-image: url('@/assets/icons/topbar-home.png');
+    background-image: url('@/assets/sprites/header-topbar-home.png');
     &:hover {
       background-position: 0 -26px;
     }
@@ -484,7 +482,7 @@ function changeCity() {
       width: 28px;
       height: 16px;
       margin-left: 5px;
-      background-image: url('@/assets/icons/weather-aqi.png');
+      background-image: url('@/assets/sprites/weather-aqi.png');
     }
     &-select {
       width: 120px;

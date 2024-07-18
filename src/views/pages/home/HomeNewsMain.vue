@@ -1,7 +1,7 @@
-<!-- 首页主要新闻 -->
+<!-- 首页-新闻-主要新闻 -->
 <template>
   <MxTabs
-    class="mx-mnews"
+    class="mx-hmnews"
     @change="getDataList"
   >
     <MxTabPane
@@ -9,47 +9,47 @@
       :key="item.name"
       :name="item.name"
       :label="item.label"
-      class="mx-mnews-content"
+      class="mx-hmnews-content"
     >
       <template v-if="item.data">
-        <div class="mx-mnews-left">
+        <div class="mx-hmnews-left">
           <!-- 左侧轮播图 -->
           <HomeNewsFocus
-            class="mx-mnews-focus"
+            class="mx-hmnews-focus"
             :data="item.data"
           />
           <!-- 左侧图片 -->
-          <div class="mx-mnews-img">
+          <div class="mx-hmnews-img">
             <a
               v-for="midImg in item.data.midImg"
               :key="midImg.title"
-              class="mx-mnews-img-link"
+              class="mx-hmnews-img-link"
               :title="midImg.title"
               :href="midImg.url"
               target="_blank"
             >
               <img
-                class="mx-mnews-img-img"
+                class="mx-hmnews-img-img"
                 :src="midImg.img"
                 :alt="midImg.title"
               >
-              <div class="mx-mnews-img-text">{{ midImg.title }}</div>
+              <div class="mx-hmnews-img-text">{{ midImg.title }}</div>
             </a>
           </div>
         </div>
         <!-- 右侧文字列表 -->
-        <div class="mx-mnews-right">
+        <div class="mx-hmnews-right">
           <a
             v-for="(text, index) in item.data.text"
             :key="text[0].title"
-            class="mx-mnews-text-item"
+            class="mx-hmnews-text-item"
             :title="text[0].title"
             :href="text[0].url"
             target="_blank"
           >
             <span
               v-if="index % 5 !== 0"
-              class="mx-mnews-text-dot"
+              class="mx-hmnews-text-dot"
             >•</span>
             <span>{{ text[0].title }}</span>
           </a>
@@ -78,13 +78,13 @@ getDataList('chief');
 async function getDataList(name) {
   const index = tabItems.value.findIndex(item => item.name === name);
   if (tabItems.value[index].data) return;
-  const { data } = await api.getHomeNewsMain(name);
+  const { data } = await api.getHomeMainNews(name);
   tabItems.value[index].data = data;
 }
 </script>
 
 <style lang="scss">
-.mx-mnews {
+.mx-hmnews {
   &-content {
     display: flex;
   }

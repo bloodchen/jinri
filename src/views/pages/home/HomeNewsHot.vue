@@ -1,7 +1,7 @@
-<!-- 首页搜索热词 -->
+<!-- 首页-新闻-搜索热词 -->
 <template>
   <MxTabs
-    class="mx-hnews"
+    class="mx-hhnews"
     suffix="搜索指数"
   >
     <MxTabPane
@@ -11,17 +11,17 @@
       <a
         v-for="item in dataList"
         :key="item.eventId"
-        class="mx-hnews-item"
+        class="mx-hhnews-item"
         :title="item.word"
         :href="`${item.url}&tn=68018901_dg`"
         target="_blank"
       >
         <span
-          class="mx-hnews-rank"
+          class="mx-hhnews-rank"
           :class="{ 'is-top3': item.index < 3 }"
         >{{ item.index + 1 }}</span>
-        <span class="mx-hnews-word">{{ item.word }}</span>
-        <span class="mx-hnews-score">{{ item.hotScore }}</span>
+        <span class="mx-hhnews-word">{{ item.word }}</span>
+        <span class="mx-hhnews-score">{{ item.hotScore }}</span>
       </a>
     </MxTabPane>
   </MxTabs>
@@ -33,13 +33,13 @@ import api from '@/api';
 
 const dataList = ref([]);
 
-api.getHotword().then(({ data }) => {
+api.getBaiduHotword().then(({ data }) => {
   dataList.value = data.success ? data.data.cards[0].content.slice(0, 10) : [];
 });
 </script>
 
 <style lang="scss">
-.mx-hnews {
+.mx-hhnews {
   &-item {
     display: flex;
     align-items: center;

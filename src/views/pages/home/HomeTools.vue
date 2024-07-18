@@ -1,19 +1,19 @@
-<!-- 首页工具 -->
+<!-- 首页-工具 -->
 <template>
-  <div class="mx-home-tools">
+  <div class="mx-htools">
     <a
       v-for="item in toolsList"
       :key="item.label"
-      class="mx-home-tools-link"
+      class="mx-htools-link"
       :title="item.label"
       :href="item.url"
       target="_blank"
     >
       <MxIcon
-        class="mx-home-tools-icon"
+        class="mx-htools-icon"
         :style="`--icon-base: ${item.iconBase}; --icon-active: ${item.iconActive}`"
       />
-      <div class="mx-home-tools-title">{{ item.label }}</div>
+      <div class="mx-htools-title">{{ item.label }}</div>
     </a>
   </div>
 </template>
@@ -29,7 +29,7 @@ const toolsList = [
 </script>
 
 <style lang="scss">
-.mx-home-tools {
+.mx-htools {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   background-color: #fff;
@@ -46,7 +46,7 @@ const toolsList = [
   &-icon {
     --icon-size: 30px;
 
-    background-image: url('@/assets/icons/home-tools.png');
+    background-image: url('@/assets/sprites/home-tools.png');
   }
   &-link:hover &-icon {
     --icon-base: var(--icon-active) !important;

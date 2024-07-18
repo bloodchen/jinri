@@ -1,4 +1,4 @@
-<!-- 顶栏热搜 -->
+<!-- 顶栏-热搜 -->
 <template>
   <div class="mx-hotword">
     <!-- 列表 -->
@@ -37,7 +37,7 @@ import api from '@/api';
 const dataList = ref([]);
 const isExpend = ref(false);
 
-api.getHotword().then(({ data }) => {
+api.getBaiduHotword().then(({ data }) => {
   dataList.value = data.success ? data.data.cards[0].content.slice(0, 18) : [];
 });
 </script>
@@ -96,7 +96,7 @@ api.getHotword().then(({ data }) => {
     top: 5px;
     right: 5px;
     z-index: 99;
-    background-image: url('@/assets/icons/header-sprite.png');
+    background-image: url('@/assets/sprites/header-common.png');
   }
 }
 </style>

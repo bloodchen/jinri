@@ -1,8 +1,8 @@
-<!-- 顶栏搜索 -->
+<!-- 顶栏-搜索栏 -->
 <template>
-  <div class="mx-search-bar">
+  <div class="mx-searchbar">
     <!-- 搜索引擎 -->
-    <div class="mx-search-engine">
+    <div class="mx-searchbar-engine">
       <!-- logo -->
       <a
         :title="currentEngine.engineTitle"
@@ -10,29 +10,29 @@
         target="_blank"
       >
         <img
-          class="mx-search-engine-logo"
+          class="mx-searchbar-engine-logo"
           :src="currentEngine.engineLogo"
           :alt="currentEngine.engineTitle"
         >
       </a>
       <!-- 下拉列表 -->
       <MxIcon
-        class="mx-search-trigger"
+        class="mx-searchbar-trigger"
         @click="engineListVisible = true"
       />
       <div
         v-if="engineListVisible"
         ref="engineListRef"
-        class="mx-search-dropdown-list"
+        class="mx-searchbar-dropdown-list"
       >
         <div
           v-for="item in currentEngineGroup.engines"
           :key="item.engineName"
-          class="mx-search-dropdown-item"
+          class="mx-searchbar-dropdown-item"
           @click="changeEngine(item)"
         >
           <img
-            class="mx-search-engine-logo"
+            class="mx-searchbar-engine-logo"
             :src="item.engineLogo"
             :alt="item.engineTitle"
           >
@@ -41,25 +41,25 @@
     </div>
     <!-- 搜索表单 -->
     <div
-      class="mx-search-form"
+      class="mx-searchbar-form"
       :class="{ 'is-focus': inputIsFoucs }"
     >
       <!-- 分组标题 -->
-      <span class="mx-search-engine-label">{{ currentEngineGroup.groupTitle }}</span>
+      <span class="mx-searchbar-engine-label">{{ currentEngineGroup.groupTitle }}</span>
       <!-- 下拉列表 -->
       <MxIcon
-        class="mx-search-trigger"
+        class="mx-searchbar-trigger"
         @click="engineGroupVisible = true"
       />
       <div
         v-if="engineGroupVisible"
         ref="engineGroupRef"
-        class="mx-search-dropdown-list"
+        class="mx-searchbar-dropdown-list"
       >
         <div
           v-for="item in engineGroupList"
           :key="item.groupName"
-          class="mx-search-dropdown-item"
+          class="mx-searchbar-dropdown-item"
           @click="changeEngineGroup(item)"
         >
           {{ item.groupTitle }}
@@ -67,29 +67,29 @@
       </div>
       <div
         ref="suggestRef"
-        class="mx-search-input"
+        class="mx-searchbar-input"
       >
         <!-- 输入框 -->
         <input
           v-model.trim="keyword"
           type="text"
-          class="mx-search-input-inner"
+          class="mx-searchbar-input-inner"
           @focus="inputIsFoucs = true"
           @input="getServerSuggectList"
         >
         <!-- 搜索建议 -->
         <div
           v-show="inputIsFoucs"
-          class="mx-search-suggest"
+          class="mx-searchbar-suggest"
         >
           <div
             v-if="historyListRef.length"
-            class="mx-search-suggest-list"
+            class="mx-searchbar-suggest-list"
           >
             <div
               v-for="text in historyListRef"
               :key="text"
-              class="mx-search-suggest-item is-history"
+              class="mx-searchbar-suggest-item is-history"
               @click="onClickSuggest(text)"
             >
               {{ text }}
@@ -97,21 +97,21 @@
           </div>
           <div
             v-if="suggestListRef.length"
-            class="mx-search-suggest-list"
+            class="mx-searchbar-suggest-list"
           >
             <div
               v-for="text in suggestListRef"
               :key="text"
-              class="mx-search-suggest-item"
+              class="mx-searchbar-suggest-item"
               @click="onClickSuggest(text)"
             >
               {{ text }}
             </div>
           </div>
-          <div class="mx-search-suggest-tools">
+          <div class="mx-searchbar-suggest-tools">
             <label
               for="searchHistoryCheckbox"
-              class="mx-search-suggest-btn"
+              class="mx-searchbar-suggest-btn"
             >
               <input
                 id="searchHistoryCheckbox"
@@ -122,7 +122,7 @@
               <span class="mx-ml-5">显示历史记录</span>
             </label>
             <span
-              class="mx-search-suggest-btn"
+              class="mx-searchbar-suggest-btn"
               @click="clearHistory"
             >清空历史</span>
           </div>
@@ -130,7 +130,7 @@
       </div>
       <!-- 提交按钮 -->
       <MxBtn
-        class="mx-search-submit"
+        class="mx-searchbar-submit"
         size="custom"
         @click="searchSubmit"
       >
@@ -138,7 +138,7 @@
       </MxBtn>
     </div>
     <!-- 后缀 -->
-    <div class="mx-search-engine" />
+    <div class="mx-searchbar-engine" />
   </div>
 </template>
 
@@ -148,7 +148,7 @@ import { useCookies } from '@vueuse/integrations/useCookies';
 import { onClickOutside } from '@vueuse/core';
 
 import api from '@/api';
-import engineGroupList from '@/data/header-search-engines';
+import engineGroupList from '@/data/header-searchbar-engines';
 
 const cookies = useCookies();
 
@@ -296,12 +296,10 @@ function onClickSuggest(item) {
 </script>
 
 <style lang="scss">
-.mx-search {
-  &-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.mx-searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   // 搜索引擎
   &-engine {
@@ -328,7 +326,7 @@ function onClickSuggest(item) {
     --icon-size: 12px;
 
     margin: 0 5px;
-    background-image: url('@/assets/icons/header-sprite.png');
+    background-image: url('@/assets/sprites/header-common.png');
   }
   &-dropdown {
     &-list {
@@ -365,10 +363,10 @@ function onClickSuggest(item) {
   &-form:hover,
   &-form.is-focus {
     border-color: #08f;
-    .mx-search-input {
+    .mx-searchbar-input {
       background-color: #f7f7f7;
     }
-    .mx-search-submit {
+    .mx-searchbar-submit {
       background-color: #08f;
     }
   }

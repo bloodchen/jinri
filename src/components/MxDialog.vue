@@ -72,7 +72,7 @@ function closeDialog() {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-image: url('@/assets/icons/close.png');
+    background-image: url('@/assets/sprites/close.png');
     background-size: 16px auto;
   }
   &-body {

@@ -1,7 +1,7 @@
-<!-- 首页推荐新闻 -->
+<!-- 首页-新闻-推荐新闻 -->
 <template>
   <MxTabs
-    class="mx-rnews"
+    class="mx-hrnews"
     @change="getDataList"
   >
     <MxTabPane
@@ -9,25 +9,25 @@
       :key="item.name"
       :name="item.name"
       :label="item.label"
-      class="mx-rnews-content"
+      class="mx-hrnews-content"
     >
       <template v-if="item.data">
         <!-- 轮播图 -->
         <HomeNewsFocus
-          class="mx-rnews-focus"
+          class="mx-hrnews-focus"
           :data="item.data"
         />
         <!-- 列表 -->
-        <div class="mx-rnews-list">
+        <div class="mx-hrnews-list">
           <a
             v-for="text in item.data.list"
             :key="text.title"
-            class="mx-rnews-list-item"
+            class="mx-hrnews-list-item"
             :title="text.title"
             :href="text.url"
             target="_blank"
           >
-            <span class="mx-rnews-list-dot">•</span>
+            <span class="mx-hrnews-list-dot">•</span>
             <span>{{ text.title }}</span></a>
         </div>
       </template>
@@ -53,13 +53,13 @@ getDataList('chief');
 async function getDataList(name) {
   const index = tabItems.value.findIndex(item => item.name === name);
   if (tabItems.value[index].data) return;
-  const { data } = await api.getHomeNewsRecommend(name);
+  const { data } = await api.getHomeRecommendNews(name);
   tabItems.value[index].data = data;
 }
 </script>
 
 <style lang="scss">
-.mx-rnews {
+.mx-hrnews {
   &-content {
     padding-right: 8px;
     padding-left: 8px;

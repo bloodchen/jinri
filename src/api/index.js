@@ -18,21 +18,24 @@ window.Sou = { Autocomplate: { bindAutocomplate() {} } };
 
 // api
 export default {
-  // 天气接口
-  // 获取城市
-  getCityByIp() {
+  // 天气-获取城市
+  getWeatherCityByIp() {
     return jsonp('https://api-i.maxthon.cn/tianqi/api/js_v5.php');
   },
-  // 获取天气
-  getWeatherByCityId(id) {
+  // 天气-获取详情
+  getWeatherDetailByCityId(id) {
     return jsonp(`https://api-i.maxthon.cn/tianqi/api/weather.php?id=${id}`);
   },
-  // 获取省市区
+  // 天气-获取省市区
   // provinces
   // cities?province-id=
   // districts?province-id=&city-id=
-  getAreaById(path) {
+  getWeatherAreaById(path) {
     return axios.post(`https://i.maxthon.cn/geo/${path}`);
+  },
+  // 百度热搜
+  getBaiduHotword() {
+    return axios.get('https://nowcn-api.maxthon.cn/now/v1/hotword');
   },
   // 百度搜索建议
   getBaiduSuggest(wd) {
@@ -43,17 +46,12 @@ export default {
     window.Sou.Autocomplate.bindAutocomplate = cb;
     jsonp(`https://sou.autohome.com.cn/Controls/AutoComplateQuery.ashx?q=${wd}`);
   },
-  // 百度热搜
-  getHotword() {
-    return axios.get('https://nowcn-api.maxthon.cn/now/v1/hotword');
-  },
-  // 首页接口
-  // 获取主要新闻
-  getHomeNewsMain(category) {
+  // 首页-获取主要新闻
+  getHomeMainNews(category) {
     return axios.get(`https://icn-news.maxthon.com/files/index/news/v1/${category}.json`);
   },
-  // 获取推荐新闻
-  getHomeNewsRecommend(category) {
+  // 首页-获取推荐新闻
+  getHomeRecommendNews(category) {
     return axios.get(`https://icn-news.maxthon.com/files/index/news/recommends/${category}.json`);
   }
 };

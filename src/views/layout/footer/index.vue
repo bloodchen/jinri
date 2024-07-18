@@ -17,7 +17,7 @@
         target="_blank"
       >
         <img
-          src="@/assets/images/record.png"
+          src="@/assets/images/footer-record.png"
           alt="备案"
         >
         <span>京公网安备 11010802020068号</span>
@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import img from '@/assets/images/code.png';
+import img from '@/assets/images/footer-code.png';
 const currentYear = new Date().getFullYear();
 
 // 链接

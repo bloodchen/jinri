@@ -1,22 +1,22 @@
-<!-- 新闻图片轮播 -->
+<!-- 首页-新闻-轮播图 -->
 <template>
-  <MxSwiper class="mx-news-focus">
+  <MxSwiper class="mx-hfnews">
     <MxSwiperSlide
       v-for="focus in data.focus"
       :key="focus.title"
     >
       <a
-        class="mx-news-focus-link"
+        class="mx-hfnews-link"
         :title="focus.title"
         :href="focus.url"
         target="_blank"
       >
         <img
-          class="mx-news-focus-img"
+          class="mx-hfnews-img"
           :src="focus.img"
           :alt="focus.title"
         >
-        <div class="mx-news-focus-text">{{ focus.title }}</div>
+        <div class="mx-hfnews-text">{{ focus.title }}</div>
       </a>
     </MxSwiperSlide>
   </MxSwiper>
@@ -29,7 +29,7 @@ defineProps({
 </script>
 
 <style lang="scss">
-.mx-news-focus {
+.mx-hfnews {
   &-link {
     position: relative;
   }
