@@ -6,32 +6,33 @@
       <span>版权所有</span>
       <span class="mx-footer-infos-bold">©</span>
       <span>{{ currentYear }} 网际傲游（北京）科技有限公司.</span>
-      <a
+      <MxLink
         class="mx-footer-infos-link"
         href="https://beian.miit.gov.cn/#/Integrated/index"
-        target="_blank"
-      >京ICP备11048873号-1</a>
-      <a
+      >
+        京ICP备11048873号-1
+      </MxLink>
+      <MxLink
         class="mx-footer-infos-link"
         href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020068"
-        target="_blank"
       >
         <img
           src="@/assets/images/footer-record.png"
           alt="备案"
         >
         <span>京公网安备 11010802020068号</span>
-      </a>
+      </MxLink>
     </div>
     <!-- 链接 -->
     <div class="mx-footer-links">
-      <a
+      <MxLink
         v-for="item in linkItems"
         :key="item.label"
         :href="item.url"
-        target="_blank"
         class="mx-footer-links-item"
-      >{{ item.label }}</a>
+      >
+        {{ item.label }}
+      </MxLink>
     </div>
     <!-- 下载 -->
     <div class="mx-footer-codes">
@@ -40,17 +41,16 @@
         :key="item.label"
         class="mx-footer-codes-item"
       >
-        <a
+        <MxLink
           class="mx-footer-codes-link"
           :href="item.url"
-          target="_blank"
         >
           <img
             :src="item.img"
             :alt="item.label"
             class="mx-footer-codes-img"
           >
-        </a>
+        </MxLink>
         <div class="mx-mt-5">{{ item.label }}</div>
       </div>
     </div>

@@ -8,13 +8,14 @@
     >
       <div class="mx-tools-group-title">{{ group.groupTitle }}</div>
       <div class="mx-tools-site-list">
-        <a
+        <MxLink
           v-for="site in group.children"
           :key="site.title"
           :href="site.url"
-          target="_blank"
           class="mx-tools-site-item"
-        >{{ site.title }}</a>
+        >
+          {{ site.title }}
+        </MxLink>
       </div>
     </div>
   </div>

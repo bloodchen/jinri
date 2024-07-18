@@ -2,7 +2,7 @@
 <template>
   <div class="mx-topbar">
     <!-- logo -->
-    <a
+    <MxLink
       href="/"
       class="mx-topbar-logo"
     >
@@ -11,7 +11,7 @@
         src="@/assets/images/header-topbar-logo.png"
         alt="logo"
       >
-    </a>
+    </MxLink>
     <!-- 工具 -->
     <div class="mx-topbar-tools">
       <div class="mx-topbar-tools-item">
@@ -34,11 +34,12 @@
         <div>{{ solarDate }}</div>
         <div>
           <span>{{ lunarDate }}</span>
-          <a
+          <MxLink
             class="mx-topbar-tools-toggle"
             href="http://qq.ip138.com/day/"
-            target="_blank"
-          >[万年历]</a>
+          >
+            [万年历]
+          </MxLink>
         </div>
       </div>
       <div
@@ -52,16 +53,13 @@
             @click="openAreaDialog"
           >[切换]</span>
         </div>
-        <a
-          href="/weater"
-          target="_blank"
-        >一周天气</a>
+        <MxLink href="/weater">一周天气</MxLink>
       </div>
-      <a
+      <MxLink
         v-if="weatherData.today"
         class="mx-topbar-tools-item mx-topbar-weather-row"
         href="/weater"
-        target="_blank"
+        :hover="false"
       >
         <img
           class="mx-topbar-weather-icon"
@@ -78,7 +76,7 @@
           </div>
           <div>{{ weatherData.today.ltemp }}~{{ weatherData.today.htemp }}</div>
         </div>
-      </a>
+      </MxLink>
       <div class="mx-topbar-tools-item">
         <div
           class="mx-topbar-tools-icon"
@@ -87,28 +85,29 @@
           <MxIcon class="is-skin" />
           <span>换肤</span>
         </div>
-        <a
+        <MxLink
           class="mx-topbar-tools-icon"
           href="https://report.maxthon.com/mx/bug/post/"
-          target="_blank"
         >
           <MxIcon class="is-feedback" />
           <span>反馈</span>
-        </a>
+        </MxLink>
       </div>
     </div>
     <!-- 邮箱 -->
     <MxDialog
       v-model="emailDialogVisible"
+      :style="{ '--width': '600px' }"
       title="邮箱登录"
     >
       <div class="mx-topbar-email">
-        <a
+        <MxLink
           v-for="item in emailList"
           :key="item.key"
           :href="item.url"
-          target="_blank"
-        >{{ item.label }}</a>
+        >
+          {{ item.label }}
+        </MxLink>
       </div>
       <template #footer>
         <MxBtn
@@ -126,11 +125,10 @@
     >
       <div>把傲游今日下载到桌面，访问更方便</div>
       <template #footer>
-        <a
+        <MxLink
           class="mx-topbar-home-link"
           href="/desktop/傲游今日.url"
           download="傲游今日.url"
-          target="_blank"
           @click="homeDialogVisible = false"
         />
         <MxBtn
@@ -210,15 +208,12 @@
         v-for="item in adList"
         :key="item.name"
       >
-        <a
-          :href="item.url"
-          target="_blank"
-        >
+        <MxLink :href="item.url">
           <img
             :src="item.img"
             :alt="item.name"
           >
-        </a>
+        </MxLink>
       </MxSwiperSlide>
     </MxSwiper>
   </div>

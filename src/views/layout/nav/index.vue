@@ -26,6 +26,7 @@ import { useRoute, RouterLink } from 'vue-router';
 // 导航
 const navItems = [
   { label: '首页', name: 'home', path: '/' },
+  { label: '网址', name: 'websites', path: '/websites' },
   { label: '购物', name: 'shopping', path: '/shopping' },
   { label: '财经', name: 'finance', path: '/finance' },
   { label: '工具', name: 'tools', path: '/tools' }

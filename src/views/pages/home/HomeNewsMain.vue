@@ -20,13 +20,12 @@
           />
           <!-- 左侧图片 -->
           <div class="mx-hmnews-img">
-            <a
+            <MxLink
               v-for="midImg in item.data.midImg"
               :key="midImg.title"
               class="mx-hmnews-img-link"
               :title="midImg.title"
               :href="midImg.url"
-              target="_blank"
             >
               <img
                 class="mx-hmnews-img-img"
@@ -34,25 +33,24 @@
                 :alt="midImg.title"
               >
               <div class="mx-hmnews-img-text">{{ midImg.title }}</div>
-            </a>
+            </MxLink>
           </div>
         </div>
         <!-- 右侧文字列表 -->
         <div class="mx-hmnews-right">
-          <a
+          <MxLink
             v-for="(text, index) in item.data.text"
             :key="text[0].title"
             class="mx-hmnews-text-item"
             :title="text[0].title"
             :href="text[0].url"
-            target="_blank"
           >
             <span
               v-if="index % 5 !== 0"
               class="mx-hmnews-text-dot"
             >•</span>
             <span>{{ text[0].title }}</span>
-          </a>
+          </MxLink>
         </div>
       </template>
     </MxTabPane>

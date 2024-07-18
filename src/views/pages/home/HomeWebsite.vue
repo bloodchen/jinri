@@ -20,12 +20,11 @@
           class="mx-hwebsite-fav-item"
         >
           <!-- 主要网址 -->
-          <a
+          <MxLink
             class="mx-hwebsite-fav-link"
             :title="item.title"
             :style="{ 'color': item.color, 'font-weight': item.bold ? 'bold' : '' }"
             :href="item.url"
-            target="_blank"
           >
             <img
               v-if="item.titleImg"
@@ -40,42 +39,43 @@
               >
               <span>{{ item.title }}</span>
             </template>
-          </a>
+          </MxLink>
           <!-- 次要网址 -->
           <template v-if="item.subTitle && item.subUrl">
             <span>&nbsp;•&nbsp;</span>
-            <a
+            <MxLink
               class="mx-hwebsite-fav-link"
               :title="item.subTitle"
               :style="{ 'color': item.subColor, 'font-weight': item.subBold ? 'bold' : '' }"
               :href="item.subUrl"
-              target="_blank"
-            >{{ item.subTitle }}</a>
+            >
+              {{ item.subTitle }}
+            </MxLink>
           </template>
           <!-- 附加图片 -->
-          <a
+          <MxLink
             v-if="item.bubbleUrl && item.bubbleImg"
             :href="item.bubbleUrl"
-            target="_blank"
           >
             <img
               class="mx-hwebsite-fav-bubble"
               :src="item.bubbleImg"
             >
-          </a>
+          </MxLink>
         </div>
       </div>
     </MxTabPane>
     <!-- 底部广告 -->
     <template #footer>
       <div class="mx-hwebsite-ad">
-        <a
+        <MxLink
           v-for="item in adDataList"
           :key="item.title"
           :href="item.url"
-          target="_blank"
           class="mx-hwebsite-ad-item"
-        >{{ item.title }}</a>
+        >
+          {{ item.title }}
+        </MxLink>
       </div>
     </template>
   </MxTabs>

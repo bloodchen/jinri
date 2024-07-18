@@ -6,13 +6,12 @@
       class="mx-hotword-list"
       :class="{ 'is-expend': isExpend }"
     >
-      <a
+      <MxLink
         v-for="item in dataList"
         :key="item.eventId"
         class="mx-hotword-item"
         :title="item.word"
         :href="`${item.url}&tn=68018901_dg`"
-        target="_blank"
       >
         <span class="mx-hotword-title">{{ item.word }}</span>
         <img
@@ -20,7 +19,7 @@
           :src="item.hotTagImg"
           class="mx-hotword-img"
         >
-      </a>
+      </MxLink>
     </div>
     <!-- 展开按钮 -->
     <MxIcon

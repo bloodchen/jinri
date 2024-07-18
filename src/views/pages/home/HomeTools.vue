@@ -1,20 +1,19 @@
 <!-- 首页-工具 -->
 <template>
   <div class="mx-htools">
-    <a
+    <MxLink
       v-for="item in toolsList"
       :key="item.label"
       class="mx-htools-link"
       :title="item.label"
       :href="item.url"
-      target="_blank"
     >
       <MxIcon
         class="mx-htools-icon"
         :style="`--icon-base: ${item.iconBase}; --icon-active: ${item.iconActive}`"
       />
       <div class="mx-htools-title">{{ item.label }}</div>
-    </a>
+    </MxLink>
   </div>
 </template>
 

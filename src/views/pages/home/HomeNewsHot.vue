@@ -8,13 +8,12 @@
       name="hot"
       label="新闻搜索排行榜"
     >
-      <a
+      <MxLink
         v-for="item in dataList"
         :key="item.eventId"
         class="mx-hhnews-item"
         :title="item.word"
         :href="`${item.url}&tn=68018901_dg`"
-        target="_blank"
       >
         <span
           class="mx-hhnews-rank"
@@ -22,7 +21,7 @@
         >{{ item.index + 1 }}</span>
         <span class="mx-hhnews-word">{{ item.word }}</span>
         <span class="mx-hhnews-score">{{ item.hotScore }}</span>
-      </a>
+      </MxLink>
     </MxTabPane>
   </MxTabs>
 </template>
@@ -70,6 +69,9 @@ api.getBaiduHotword().then(({ data }) => {
     color: #444;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+  &-item:hover &-word {
+    color: #08f;
   }
   &-score {
     font-size: 12px;

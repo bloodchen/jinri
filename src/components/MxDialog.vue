@@ -49,7 +49,7 @@ function closeDialog() {
   background-color: rgb(0 0 0 / 40%);
   backdrop-filter: blur(2px);
   &-content {
-    width: 500px;
+    width: var(--width, 500px);
     margin: 15vh auto 50px;
     background-color: #fff;
     border-radius: 4px;

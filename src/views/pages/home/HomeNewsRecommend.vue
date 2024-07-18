@@ -19,16 +19,16 @@
         />
         <!-- 列表 -->
         <div class="mx-hrnews-list">
-          <a
+          <MxLink
             v-for="text in item.data.list"
             :key="text.title"
             class="mx-hrnews-list-item"
             :title="text.title"
             :href="text.url"
-            target="_blank"
           >
             <span class="mx-hrnews-list-dot">•</span>
-            <span>{{ text.title }}</span></a>
+            <span>{{ text.title }}</span>
+          </MxLink>
         </div>
       </template>
     </MxTabPane>

@@ -5,11 +5,10 @@
       v-for="focus in data.focus"
       :key="focus.title"
     >
-      <a
+      <MxLink
         class="mx-hfnews-link"
         :title="focus.title"
         :href="focus.url"
-        target="_blank"
       >
         <img
           class="mx-hfnews-img"
@@ -17,7 +16,7 @@
           :alt="focus.title"
         >
         <div class="mx-hfnews-text">{{ focus.title }}</div>
-      </a>
+      </MxLink>
     </MxSwiperSlide>
   </MxSwiper>
 </template>

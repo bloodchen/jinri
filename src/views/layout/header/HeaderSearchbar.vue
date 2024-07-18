@@ -4,17 +4,16 @@
     <!-- 搜索引擎 -->
     <div class="mx-searchbar-engine">
       <!-- logo -->
-      <a
+      <MxLink
         :title="currentEngine.engineTitle"
         :href="currentEngine.engineUrl"
-        target="_blank"
       >
         <img
           class="mx-searchbar-engine-logo"
           :src="currentEngine.engineLogo"
           :alt="currentEngine.engineTitle"
         >
-      </a>
+      </MxLink>
       <!-- 下拉列表 -->
       <MxIcon
         class="mx-searchbar-trigger"

@@ -1,4 +1,5 @@
 // 注册全局组件
+import MxLink from './MxLink.vue';
 import MxIframe from './MxIframe.vue';
 import MxBtn from './MxBtn.vue';
 import MxDialog from './MxDialog.vue';
@@ -9,6 +10,7 @@ import MxSwiper from './MxSwiper.vue';
 import { SwiperSlide } from 'swiper/vue';
 
 export function setupComponents(vueApp) {
+  vueApp.component('MxLink', MxLink);
   vueApp.component('MxIframe', MxIframe);
   vueApp.component('MxBtn', MxBtn);
   vueApp.component('MxDialog', MxDialog);
