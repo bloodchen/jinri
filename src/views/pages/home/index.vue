@@ -9,14 +9,11 @@
         <!-- 工具 -->
         <HomeTools />
         <!-- 广告 -->
-        <div class="mx-mt-10">
-          <iframe
-            scrolling="no"
-            frameborder="0"
-            class="mx-home-ad"
-            src="./ad.html"
-          />
-        </div>
+        <MxIframe
+          src="./ad.html"
+          height="279"
+          class="mx-mt-10"
+        />
       </div>
     </div>
     <!-- 第二部分 -->
@@ -72,10 +69,6 @@ onMounted(() => {
     flex: none;
     width: 300px;
     margin-left: 10px;
-  }
-  &-ad {
-    width: 100%;
-    height: 272px;
   }
 }
 </style>

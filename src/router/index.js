@@ -7,12 +7,22 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/home/index.vue')
+      component: () => import('@/views/pages/home/index.vue')
     },
     {
       path: '/shopping',
       name: 'shopping',
-      component: () => import('@/views/shopping/index.vue')
+      component: () => import('@/views/pages/shopping/index.vue')
+    },
+    {
+      path: '/finance',
+      name: 'finance',
+      component: () => import('@/views/pages/finance/index.vue')
+    },
+    {
+      path: '/tools',
+      name: 'tools',
+      component: () => import('@/views/pages/tools/index.vue')
     }
   ]
 });

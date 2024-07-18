@@ -1,4 +1,3 @@
-<!-- <MxTabs /> -->
 <!-- 标签组件-父组件 -->
 <template>
   <div
@@ -30,6 +29,8 @@
     <div class="mx-tabs-content">
       <slot />
     </div>
+    <!-- 底部内容 -->
+    <slot name="footer" />
   </div>
 </template>
 

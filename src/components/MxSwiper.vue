@@ -1,4 +1,3 @@
-<!-- <MxSwiper /> -->
 <!-- 包装 swiper -->
 <template>
   <Swiper

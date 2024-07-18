@@ -1,19 +1,17 @@
 <!-- 导航 -->
 <template>
   <div class="mx-nav">
-    <div class="mx-nav-list">
-      <RouterLink
-        v-for="(item, index) in navItems"
-        :key="item.name"
-        :to="item.path"
-        class="mx-nav-item"
-        :class="{ 'is-active': item.name === route.name }"
-        @mouseenter="cursorIndex = index"
-        @mouseleave="cursorIndex = currentIndex"
-      >
-        {{ item.label }}
-      </RouterLink>
-    </div>
+    <RouterLink
+      v-for="(item, index) in navItems"
+      :key="item.name"
+      :to="item.path"
+      class="mx-nav-item"
+      :class="{ 'is-active': item.name === route.name }"
+      @mouseenter="cursorIndex = index"
+      @mouseleave="cursorIndex = currentIndex"
+    >
+      {{ item.label }}
+    </RouterLink>
     <div
       class="mx-nav-cursor"
       :style="cursorStyle"
@@ -28,7 +26,9 @@ import { useRoute, RouterLink } from 'vue-router';
 // 导航
 const navItems = [
   { label: '首页', name: 'home', path: '/' },
-  { label: '购物', name: 'shopping', path: '/shopping' }
+  { label: '购物', name: 'shopping', path: '/shopping' },
+  { label: '财经', name: 'finance', path: '/finance' },
+  { label: '工具', name: 'tools', path: '/tools' }
 ];
 
 // 当前选中项
@@ -46,18 +46,16 @@ const cursorStyle = computed(() => {
   } else {
     index = cursorIndex.value;
   }
-  return { left: `${index * 76 + 20}px` };
+  return { left: `${index * 76}px` };
 });
 </script>
 
 <style lang="scss">
 .mx-nav {
   position: relative;
-  &-list {
-    display: flex;
-    background-color: #fff;
-    border: 1px solid #e2e2e2;
-  }
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #e2e2e2;
   &-item {
     position: relative;
     width: 76px;

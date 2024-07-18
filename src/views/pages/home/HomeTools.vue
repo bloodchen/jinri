@@ -1,19 +1,19 @@
 <!-- 首页工具 -->
 <template>
-  <div class="mx-tools">
+  <div class="mx-home-tools">
     <a
       v-for="item in toolsList"
       :key="item.label"
-      class="mx-tools-link"
+      class="mx-home-tools-link"
       :title="item.label"
       :href="item.url"
       target="_blank"
     >
       <MxIcon
-        class="mx-tools-icon"
+        class="mx-home-tools-icon"
         :style="`--icon-base: ${item.iconBase}; --icon-active: ${item.iconActive}`"
       />
-      <div class="mx-tools-title">{{ item.label }}</div>
+      <div class="mx-home-tools-title">{{ item.label }}</div>
     </a>
   </div>
 </template>
@@ -29,9 +29,10 @@ const toolsList = [
 </script>
 
 <style lang="scss">
-.mx-tools {
+.mx-home-tools {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  background-color: #fff;
   border: 1px solid #e2e2e2;
   border-right: none;
   &-link {

@@ -1,4 +1,3 @@
-<!-- MxTabPane /> -->
 <!-- 标签组件-子组件 -->
 <template>
   <div

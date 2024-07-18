@@ -1,4 +1,4 @@
-// 首页网址导航
+// 首页-常用网址
 export default [
   {
     groupName: '1',
