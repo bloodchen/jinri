@@ -5,22 +5,22 @@
     <div class="mx-footer-infos">
       <span>版权所有</span>
       <span class="mx-footer-infos-bold">©</span>
-      <span>{{ currentYear }} 网际傲游（北京）科技有限公司.</span>
+      <span>{{ currentYear }} 北京傲游天下科技有限公司.</span>
       <MxLink
         class="mx-footer-infos-link"
         href="https://beian.miit.gov.cn/#/Integrated/index"
       >
-        京ICP备11048873号-1
+        京ICP备08011055号-2
       </MxLink>
       <MxLink
         class="mx-footer-infos-link"
-        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020068"
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802036007"
       >
         <img
           src="@/assets/images/footer-record.png"
           alt="备案"
         >
-        <span>京公网安备 11010802020068号</span>
+        <span>京公网安备 11010802036007号</span>
       </MxLink>
     </div>
     <!-- 链接 -->
