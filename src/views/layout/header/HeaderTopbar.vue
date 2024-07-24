@@ -63,7 +63,7 @@
       >
         <img
           class="mx-topbar-weather-icon"
-          :src="weatherData.today.icon"
+          :src="weatherData.iconLocal"
           :alt="weatherData.today.iconTitle"
         >
         <div class="mx-ml-5">
@@ -261,13 +261,19 @@ async function getCityData() {
   } else {
     const res = await api.getWeatherCityByIp();
     weatherCityId.value = res._weather_cityid;
+    saveCityData();
   }
   getWeatherData();
 }
-
+// 保存城市数据
+function saveCityData() {
+  localStorage.setItem('weatherCityId', weatherCityId.value);
+}
 // 获取天气
 async function getWeatherData() {
   weatherData.value = await api.getWeatherDetailByCityId(weatherCityId.value);
+  const iconName = weatherData.value.today.icon.slice(-6);
+  weatherData.value.iconLocal = `./images/weather/${iconName}`;
   getAqiStyle();
 }
 
@@ -360,8 +366,8 @@ function changeCity() {
   } else {
     weatherCityId.value = provinceId.value + cityId.value + districtId.value;
   }
-  // 存储城市key
-  localStorage.setItem('weatherCityId', weatherCityId.value);
+  // 存储城市数据
+  saveCityData();
   // 重新查询天气
   areaDialogVisible.value = false;
   getWeatherData();

@@ -75,6 +75,7 @@
           class="mx-searchbar-input-inner"
           @focus="inputIsFoucs = true"
           @input="getServerSuggectList"
+          @enter="searchSubmit"
         >
         <!-- 搜索建议 -->
         <div
