@@ -117,7 +117,6 @@
                 id="searchHistoryCheckbox"
                 v-model="historyVisible"
                 type="checkbox"
-                @change="changeHistoryVisible"
               >
               <span class="mx-ml-5">显示历史记录</span>
             </label>
@@ -144,31 +143,27 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { useCookies } from '@vueuse/integrations/useCookies';
-import { onClickOutside } from '@vueuse/core';
+import { useStorage, onClickOutside } from '@vueuse/core';
 
 import api from '@/api';
 import engineGroupList from '@/data/header-searchbar-engines';
 
-const cookies = useCookies();
-
 // 搜索引擎配置 {groupName: 'website', engineName_website: 'baidu'}
-const engineConfig = cookies.get('search-engine-config') || {};
+const engineConfig = useStorage('search-engine-config', {});
 function updateEngineConfig() {
-  engineConfig.groupName = currentEngineGroup.value.groupName;
-  engineConfig[`engineName_${currentEngineGroup.value.groupName}`] = currentEngine.value.engineName;
-  cookies.set('search-engine-config', engineConfig);
+  engineConfig.value.groupName = currentEngineGroup.value.groupName;
+  engineConfig.value[`engineName_${currentEngineGroup.value.groupName}`] = currentEngine.value.engineName;
 }
 
 // 当前搜索引擎分组
 const currentEngineGroup = ref({});
-currentEngineGroup.value = engineGroupList.find(item => item.groupName === engineConfig?.groupName) || engineGroupList[0];
+currentEngineGroup.value = engineGroupList.find(item => item.groupName === engineConfig.value?.groupName) || engineGroupList[0];
 
 // 当前搜索引擎
 const currentEngine = ref({});
 getCurrentEngine();
 function getCurrentEngine() {
-  const engineName = engineConfig[`engineName_${currentEngineGroup.value.groupName}`];
+  const engineName = engineConfig.value[`engineName_${currentEngineGroup.value.groupName}`];
   currentEngine.value = currentEngineGroup.value.engines.find(item => item.engineName === engineName) || currentEngineGroup.value.engines[0];
 }
 
@@ -228,8 +223,8 @@ onClickOutside(suggestRef, event => {
 });
 
 // 搜索历史
-const historyVisible = ref(cookies.get('search-show-history'));
-const historyList = ref(cookies.get('search-history-list') || []);
+const historyVisible = useStorage('search-show-history', true);
+const historyList = useStorage('search-history-list', []);
 const historyListRef = computed(() => {
   if (!keyword.value) {
     return historyVisible.value ? historyList.value.slice(0, 10) : [];
@@ -237,11 +232,6 @@ const historyListRef = computed(() => {
   const reg = new RegExp(keyword.value);
   return historyVisible.value ? historyList.value.filter(item => reg.test(item)).slice(0, 3) : [];
 });
-
-// 是否显示搜索历史
-function changeHistoryVisible() {
-  cookies.set('search-show-history', historyVisible.value);
-}
 
 // 添加搜索历史
 function addHistory(key) {
@@ -256,13 +246,11 @@ function addHistory(key) {
   }
   // 添加新的
   historyList.value.unshift(key);
-  cookies.set('search-history-list', historyList.value);
 }
 
 // 清空搜索历史
 function clearHistory() {
   historyList.value = [];
-  cookies.set('search-history-list', []);
 }
 
 // 搜索建议

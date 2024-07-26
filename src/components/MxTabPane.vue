@@ -1,7 +1,7 @@
 <!-- 标签组件-子组件 -->
 <template>
   <div
-    v-show="props.name === currentTab"
+    v-show="props.name === currentTabName"
     class="mx-tab-pane"
   >
     <slot />
@@ -16,7 +16,7 @@ const props = defineProps({
   label: { type: String, default: '' }
 });
 
-const currentTab = inject('currentTab');
+const currentTabName = inject('currentTabName');
 </script>
 
 <style>

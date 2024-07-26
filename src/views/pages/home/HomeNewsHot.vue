@@ -1,9 +1,10 @@
-<!-- 首页-新闻-搜索热词 -->
+<!-- 首页-新闻-新闻搜索排行榜 -->
 <template>
   <MxTabs
+    v-model="currentTabName"
     class="mx-hhnews"
-    suffix="搜索指数"
   >
+    <template #header>搜索指数</template>
     <MxTabPane
       name="hot"
       label="新闻搜索排行榜"
@@ -30,8 +31,11 @@
 import { ref } from 'vue';
 import api from '@/api';
 
-const dataList = ref([]);
+// 当前tab
+const currentTabName = ref('hot');
 
+// 获取数据
+const dataList = ref([]);
 api.getBaiduHotword().then(({ data }) => {
   dataList.value = data.success ? data.data.cards[0].content.slice(0, 10) : [];
 });

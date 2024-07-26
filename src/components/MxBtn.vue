@@ -9,8 +9,8 @@
 defineProps({
   // primary, info
   type: { type: String, default: 'primary' },
-  // custom, middle
-  size: { type: String, default: 'middle' }
+  // custom, medium
+  size: { type: String, default: 'medium' }
 });
 </script>
 
@@ -22,6 +22,10 @@ defineProps({
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: .8;
+  }
 
   // type
   &.is-primary {
@@ -35,11 +39,15 @@ defineProps({
     color: #666;
     background-color: transparent;
     border: 1px solid #eee;
+    &:hover {
+      color: #08f;
+      border-color: #08f;
+    }
   }
 
   // size
-  &.is-middle {
-    height: 30px;
+  &.is-medium {
+    height: 32px;
   }
 
   // margin

@@ -5,62 +5,91 @@
     :class="`is-${theme}`"
   >
     <div class="mx-tabs-header">
-      <div
-        v-if="tabItems.length > 1"
-        class="mx-tabs-titles"
-      >
+      <div class="mx-tabs-titles">
         <span
           v-for="item in tabItems"
           :key="item.name"
           class="mx-tabs-title"
-          :class="{ 'is-active': item.name === currentTab }"
-          @click="onChange(item)"
+          :class="{
+            'is-active': tabItems.length > 1 && item.name === props.modelValue,
+            'is-text': tabItems.length === 1
+          }"
+          @mouseenter="onMouseenter(item.name)"
+          @mouseleave="onMouseleave"
+          @click="onClick(item.name)"
         >{{ item.label }}</span>
       </div>
-      <span
-        v-else
-        class="mx-tabs-title is-text"
-      >{{ tabItems[0].label }}</span>
-      <span
-        v-if="props.suffix"
-        class="mx-tabs-title is-text"
-      >{{ props.suffix }}</span>
+      <!-- 顶栏额外内容 -->
+      <slot name="header" />
     </div>
     <div class="mx-tabs-content">
       <slot />
     </div>
-    <!-- 底部内容 -->
+    <!-- 底栏额外内容 -->
     <slot name="footer" />
   </div>
 </template>
 
 <script setup>
-import { useSlots, ref, provide } from 'vue';
+import { useSlots, provide, computed } from 'vue';
 
-// 获取子集
-const defaultSlots = useSlots().default();
-const slots = defaultSlots[0]?.props ? defaultSlots : defaultSlots[0]?.children;
-const tabItems = slots.map(({ props }) => props);
-
+// props
 const props = defineProps({
   // 默认标签
   modelValue: { type: String, default: '' },
+  // 是否自动轮播
+  autoplay: { type: Boolean, default: true },
   // 主题
-  theme: { type: String, default: 'gray' },
-  // 后缀
-  suffix: { type: String, default: '' }
+  theme: { type: String, default: 'gray' }
 });
 
+// 获取子集
+const defaultSlots = useSlots().default();
+const tabPanes = defaultSlots[0]?.props ? defaultSlots : defaultSlots[0]?.children;
+const tabItems = tabPanes.map(({ props }) => props);
+
 // 当前标签
-const currentTab = ref(props.modelValue || tabItems[0]?.name);
-provide('currentTab', currentTab);
+const currentTabName = computed(() => props.modelValue);
+provide('currentTabName', currentTabName);
+
+// 自动切换标签
+let autoTimer;
+if (props.autoplay) {
+  const currentTabIndex = tabItems.findIndex(item => item.name === props.modelValue);
+  let nextTabIndex = currentTabIndex;
+  autoTimer = setInterval(() => {
+    if (tabItems.length <= 1) {
+      clearInterval(autoTimer);
+    }
+    nextTabIndex = nextTabIndex === tabItems.length - 1 ? 0 : nextTabIndex + 1;
+    changeTab(tabItems[nextTabIndex].name);
+  }, 5000);
+}
+
+// 鼠标滑过切换标签
+let hoveTimer;
+function onMouseenter(name) {
+  clearInterval(autoTimer);
+  clearTimeout(hoveTimer);
+  hoveTimer = setTimeout(() => onClick(name), 500);
+}
+function onMouseleave() {
+  clearTimeout(hoveTimer);
+}
+
+// 鼠标点击切换标签
+function onClick(name) {
+  clearInterval(autoTimer);
+  clearTimeout(hoveTimer);
+  changeTab(name);
+}
 
 // 切换标签
 const emits = defineEmits(['update:modelValue', 'change']);
-function onChange(item) {
-  currentTab.value = item.name;
-  emits('update:modelValue', item.name);
-  emits('change', item.name);
+function changeTab(name) {
+  if (name === props.modelValue) return;
+  emits('update:modelValue', name);
+  emits('change', name);
 }
 </script>
 
@@ -85,21 +114,25 @@ function onChange(item) {
   border-top-color: #7bf;
   &-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     height: 27px;
+    padding-right: 20px;
+    font-size: 12px;
+    line-height: 26px;
+    color: #666;
+    white-space: nowrap;
     background-color: var(--header-bg-color);
     border-bottom: 1px solid var(--header-border-color);
   }
   &-titles {
     display: flex;
+    align-items: center;
+    margin-right: 20px;
   }
   &-title {
     height: 27px;
     padding: 0 20px;
-    font-size: 12px;
-    line-height: 26px;
-    color: #666;
-    white-space: nowrap;
     cursor: pointer;
     border-right: 1px solid var(--header-border-color);
     border-bottom: 1px solid var(--header-border-color);

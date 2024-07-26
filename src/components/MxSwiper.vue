@@ -4,7 +4,7 @@
     :modules="[Autoplay, Navigation]"
     :autoplay="{ delay: 2500 }"
     navigation
-    loop
+    :loop="false"
   >
     <slot />
   </Swiper>

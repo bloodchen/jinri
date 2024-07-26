@@ -145,53 +145,47 @@
       v-model="areaDialogVisible"
       title="切换城市"
     >
-      <div class="mx-topbar-weather-row">
-        <span>省：</span>
-        <select
-          v-model="provinceId"
-          class="mx-topbar-weather-select"
-          @change="getCityMap('change')"
+      <MxFormItem
+        v-model="provinceId"
+        label="省："
+        field="select"
+        @change="getCityMap('change')"
+      >
+        <option
+          v-for="(item, key) in provinceMap"
+          :key="key"
+          :value="key"
         >
-          <option
-            v-for="(item, key) in provinceMap"
-            :key="key"
-            :value="key"
-          >
-            {{ item.province }}
-          </option>
-        </select>
-      </div>
-      <div class="mx-topbar-weather-row mx-mt-10">
-        <span>市：</span>
-        <select
-          v-model="cityId"
-          class="mx-topbar-weather-select"
-          @change="getDistrictMap('change')"
+          {{ item.province }}
+        </option>
+      </MxFormItem>
+      <MxFormItem
+        v-model="cityId"
+        label="市："
+        field="select"
+        @change="getDistrictMap('change')"
+      >
+        <option
+          v-for="(item, key) in cityMap"
+          :key="key"
+          :value="key"
         >
-          <option
-            v-for="(item, key) in cityMap"
-            :key="key"
-            :value="key"
-          >
-            {{ item.city }}
-          </option>
-        </select>
-      </div>
-      <div class="mx-topbar-weather-row mx-mt-10">
-        <span>区：</span>
-        <select
-          v-model="districtId"
-          class="mx-topbar-weather-select"
+          {{ item.city }}
+        </option>
+      </MxFormItem>
+      <MxFormItem
+        v-model="districtId"
+        label="区："
+        field="select"
+      >
+        <option
+          v-for="(item, key) in districtMap"
+          :key="key"
+          :value="key"
         >
-          <option
-            v-for="(item, key) in districtMap"
-            :key="key"
-            :value="key"
-          >
-            {{ item.district }}
-          </option>
-        </select>
-      </div>
+          {{ item.district }}
+        </option>
+      </MxFormItem>
       <template #footer>
         <MxBtn @click="changeCity">确认</MxBtn>
         <MxBtn
@@ -221,6 +215,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useStorage } from '@vueuse/core';
 import solarLunar from 'solarLunar';
 
 import api from '@/api';
@@ -251,23 +246,15 @@ const solarDate = `${dateYear}年${dateMonth}月${dateDate}日 ${solar2lunarData
 
 // 天气
 // 获取城市
-const weatherCityId = ref('');
+const weatherCityId = useStorage('weather-city-id', '');
 const weatherData = ref({});
 getCityData();
 async function getCityData() {
-  const localId = localStorage.getItem('weatherCityId');
-  if (localId) {
-    weatherCityId.value = localId;
-  } else {
+  if (!weatherCityId.value) {
     const res = await api.getWeatherCityByIp();
     weatherCityId.value = res._weather_cityid;
-    saveCityData();
   }
   getWeatherData();
-}
-// 保存城市数据
-function saveCityData() {
-  localStorage.setItem('weatherCityId', weatherCityId.value);
 }
 // 获取天气
 async function getWeatherData() {
@@ -366,8 +353,6 @@ function changeCity() {
   } else {
     weatherCityId.value = provinceId.value + cityId.value + districtId.value;
   }
-  // 存储城市数据
-  saveCityData();
   // 重新查询天气
   areaDialogVisible.value = false;
   getWeatherData();
@@ -484,13 +469,6 @@ function changeCity() {
       height: 16px;
       margin-left: 5px;
       background-image: url('@/assets/sprites/weather-aqi.png');
-    }
-    &-select {
-      width: 120px;
-      height: 30px;
-      padding: 0 5px;
-      margin-left: 10px;
-      border: 1px solid #e8e8e8;
     }
   }
 

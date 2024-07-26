@@ -28,7 +28,10 @@
       </div>
     </div>
     <!-- 第三部分 -->
-    <MxTabs class="mx-mt-10">
+    <MxTabs
+      v-model="currentTabName"
+      class="mx-mt-10"
+    >
       <MxTabPane
         id="homeGame"
         name="game"
@@ -39,15 +42,18 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import HomeWebsite from './HomeWebsite.vue';
 import HomeTools from './HomeTools.vue';
 import HomeNewsMain from './HomeNewsMain.vue';
 import HomeNewsHot from './HomeNewsHot.vue';
 import HomeNewsRecommend from './HomeNewsRecommend.vue';
 
+// 当前tab
+const currentTabName = ref('hot');
+
+// 游戏专区
 onMounted(() => {
-  // 游戏专区
   const gameScript = document.createElement('script');
   gameScript.async = true;
   gameScript.src = 'https://res.dashet.com/da/da.js?cid=450B6ED0&skey=120fa11b';

@@ -1,7 +1,8 @@
 <!-- 弹窗 -->
 <template>
   <div
-    v-show="modelValue"
+    v-show="!!modelValue"
+    ref="dialogRef"
     class="mx-dialog"
     @click.self="closeDialog"
   >
@@ -27,15 +28,22 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
 import MxIcon from './MxIcon.vue';
 
 defineProps({
-  modelValue: { type: Boolean, required: true },
+  modelValue: { type: [Boolean, String], required: true },
   title: { type: String, default: '' }
 });
 
-const emits = defineEmits(['update:modelValue']);
+// 挂载到body上
+const dialogRef = ref(null);
+onMounted(() => {
+  document.body.append(dialogRef.value);
+});
 
+// 关闭弹窗
+const emits = defineEmits(['update:modelValue']);
 function closeDialog() {
   emits('update:modelValue', false);
 }

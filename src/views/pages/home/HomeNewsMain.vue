@@ -1,6 +1,7 @@
 <!-- 首页-新闻-主要新闻 -->
 <template>
   <MxTabs
+    v-model="currentTabName"
     class="mx-hmnews"
     @change="getDataList"
   >
@@ -61,6 +62,9 @@
 import { ref } from 'vue';
 import api from '@/api';
 import HomeNewsFocus from './HomeNewsFocus.vue';
+
+// 当前tab
+const currentTabName = ref('chief');
 
 // 标签
 const tabItems = ref([

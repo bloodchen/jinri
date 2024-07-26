@@ -46,6 +46,21 @@ export default {
     window.Sou.Autocomplate.bindAutocomplate = cb;
     jsonp(`https://sou.autohome.com.cn/Controls/AutoComplateQuery.ashx?q=${wd}`);
   },
+  // 首页-网址导航
+  websiteRequest(url, params = {}) {
+    const data = new URLSearchParams();
+    for (const key in params) {
+      data.append(key, params[key]);
+    }
+    return axios.post(url, data, {
+      withCredentials: true,
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
+  },
+  // 首页-最常访问网址 get, add, edit, remove, swap, reset, reset-at-start-up
+  getHomeFavSites(path, params) {
+    return this.websiteRequest(`https://icn-api.maxthon.com/api/fav/${path}`, params);
+  },
   // 首页-获取主要新闻
   getHomeMainNews(category) {
     return axios.get(`https://icn-news.maxthon.com/files/index/news/v1/${category}.json`);
