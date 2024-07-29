@@ -57,9 +57,28 @@ export default {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
   },
-  // 首页-最常访问网址 get, add, edit, remove, swap, reset, reset-at-start-up
-  getHomeFavSites(path, params) {
-    return this.websiteRequest(`https://icn-api.maxthon.com/api/fav/${path}`, params);
+  // 首页-常用网址-排序（已停用，改为本地存储）
+  // params = { orders: '1,2,3,4,5' }
+  setHomePopularSitesOrders(params) {
+    return this.websiteRequest('https://icn-api.maxthon.com/api/websites/setOrders', params);
+  },
+  // 首页-常用网址-重置排序（已停用，改为本地存储）
+  resetHomePopularSitesOrders() {
+    return this.websiteRequest('https://icn-api.maxthon.com/api/websites/removeOrders');
+  },
+  // 首页-最常访问网址（已停用，改为本地存储） get, add, edit, remove, swap, reset, reset-at-start-up
+  async getHomeFavSites(path, params) {
+    if (path !== 'get') return null;
+    try {
+      const { data } = await this.websiteRequest(`https://icn-api.maxthon.com/api/fav/${path}`, params);
+      if (data.error_code) {
+        return null;
+      } else {
+        return data;
+      }
+    } catch (e) {
+      return null;
+    }
   },
   // 首页-获取主要新闻
   getHomeMainNews(category) {

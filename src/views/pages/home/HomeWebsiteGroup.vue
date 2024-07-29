@@ -9,14 +9,24 @@
       v-for="item in group.children"
       :key="item.title"
       class="mx-hwebsite-item"
-      :class="{ 'is-editable': editable }"
+      :class="{
+        'is-draggable': !!dragStatus,
+        'is-draging': item.id === dragItem.id,
+        'is-dragenter': item.id === targetItem.id
+      }"
+      draggable="true"
+      @dragstart="handleDragStart(item)"
+      @dragenter.prevent="handleDragEnter(item)"
+      @dragover.prevent
+      @dragleave="handleDragLeave(item, $event)"
+      @dragend="handleDragEnd(item)"
     >
       <!-- 主要网址 -->
       <MxLink
         class="mx-hwebsite-link"
         :title="item.title"
         :style="{ 'color': item.color, 'font-weight': item.bold ? 'bold' : '' }"
-        :href="item.url"
+        :href="!!dragStatus ? 'javascript:;' : item.url"
       >
         <img
           v-if="item.titleImg"
@@ -39,7 +49,7 @@
           class="mx-hwebsite-link"
           :title="item.subTitle"
           :style="{ 'color': item.subColor, 'font-weight': item.subBold ? 'bold' : '' }"
-          :href="item.subUrl"
+          :href="!!dragStatus ? 'javascript:;' : item.subUrl"
         >
           {{ item.subTitle }}
         </MxLink>
@@ -47,7 +57,7 @@
       <!-- 附加图片 -->
       <MxLink
         v-if="item.bubbleUrl && item.bubbleImg"
-        :href="item.bubbleUrl"
+        :href="!!dragStatus ? 'javascript:;' : item.bubbleUrl"
       >
         <img
           class="mx-hwebsite-bubble"
@@ -73,18 +83,63 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
 defineProps({
   data: { type: Array, default: null },
   editable: { type: Boolean, default: false }
 });
 
-const emits = defineEmits(['remove', 'edit']);
+const emits = defineEmits(['remove', 'edit', 'sort']);
 
+// 编辑
 function onEdit(item) {
   emits('edit', item);
 }
+
+// 删除
 function onRemove(item) {
   emits('remove', item);
+}
+
+// 拖拽
+const dragStatus = ref('');
+const dragItem = ref({});
+const targetItem = ref({});
+// dragenter  按下鼠标开始拖拽
+function handleDragStart(item) {
+  dragStatus.value = 'start';
+  dragItem.value = item;
+}
+// dragenter  移入自身或其它元素
+function handleDragEnter(item) {
+  if (item.id !== dragItem.value.id) {
+    dragStatus.value = 'enter';
+    targetItem.value = item;
+  }
+}
+// drag       移动鼠标持续拖拽
+// dragover   在自身或其它元素中移动
+// dragleave  移出自身或其它元素
+function handleDragLeave(item, event) {
+  if (item.id !== dragItem.value.id) {
+    dragStatus.value = event.offsetX > 0 ? 'leaveright' : 'leaveleft';
+    targetItem.value = item;
+    const dragIndex = dragItem.value.sortIndex;
+    const targetIndex = targetItem.value.sortIndex;
+    // 向左/右退回到原位置时不操作
+    const dragBackToLeft = dragStatus.value === 'leaveleft' && dragIndex === targetIndex - 1;
+    const dragBackToRight = dragStatus.value === 'leaveright' && dragIndex === targetIndex + 1;
+    if (dragBackToLeft || dragBackToRight) return;
+    // 先在原位置删除，再在新位置添加
+    emits('sort', { dragItem: dragItem.value, dragIndex, targetIndex });
+  }
+}
+// dragend    松开鼠标停止拖拽
+function handleDragEnd() {
+  dragStatus.value = '';
+  dragItem.value = {};
+  targetItem.value = {};
 }
 </script>
 
@@ -102,8 +157,20 @@ function onRemove(item) {
   &-item {
     padding: 0 5px;
     white-space: nowrap;
-    &.is-editable:hover {
-      background-color: #f7f7f7;
+    cursor: move;
+    border: 1px solid transparent;
+    transition: all .2s;
+    &:hover {
+      background-color: #f1f1f1;
+      border-color: #f1f1f1;
+    }
+    &.is-draggable:hover {
+      background-color: #ddd;
+      border-color: #7dc0f5;
+    }
+    &.is-draging {
+      visibility: hidden;
+      border-color: #7dc0f5 !important;
     }
   }
   &-item,
@@ -138,10 +205,13 @@ function onRemove(item) {
   &-btns {
     --icon-size: 12px;
 
-    display: none;
     flex: auto;
     align-items: center;
     justify-content: flex-end;
+  }
+  &-btns,
+  &-item.is-draggable &-btns {
+    display: none;
   }
   &-item:hover &-btns {
     display: flex;

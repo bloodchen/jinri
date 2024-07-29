@@ -5,30 +5,59 @@
     class="mx-hwebsite"
     :autoplay="false"
     theme="blue"
+    @change="onTabChange"
   >
     <!-- 顶部 -->
     <template #header>
-      <div
+      <!-- 按钮 -->
+      <div class="mx-hwebsite-btn-row">
+        <span
           class="mx-hwebsite-btn-item"
-        @click="addFav"
-      >
-        <MxIcon class="mx-hwebsite-btn-icon is-add" />
-        <span>添加网址</span>
+          @click="dialogVisible = true"
+        >恢复默认</span>
+        <div
+          class="mx-hwebsite-btn-item"
+          @click="addFav"
+        >
+          <MxIcon class="mx-hwebsite-btn-icon is-add" />
+          <span>添加网址</span>
         </div>
       </div>
+      <!-- 恢复默认 -->
+      <MxDialog
+        v-model="dialogVisible"
+        title="恢复默认"
+      >
+        <div>恢复默认将覆盖你当前的操作和显示，确认要执行此操作吗？</div>
+        <template #footer>
+          <MxBtn @click="onConfirm">确定</MxBtn>
+          <MxBtn
+            type="info"
+            @click="dialogVisible = false"
+          >
+            取消
+          </MxBtn>
+        </template>
+      </MxDialog>
     </template>
     <!-- 内容 -->
     <MxTabPane
       name="popular"
       label="常用网址"
     >
-      <HomeWebsitePopular />
+      <HomeWebsitePopular
+        v-if="isPopInit"
+        ref="popRef"
+      />
     </MxTabPane>
     <MxTabPane
       name="fav"
       label="经常访问网站"
     >
-      <HomeWebsiteFav ref="favRef" />
+      <HomeWebsiteFav
+        v-if="isFavInit"
+        ref="favRef"
+      />
     </MxTabPane>
     <!-- 底部广告 -->
     <template #footer>
@@ -56,9 +85,29 @@ import adDataList from '@/data/home-websites-ads';
 
 // 当前tab
 const currentTabName = useStorage('tab-hwebsite', 'popular');
+const isPopInit = ref(false);
+const isFavInit = ref(false);
+function onTabChange(name) {
+  if (name === 'popular') {
+    isPopInit.value = true;
+  } else {
+    isFavInit.value = true;
+  }
+}
 
-// 添加网址
+// 恢复默认
+const dialogVisible = ref(false);
+const popRef = ref(null);
 const favRef = ref(null);
+async function onConfirm() {
+  dialogVisible.value = false;
+  if (currentTabName.value === 'popular') {
+    popRef.value.resetPop();
+  } else {
+    favRef.value.resetFav();
+  }
+}
+
 // 添加网址
 function addFav() {
   currentTabName.value = 'fav';
@@ -68,6 +117,7 @@ function addFav() {
 
 <style lang="scss">
 .mx-hwebsite {
+  flex: auto;
   .mx-tab-pane {
     height: 291px;
     padding: 0 15px;
@@ -78,8 +128,8 @@ function addFav() {
   &-btn {
     &-row,
     &-item {
-    display: flex;
-    align-items: center;
+      display: flex;
+      align-items: center;
     }
     &-icon {
       --icon-size: 26px;
@@ -94,12 +144,12 @@ function addFav() {
       cursor: pointer;
       &:hover {
         color: #08f;
-    }
-    .is-add {
-      --icon-base: -10px -4px;
-    }
-    &:hover .is-add {
-      --icon-base: -10px -28px;
+      }
+      .is-add {
+        --icon-base: -10px -4px;
+      }
+      &:hover .is-add {
+        --icon-base: -10px -28px;
       }
     }
   }

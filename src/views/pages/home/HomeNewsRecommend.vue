@@ -53,7 +53,6 @@ const tabItems = ref([
 ]);
 
 // 获取新闻
-getDataList('chief');
 async function getDataList(name) {
   const index = tabItems.value.findIndex(item => item.name === name);
   if (tabItems.value[index].data) return;

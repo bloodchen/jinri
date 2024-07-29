@@ -62,7 +62,7 @@ if (props.autoplay) {
       clearInterval(autoTimer);
     }
     nextTabIndex = nextTabIndex === tabItems.length - 1 ? 0 : nextTabIndex + 1;
-    changeTab(tabItems[nextTabIndex].name);
+    updateTab(tabItems[nextTabIndex].name);
   }, 5000);
 }
 
@@ -81,16 +81,19 @@ function onMouseleave() {
 function onClick(name) {
   clearInterval(autoTimer);
   clearTimeout(hoveTimer);
-  changeTab(name);
+  updateTab(name);
 }
 
 // 切换标签
 const emits = defineEmits(['update:modelValue', 'change']);
-function changeTab(name) {
-  if (name === props.modelValue) return;
+function updateTab(name, isInit) {
+  if (name === props.modelValue && !isInit) return;
   emits('update:modelValue', name);
   emits('change', name);
 }
+
+// 初始化时触发
+updateTab(props.modelValue, true);
 </script>
 
 <style lang="scss">
