@@ -24,7 +24,7 @@ defineProps({
   user-select: none;
   &:disabled {
     cursor: not-allowed;
-    opacity: .8;
+    opacity: .5 !important;
   }
 
   // type

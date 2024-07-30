@@ -30,7 +30,7 @@
       >
         <div>恢复默认将覆盖你当前的操作和显示，确认要执行此操作吗？</div>
         <template #footer>
-          <MxBtn @click="onConfirm">确定</MxBtn>
+          <MxBtn @click="resetSite">确定</MxBtn>
           <MxBtn
             type="info"
             @click="dialogVisible = false"
@@ -75,6 +75,7 @@ import { useStorage } from '@vueuse/core';
 
 import HomeWebsitePopular from './HomeWebsitePopular.vue';
 import HomeWebsiteFavorite from './HomeWebsiteFavorite.vue';
+
 import adDataList from '@/data/home-websites-ads';
 
 // 当前tab
@@ -89,11 +90,11 @@ function onTabChange(name) {
   }
 }
 
-// 恢复默认
+// 恢复默认数据
 const dialogVisible = ref(false);
 const popularRef = ref(null);
 const favoriteRef = ref(null);
-async function onConfirm() {
+function resetSite() {
   dialogVisible.value = false;
   if (currentTabName.value === 'popular') {
     popularRef.value.resetSite();
@@ -105,7 +106,7 @@ async function onConfirm() {
 // 添加网址
 function addSite() {
   currentTabName.value = 'favorite';
-  favoriteRef.value.openDialog('添加');
+  favoriteRef.value.addSite();
 }
 </script>
 

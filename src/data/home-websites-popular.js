@@ -1,6 +1,7 @@
 // 首页-网址导航-常用网址
 export default [
   {
+    id: '01',
     title: '百度',
     titleImg: '',
     url: 'https://www.baidu.com/index.php?tn=myie2_2_dg',
@@ -11,6 +12,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '02',
     title: '新浪',
     titleImg: '',
     url: 'https://www.sina.com.cn',
@@ -20,9 +22,10 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '03',
     title: '搜狐',
     titleImg: '',
-    url: 'http://www.sohu.com/',
+    url: 'https://www.sohu.com/',
     color: null,
     icon: './images/home-websites-popular/sohu.png',
     subTitle: '搜狗',
@@ -30,25 +33,28 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '04',
     title: '腾讯QQ',
     titleImg: '',
-    url: 'http://www.qq.com/',
+    url: 'https://www.qq.com/',
     color: null,
     icon: './images/home-websites-popular/qq.png',
     subTitle: '空间',
-    subUrl: 'http://qzone.qq.com',
+    subUrl: 'https://qzone.qq.com',
     bubbleImg: ''
   },
   {
+    id: '05',
     title: '网易',
     titleImg: '',
-    url: 'http://www.163.com',
+    url: 'https://www.163.com',
     icon: './images/home-websites-popular/163.png',
     subTitle: '邮箱',
-    subUrl: 'http://email.163.com',
+    subUrl: 'https://email.163.com',
     bubbleImg: ''
   },
   {
+    id: '06',
     title: '知乎',
     titleImg: '',
     url: 'https://www.zhihu.com/explore',
@@ -63,6 +69,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '07',
     title: '京东商城',
     titleImg: '',
     url: 'https://u.jd.com/kbQv9J4',
@@ -77,6 +84,7 @@ export default [
     bubbleImg: './images/home-websites-popular/jd-2.png'
   },
   {
+    id: '08',
     title: '淘宝',
     titleImg: '',
     url: 'https://s.click.taobao.com/qJZRSnt',
@@ -87,6 +95,7 @@ export default [
     bubbleImg: './images/home-websites-popular/taobao-2.png'
   },
   {
+    id: '09',
     title: '拼多多',
     titleImg: '',
     url: 'https://p.gouwubang.com/59h3P2',
@@ -96,6 +105,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '10',
     title: '阿里1688',
     titleImg: '',
     url: 'https://tb.jiuxinban.com/7b3PAO',
@@ -106,6 +116,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '11',
     title: '聚划算',
     titleImg: '',
     url: 'https://mos.m.taobao.com/union/jhsjx2020?pid=mm_12431063_2220385_279456551',
@@ -119,6 +130,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '12',
     title: '天猫精选',
     titleImg: '',
     url: 'https://s.click.taobao.com/qJZRSnt',
@@ -132,6 +144,7 @@ export default [
     bubbleImg: './images/home-websites-popular/tmall-2.gif'
   },
   {
+    id: '13',
     title: '腾讯视频',
     titleImg: '',
     url: 'https://v.qq.com/',
@@ -143,6 +156,7 @@ export default [
     bubbleImg: './images/home-websites-popular/v.qq-2.png'
   },
   {
+    id: '14',
     title: '爱奇艺',
     titleImg: '',
     url: 'https://www.iqiyi.com/',
@@ -155,9 +169,10 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '15',
     title: '优酷',
     titleImg: '',
-    url: 'http://www.youku.com/',
+    url: 'https://www.youku.com/',
     color: null,
     bold: false,
     icon: './images/home-websites-popular/youku.png',
@@ -169,9 +184,10 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '16',
     title: '哔哩哔哩',
     titleImg: '',
-    url: 'http://www.bilibili.com',
+    url: 'https://www.bilibili.com',
     color: null,
     bold: false,
     icon: './images/home-websites-popular/bilibili.png',
@@ -180,6 +196,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '17',
     title: '小红书',
     titleImg: '',
     url: 'https://www.xiaohongshu.com/explore?m_source=xiaomanaoyouliulanqi',
@@ -188,6 +205,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '18',
     title: '抖音',
     titleImg: '',
     url: 'https://www.douyin.com/',
@@ -199,24 +217,27 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '19',
     title: '凤凰网',
     titleImg: '',
-    url: 'http://www.ifeng.com/?_aoyou',
+    url: 'https://www.ifeng.com/?_aoyou',
     color: null,
     icon: './images/home-websites-popular/ifeng.png',
     bubbleUrl: '',
     bubbleImg: ''
   },
   {
+    id: '20',
     title: '新华网',
     titleImg: '',
-    url: 'http://www.xinhuanet.com/',
+    url: 'https://www.xinhuanet.com/',
     color: null,
     bold: false,
     icon: './images/home-websites-popular/xinhuanet.png',
     bubbleImg: ''
   },
   {
+    id: '21',
     title: '环球新闻',
     titleImg: '',
     url: 'https://toutiao.china.com/huanqiu/?ay1',
@@ -229,6 +250,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '22',
     title: '头条军事',
     titleImg: '',
     url: 'https://ay.miercn.com/?maxthon',
@@ -236,6 +258,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '23',
     title: '天猫狂欢节',
     titleImg: './images/home-websites-popular/tmall-618.png',
     url: 'https://s.click.taobao.com/qJZRSnt',
@@ -246,6 +269,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '24',
     title: '东方财富',
     titleImg: '',
     url: 'https://www.eastmoney.com/',
@@ -260,6 +284,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '25',
     title: '携程旅行',
     titleImg: '',
     url: 'https://go.mxfast.com/ctrip/',
@@ -268,9 +293,10 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '26',
     title: '12306',
     titleImg: '',
-    url: 'http://www.12306.cn/mormhweb/',
+    url: 'https://www.12306.cn/mormhweb/',
     color: '#383838',
     bold: false,
     icon: './images/home-websites-popular/12306.png',
@@ -281,6 +307,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '27',
     title: '机票',
     titleImg: '',
     url: 'https://go.mxfast.com/ctrip/',
@@ -290,6 +317,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '28',
     title: '飞猪',
     titleImg: '',
     url: 'https://www.fliggy.com/',
@@ -300,6 +328,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '29',
     title: '百度地图',
     titleImg: '',
     url: 'https://map.baidu.com/',
@@ -311,9 +340,10 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '30',
     title: '58同城',
     titleImg: '',
-    url: 'http://go.maxthon.cn/redir/mx5/index.htm?f=58mz',
+    url: 'https://go.mxfast.com/58',
     color: null,
     icon: './images/home-websites-popular/58.png',
     subTitle: '',
@@ -322,14 +352,16 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '32',
     title: '4399小游戏',
     titleImg: '',
-    url: 'http://www.4399.net/',
+    url: 'https://www.4399.net/',
     color: '#383838',
     icon: '',
     bubbleImg: ''
   },
   {
+    id: '33',
     title: '斗鱼直播',
     titleImg: '',
     url: 'https://www.douyu.com/',
@@ -338,18 +370,20 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '34',
     title: '豆瓣',
     titleImg: '',
-    url: 'http://www.douban.com/',
+    url: 'https://www.douban.com/',
     color: '#383838',
     bold: false,
     icon: '',
     subTitle: '天涯',
-    subUrl: 'http://www.tianya.cn/',
+    subUrl: 'https://www.tianya.cn/',
     bubbleUrl: 'https://union-click.jd.com/jdc?e=&p=JF8AAJoDIgZlGmsUMlZYDUUEJVtXQhRZUAscVEETBABAHUBZCSsiCwBSYAZuIXVyaEcgYCcPVBNUAksNGQ4iAlUaWhcHFA5UHWsWAxIHUhpSEAUXN2UbWiVJfAZlGVoUABcBVx9ZEjISAFYbXhQBFQdTGl0dMhUHXCuPpoHFjtzM36vbhL6Bs8IlMiIEZStrFQIiB2VEH0hfIgVUGl8c',
     bubbleImg: ''
   },
   {
+    id: '35',
     title: '起点',
     titleImg: '',
     url: 'https://www.qidian.com/',
@@ -360,6 +394,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '36',
     title: '文心一言',
     titleImg: '',
     url: 'https://yiyan.baidu.com/?utm_source=aoyou',
@@ -367,6 +402,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '37',
     title: '虎扑体育',
     titleImg: '',
     url: 'https://www.hupu.com/',
@@ -375,6 +411,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '38',
     title: '爱淘宝',
     titleImg: '',
     url: 'https://s.click.taobao.com/qJZRSnt',
@@ -386,6 +423,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '39',
     title: '苏宁易购',
     titleImg: '',
     url: 'https://p.gouwubang.com/c?w=628&amp;c=4459&amp;i=5662&amp;pf=y&amp;e=&amp;t=https://www.suning.com/',
@@ -395,9 +433,10 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '41',
     title: '当当网',
     titleImg: '',
-    url: 'http://www.dangdang.com/?_ddclickunion=P-303956-mingzhan|ad_type=10|sys_id=1#dd_refer=',
+    url: 'https://www.dangdang.com/?_ddclickunion=P-303956-mingzhan|ad_type=10|sys_id=1#dd_refer=',
     color: null,
     icon: './images/home-websites-popular/dangdang.png',
     subTitle: '',
@@ -406,6 +445,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '42',
     title: '唯品会',
     titleImg: '',
     url: 'https://click.union.vip.com/redirect.php?code=6IgKgCc',
@@ -414,6 +454,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '43',
     title: '东方购物',
     titleImg: '',
     url: 'https://p.gouwubang.com/Jc0rO',
@@ -427,9 +468,10 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '44',
     title: '蘑菇街',
     titleImg: '',
-    url: 'http://www.mogujie.com/cps/open/track?uid=12o3xbw&amp;feedback=mingzhan&amp;channel=&amp;target=http%3A%2F%2Fwww.mogujie.com%2F',
+    url: 'https://www.mogujie.com/cps/open/track?uid=12o3xbw&amp;feedback=mingzhan&amp;channel=&amp;target=https%3A%2F%2Fwww.mogujie.com%2F',
     color: null,
     bold: false,
     icon: './images/home-websites-popular/mogujie.png',
@@ -438,6 +480,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '45',
     title: '小米有品',
     titleImg: '',
     url: 'https://tb.jiuxinban.com/7b3PW3',
@@ -451,6 +494,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '46',
     title: '华为商城',
     titleImg: '',
     url: 'https://p.yiqifa.com/n?k=2mLErnWm1NRSrI6H2mLErI6H6EKO1QLF6NtSWl4HWNWqWl3qrI6HYQLErnDSWn3S3ljLrn6x1Z4ENmL-&amp;t=https://www.vmall.com',
@@ -459,6 +503,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '47',
     title: '苹果官网',
     titleImg: '',
     url: 'https://p.gouwubang.com/59esCa',
@@ -467,6 +512,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '48',
     title: '亚马逊',
     titleImg: '',
     url: 'https://www.amazon.cn/?tag=maxthon02-23',
@@ -478,6 +524,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '49',
     title: '澳洲PO药房',
     titleImg: '',
     url: 'https://p.gouwubang.com/13Baxv',
@@ -486,9 +533,10 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '50',
     title: '珍爱网',
     titleImg: '',
-    url: 'http://www.zhenai.com',
+    url: 'https://www.zhenai.com',
     color: null,
     icon: '',
     subTitle: '',
@@ -496,6 +544,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '52',
     title: 'QQ音乐',
     titleImg: '',
     url: 'https://y.qq.com/',
@@ -503,6 +552,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '53',
     title: '喜马拉雅',
     titleImg: '',
     url: 'https://www.ximalaya.com/',
@@ -512,6 +562,7 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '54',
     title: '中关村在线',
     titleImg: '',
     url: 'https://www.zol.com.cn/',
@@ -519,13 +570,15 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '55',
     title: '太平洋电脑网',
     titleImg: '',
-    url: 'http://www.pconline.com.cn/',
+    url: 'https://www.pconline.com.cn/',
     icon: '',
     bubbleImg: ''
   },
   {
+    id: '56',
     title: 'QQ邮箱',
     titleImg: '',
     url: 'https://mail.qq.com/',
@@ -533,9 +586,10 @@ export default [
     bubbleImg: ''
   },
   {
+    id: '57',
     title: '工商银行',
     titleImg: '',
-    url: 'http://www.icbc.com.cn/ICBC/default.htm',
+    url: 'https://www.icbc.com.cn/ICBC/default.htm',
     icon: '',
     bubbleImg: ''
   }

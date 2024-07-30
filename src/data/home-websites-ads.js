@@ -34,6 +34,6 @@ export default [
   },
   {
     title: '58同城',
-    url: 'http://go.maxthon.cn/redir/mx5/index.htm?f=58db'
+    url: 'https://go.mxfast.com/58'
   }
 ];

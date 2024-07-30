@@ -1,12 +1,13 @@
 <!-- 首页-网址导航-经常访问的网站 -->
 <template>
   <HomeWebsiteGroup
-    :data="dataGroup"
+    :data="dataList"
     :editable="true"
     cols="4"
     @edit="openDialog('编辑', $event)"
     @remove="openDialog('删除', $event)"
     @sort="sortSite"
+    @img-error="onImgError"
   />
   <!-- 操作弹窗 -->
   <MxDialog
@@ -46,11 +47,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useCookies } from '@vueuse/integrations/useCookies';
 import { useStorage } from '@vueuse/core';
 
 import HomeWebsiteGroup from './HomeWebsiteGroup.vue';
+
+import { guid } from '@/utiles';
 import defaultDataList from '@/data/home-websites-favorite.js';
 import api from '@/api';
 
@@ -61,6 +64,7 @@ const isLogin = !!cookies.get('MXTOKEN');
 // 获取列表
 const isInit = useStorage('home-website-favorite-init', false);
 const dataList = useStorage('home-website-favorite', []);
+getDataList();
 async function getDataList() {
   // 是否已初始化
   if (isInit.value) return;
@@ -75,51 +79,21 @@ async function getDataList() {
   isInit.value = true;
   closeDialog();
 }
-getDataList();
 
-// 添加id
+// 格式化数据
 function formatDataList(list) {
-  if (!list) return '';
-  return list.map((item, index) => {
-    return { ...item, id: index };
-  });
+  if (!list) return [];
+  return list.map(item => formatDataItem(item));
 }
-
-// 获取分组
-const dataGroup = computed(() => {
-  let groupIndex = -1;
-  const groupList = [];
-  dataList.value?.forEach((item, index) => {
-    if (index % 12 === 0) {
-      groupIndex += 1;
-      groupList.push({ groupName: groupIndex, children: [] });
-    }
-    item.sortIndex = index;
-    item.iconSet = getFavicon(item);
-    groupList[groupIndex].children.push(item);
-  });
-  return groupList;
-});
-
-// 获取图标
-function getFavicon({ url }) {
-  const reg = /^(((ht|f)tps?):\/\/)?([^!@#$%^&*?.\s-]([^!@#$%^&*?.\s]{0,63}[^!@#$%^&*?.\s])?\.)+[a-z]{2,6}\/?/;
-  if (reg.test(url)) {
-    const urlObj = new URL(url);
-    return `${urlObj.origin}/favicon.ico`;
-  } else {
-    return './images/home-websites-favorite/default.png';
-  }
-}
-
-// 校验网址
-function checkUrl(url) {
-  const reg = /^(((ht|f)tps?):\/\/)?([^!@#$%^&*?.\s-]([^!@#$%^&*?.\s]{0,63}[^!@#$%^&*?.\s])?\.)+[a-z]{2,6}\/?/;
-  const res = reg.test(url);
-  if (!res) {
-    alert('网址格式错误！');
-  }
-  return res;
+function formatDataItem(item) {
+  const newUrl = item.url.replace('http://', 'https://');
+  const urlObj = new URL(newUrl);
+  return {
+    ...item,
+    id: item.id || guid(),
+    url: newUrl,
+    iconSet: `${urlObj.origin}/favicon.ico`
+  };
 }
 
 // 弹窗
@@ -128,10 +102,10 @@ const dialogData = ref({});
 const dialogCb = ref(null);
 
 // 打开弹窗
-function openDialog(type, item = { title: '', url: '' }) {
+function openDialog(type, item) {
   dialogType.value = type;
   dialogData.value = JSON.parse(JSON.stringify(item));
-  dialogCb.value = type === '编辑' ? editSite : type === '删除' ? delSite : addSite;
+  dialogCb.value = type === '编辑' ? editSite : type === '删除' ? delSite : addSiteSubmit;
 }
 
 // 关闭弹窗
@@ -139,12 +113,33 @@ function closeDialog() {
   dialogType.value = false;
 }
 
+// 校验网址
+function checkUrl(url) {
+  // eslint-disable-next-line no-useless-escape
+  const reg = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+  const isSuccess = reg.test(url);
+  if (!isSuccess) {
+    alert('网址格式错误！');
+  }
+  return isSuccess;
+}
+
 // 添加
-async function addSite() {
+function addSite() {
+  if (dataList.value.length >= 36) {
+    alert('自定义网址数量已达到最大数量，无法继续添加！');
+    return;
+  }
+  openDialog('添加', { title: '', url: 'https://' });
+}
+
+// 添加提交
+async function addSiteSubmit() {
   const { title, url } = dialogData.value;
   const isSuccess = checkUrl(url);
   if (!isSuccess) return;
-  dataList.value.push({ title, url, id: dataList.value.length });
+  const newItem = formatDataItem({ title, url });
+  dataList.value.push(newItem);
   closeDialog();
   if (isLogin) {
     api.getHomeFavoriteSites('add', { title, url });
@@ -153,10 +148,11 @@ async function addSite() {
 
 // 编辑
 async function editSite() {
-  const { sortIndex, title, url } = dialogData.value;
+  const { sortIndex, id, title, url } = dialogData.value;
   const isSuccess = checkUrl(url);
   if (!isSuccess) return;
-  dataList.value.splice(sortIndex, 1, dialogData.value);
+  const newItem = formatDataItem({ id, title, url });
+  dataList.value.splice(sortIndex, 1, newItem);
   closeDialog();
   if (isLogin) {
     api.getHomeFavoriteSites('edit', { index: sortIndex, title, url });
@@ -173,15 +169,7 @@ async function delSite() {
   }
 }
 
-// 重置
-function resetSite() {
-  dataList.value = formatDataList(defaultDataList);
-  if (isLogin) {
-    api.getHomeFavoriteSites('reset');
-  }
-}
-
-// 调整位置
+// 排序
 function sortSite({ dragItem, dragIndex, targetIndex }) {
   dataList.value.splice(dragIndex, 1);
   dataList.value.splice(targetIndex, 0, dragItem);
@@ -190,7 +178,21 @@ function sortSite({ dragItem, dragIndex, targetIndex }) {
   }
 }
 
-defineExpose({ openDialog, resetSite });
+// 恢复默认
+function resetSite() {
+  dataList.value = formatDataList(defaultDataList);
+  if (isLogin) {
+    api.getHomeFavoriteSites('reset');
+  }
+}
+
+// 图片错误
+function onImgError(item) {
+  item.icon = './images/home-websites-favorite/default.png';
+  dataList.value.splice(item.sortIndex, 1, item);
+}
+
+defineExpose({ addSite, resetSite });
 </script>
 
 <style lang="scss">

@@ -2,43 +2,43 @@
 export default [
   {
     title: '新浪',
-    url: 'http://www.sina.com.cn/',
+    url: 'https://www.sina.com.cn/',
     logoBase: './images/websites-brand/sina-base.png',
     logoActive: './images/websites-brand/sina-active.png'
   },
   {
     title: '凤凰',
-    url: 'http://www.ifeng.com/?_aoyou',
+    url: 'https://www.ifeng.com/?_aoyou',
     logoBase: './images/websites-brand/ifeng-base.png',
     logoActive: './images/websites-brand/ifeng-active.png'
   },
   {
     title: '搜狐',
-    url: 'http://www.sohu.com/?pvid=2dd4817e7dfd680f',
+    url: 'https://www.sohu.com/?pvid=2dd4817e7dfd680f',
     logoBase: './images/websites-brand/sohu-base.png',
     logoActive: './images/websites-brand/sohu-active.png'
   },
   {
     title: '网易',
-    url: 'http://www.163.com/#frp10',
+    url: 'https://www.163.com/#frp10',
     logoBase: './images/websites-brand/163-base.png',
     logoActive: './images/websites-brand/163-active.png'
   },
   {
     title: '优酷',
-    url: 'http://www.youku.com/',
+    url: 'https://www.youku.com/',
     logoBase: './images/websites-brand/youku-base.png',
     logoActive: './images/websites-brand/youku-active.png'
   },
   {
     title: '爱奇艺',
-    url: 'http://www.iqiyi.com/',
+    url: 'https://www.iqiyi.com/',
     logoBase: './images/websites-brand/iqiyi-base.png',
     logoActive: './images/websites-brand/iqiyi-active.png'
   },
   {
     title: '腾讯',
-    url: 'http://www.qq.com/',
+    url: 'https://www.qq.com/',
     logoBase: './images/websites-brand/qq-base.png',
     logoActive: './images/websites-brand/qq-active.png'
   },
@@ -50,13 +50,13 @@ export default [
   },
   {
     title: '腾讯视频',
-    url: 'http://v.qq.com/',
+    url: 'https://v.qq.com/',
     logoBase: './images/websites-brand/v.qq-base.png',
     logoActive: './images/websites-brand/v.qq-active.png'
   },
   {
     title: '乐视',
-    url: 'http://www.letv.com/',
+    url: 'https://www.letv.com/',
     logoBase: './images/websites-brand/letv-base.png',
     logoActive: './images/websites-brand/letv-active.png'
   },
@@ -98,25 +98,25 @@ export default [
   },
   {
     title: '亚马逊',
-    url: 'http://www.amazon.cn/?source=maxthon',
+    url: 'https://www.amazon.cn/?source=maxthon',
     logoBase: './images/websites-brand/amazon-base.png',
     logoActive: './images/websites-brand/amazon-active.png'
   },
   {
     title: '二手车',
-    url: 'http://www.renrenche.com/?fr=1459&tg_aid=10048909',
+    url: 'https://www.renrenche.com/?fr=1459&tg_aid=10048909',
     logoBase: './images/websites-brand/renrenche-base.png',
     logoActive: './images/websites-brand/renrenche-active.png'
   },
   {
     title: '苏宁易购',
-    url: 'http://p.yiqifa.com/c?s=e9d0aa18&w=34759&c=4459&i=5662&l=0&e=v3kuzhan&t=http://www.suning.com/',
+    url: 'https://p.yiqifa.com/c?s=e9d0aa18&w=34759&c=4459&i=5662&l=0&e=v3kuzhan&t=https://www.suning.com/',
     logoBase: './images/websites-brand/suning-base.png',
     logoActive: './images/websites-brand/suning-active.png'
   },
   {
     title: '携程',
-    url: 'http://u.ctrip.com/union/CtripRedirect.aspx?TypeID=2&Allianceid=18105&sid=791160&OUID=&jumpUrl=http://www.ctrip.com/',
+    url: 'https://u.ctrip.com/union/CtripRedirect.aspx?TypeID=2&Allianceid=18105&sid=791160&OUID=&jumpUrl=https://www.ctrip.com/',
     logoBase: './images/websites-brand/ctrip-base.png',
     logoActive: './images/websites-brand/ctrip-active.png'
   }

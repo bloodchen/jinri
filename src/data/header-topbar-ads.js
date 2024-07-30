@@ -13,6 +13,6 @@ export default [
   {
     name: '58',
     img: './images/header-topbar-ads/58.png',
-    url: 'http://go.maxthon.cn/redir/mx5/qa.htm?f=58zhaopin2'
+    url: 'https://go.mxfast.com/58/'
   }
 ];

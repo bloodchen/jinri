@@ -10,7 +10,7 @@ export default [
         title: '热门',
         url: 'https://www.baidu.com/baidu?ie=UTF-8&word=%E6%96%B0%E9%97%BB&tn=maxco3_dg&ch=1',
         children: [
-          { title: '新华网', url: 'http://www.xinhuanet.com/' },
+          { title: '新华网', url: 'https://www.xinhuanet.com/' },
           { title: '环球网', url: 'https://www.huanqiu.com/' },
           { title: '中新网', url: 'https://www.chinanews.com/' },
           { title: '澎湃新闻', url: 'https://www.thepaper.cn/' },
@@ -48,8 +48,8 @@ export default [
           { title: '西陆军事', url: 'https://junshi.xilu.com/' },
           { title: '米尔军事', url: 'https://www.miercn.com/?maxthon' },
           { title: '网易军事', url: 'https://war.163.com/' },
-          { title: '新华军网', url: 'http://www.mil.xinhuanet.com/' },
-          { title: '军事网', url: 'http://mil.qianyan001.com/junshiwd' }
+          { title: '新华军网', url: 'https://www.mil.xinhuanet.com/' },
+          { title: '军事网', url: 'https://mil.qianyan001.com/junshiwd' }
         ]
       },
       {
@@ -78,7 +78,7 @@ export default [
           { title: '网易汽车', url: 'https://auto.163.com/?frp10' },
           { title: '爱卡汽车', url: 'https://www.xcar.com.cn/?zoneclick=102303' },
           { title: '网上车市', url: 'https://www.cheshi.com/?nav_site=maxthon_00' },
-          { title: '58汽车', url: 'http://www.xgo.com.cn/?from=aoyou' },
+          { title: '58汽车', url: 'https://www.xgo.com.cn/?from=aoyou' },
           { title: '易车网', url: 'https://www.bitauto.com' },
           { title: '腾讯汽车', url: 'https://auto.qq.com/' }
         ]
@@ -97,13 +97,13 @@ export default [
         children: [
           { title: '小红书', url: 'https://www.xiaohongshu.com/' },
           { title: '聚美优品', url: 'https://p.yiqifa.com/n?k=W9D7CERLrI6HWNj76E4H2mLErI6H2mLsWE2mrn3FWnROWcLsWNDs6cLErZyH2mL715Wm6Ewe3QLE&t=https://www.jumei.com/' },
-          { title: '蘑菇街', url: 'https://www.mogujie.com/cps/open/track?uid=12o3xbw&feedback=2jiye1&channel=&target=http%3A%2F%2Fwww.mogujie.com%2F' },
+          { title: '蘑菇街', url: 'https://www.mogujie.com/cps/open/track?uid=12o3xbw&feedback=2jiye1&channel=&target=https%3A%2F%2Fwww.mogujie.com%2F' },
           { title: '美丽说', url: 'https://www.meilishuo.com/welcome?nmref=NM_s10406_0_&channel=40106' },
           { title: 'YOHO有货', url: 'https://www.yohobuy.com/' },
           { title: '良仓', url: 'https://www.iliangcang.com/' },
           { title: '什么值得买', url: 'https://www.smzdm.com/' },
           { title: '优购', url: 'https://www.yougou.com/' },
-          { title: '当当', url: 'https://union.dangdang.com/transfer.php?from=P-303956-kuzhan&ad_type=10&sys_id=1&backurl=http%3A%2F%2Fwww.dangdang.com' },
+          { title: '当当', url: 'https://union.dangdang.com/transfer.php?from=P-303956-kuzhan&ad_type=10&sys_id=1&backurl=https%3A%2F%2Fwww.dangdang.com' },
           { title: '好乐买', url: 'https://www.okbuy.com/' }
         ]
       },
@@ -111,16 +111,16 @@ export default [
         title: '商城',
         url: '/shopping',
         children: [
-          { title: '苹果官网', url: 'https://c.duomai.com/track.php?site_id=99378&aid=612&euid=&t=http%3A%2F%2Fstore.apple.com%2Fcn' },
+          { title: '苹果官网', url: 'https://c.duomai.com/track.php?site_id=99378&aid=612&euid=&t=https%3A%2F%2Fstore.apple.com%2Fcn' },
           { title: '大疆商城', url: 'https://store.dji.com/cn' },
           { title: '华为商城', url: 'https://p.yiqifa.com/n?k=2mLErn2L6E2SrI6H2mLErnKqg7bAkQLO6N3ern3FWnROWcLqWltl6EBH2mqerI6HWNbw65Pb1NyH2L--&e=c&t=https://www.vmall.com' },
           { title: '小米商城', url: 'https://a.union.mi.com/mua?c=10741.0002' },
           { title: '微软中国', url: 'https://p.gouwubang.com/6TQIX' },
           { title: '折800', url: 'https://www.zhe800.com/?utm_medium=dh&utm_source=aoyou&utm_content=chain&utm_campaign=ad_c3' },
           { title: '酒仙网', url: 'https://a1722.oadz.com/link/C/1722/8252/iG75xIPGUFLtYyWiU4FCbRalxek_/p016/0/https://www.jiuxian.com/cpspublic/cps.htm?src=nav&code=ay_201312001&url=https://www.jiuxian.com' },
-          { title: '乐视商城', url: 'https://c.duomai.com/track.php?site_id=99378&aid=651&euid=&t=http%3A%2F%2Fwww.lemall.com%2F' },
-          { title: '国美在线', url: 'https://c.duomai.com/track.php?site_id=99378&aid=744&euid=wangzhidaohang&t=http%3A%2F%2Fwww.gome.com.cn%2F' },
-          { title: '寺库', url: 'https://c.duomai.com/track.php?site_id=78459&aid=194&euid=&t=http%3A%2F%2Fwww.secoo.com%2F' }
+          { title: '乐视商城', url: 'https://c.duomai.com/track.php?site_id=99378&aid=651&euid=&t=https%3A%2F%2Fwww.lemall.com%2F' },
+          { title: '国美在线', url: 'https://c.duomai.com/track.php?site_id=99378&aid=744&euid=wangzhidaohang&t=https%3A%2F%2Fwww.gome.com.cn%2F' },
+          { title: '寺库', url: 'https://c.duomai.com/track.php?site_id=78459&aid=194&euid=&t=https%3A%2F%2Fwww.secoo.com%2F' }
         ]
       },
       {
@@ -146,7 +146,7 @@ export default [
           { title: '达令', url: 'https://p.yiqifa.com/n?k=YQU7pJAdrI6H6n2FWNUH2mLErI6H2mLq1ntlWcLO1njm6E4H6NW7WN3srI6HkQLErnWe6Eg9WEWSrIW-&e=c&t=https://www.daling.com' },
           { title: '洋码头', url: 'https://www.ymatou.com/' },
           { title: '蜜芽', url: 'https://p.yiqifa.com/n?k=WJ6Zk9sxrI6H6n2sWEUH2mLErI6H2mLq6lwq6cLO1njm6E4H6N2l1NwSrI6HkQLErnWFMnWq3EDerIW-&e=c&t=https://www.mia.com' },
-          { title: '丝芙兰', url: 'https://c.duomai.com/track.php?site_id=78459&aid=2043&euid=&t=http%3A%2F%2Fwww.sephora.cn%2F' }
+          { title: '丝芙兰', url: 'https://c.duomai.com/track.php?site_id=78459&aid=2043&euid=&t=https%3A%2F%2Fwww.sephora.cn%2F' }
         ]
       },
       {
@@ -195,7 +195,7 @@ export default [
           { title: '酷狗音乐', url: 'https://www.kugou.com/' },
           { title: '酷我音乐', url: 'https://www.kuwo.cn/' },
           { title: '一听音乐', url: 'https://www.1ting.com/' },
-          { title: '唱吧', url: 'http://changba.com/now/stars/index.html' }
+          { title: '唱吧', url: 'https://changba.com/now/stars/index.html' }
         ]
       },
       {
@@ -206,7 +206,7 @@ export default [
           { title: '4399小游戏', url: 'https://www.4399.com/' },
           { title: '游侠网', url: 'https://www.ali213.net/' },
           { title: '百度乐玩', url: 'https://lewan.baidu.com/lewanhome' },
-          { title: '7K7K小游戏', url: 'http://www.7k7k.com/' },
+          { title: '7K7K小游戏', url: 'https://www.7k7k.com/' },
           { title: '电玩巴士', url: 'https://www.tgbus.com/' },
           { title: '游民星空', url: 'https://www.gamersky.com/' },
           { title: 'hao76手游', url: 'https://www.hao76.com/' },
@@ -217,9 +217,9 @@ export default [
         title: '笑话',
         url: 'https://www.baidu.com/baidu?ie=UTF-8&word=%E7%AC%91%E8%AF%9D&tn=maxco3_dg&ch=1',
         children: [
-          { title: '百思不得姐', url: 'http://www.budejie.com/' },
+          { title: '百思不得姐', url: 'https://www.budejie.com/' },
           { title: '腾讯笑话', url: 'https://joke.qq.com/' },
-          { title: '笑话集', url: 'http://www.jokeji.cn/' },
+          { title: '笑话集', url: 'https://www.jokeji.cn/' },
           { title: '糗事百科', url: 'https://www.qiushibaike.com/' },
           { title: '暴走漫画', url: 'https://baozoumanhua.com/' },
           { title: '煎蛋', url: 'https://jandan.net/' },
@@ -260,7 +260,7 @@ export default [
           { title: '品玩', url: 'https://www.pingwest.com/' },
           { title: '果壳网', url: 'https://www.guokr.com/' },
           { title: '知乎', url: 'https://www.zhihu.com/' },
-          { title: '好奇心日报', url: 'http://www.qdaily.com/' },
+          { title: '好奇心日报', url: 'https://www.qdaily.com/' },
           { title: '极客公园', url: 'https://www.geekpark.net/' },
           { title: '雷锋网', url: 'https://www.leiphone.com/' },
           { title: 'Zealer', url: 'https://www.zealer.com/' }
@@ -286,13 +286,13 @@ export default [
         url: 'https://www.baidu.com/baidu?ie=UTF-8&word=%E6%97%B6%E5%B0%9A&tn=maxco3_dg&ch=1',
         children: [
           { title: 'GQ男士', url: 'https://www.gq.com.cn/' },
-          { title: '瑞丽网', url: 'http://www.rayli.com.cn/' },
+          { title: '瑞丽网', url: 'https://www.rayli.com.cn/' },
           { title: '凤凰时尚', url: 'https://fashion.ifeng.com/' },
           { title: 'ELLE', url: 'https://www.ellechina.com/' },
-          { title: 'YOKA', url: 'http://www.yoka.com/' },
+          { title: 'YOKA', url: 'https://www.yoka.com/' },
           { title: 'ELLEMEN', url: 'https://www.ellemen.com/' },
           { title: 'VOGUE', url: 'https://www.vogue.com.cn/' },
-          { title: '时尚先生', url: 'http://www.esquire.com.cn/' },
+          { title: '时尚先生', url: 'https://www.esquire.com.cn/' },
           { title: '爱丽时尚', url: 'https://www.aili.com/' }
         ]
       },
@@ -306,8 +306,8 @@ export default [
           { title: '搜狐女人', url: 'https://women.sohu.com/' },
           { title: '网易女人', url: 'https://lady.163.com/' },
           { title: '漂亮女人', url: 'https://www.piaoliang.com/?aoyou' },
-          { title: '39健康女性', url: 'http://woman.39.net/' },
-          { title: 'OnlyLady', url: 'http://www.onlylady.com/' }
+          { title: '39健康女性', url: 'https://woman.39.net/' },
+          { title: 'OnlyLady', url: 'https://www.onlylady.com/' }
         ]
       },
       {
@@ -315,7 +315,7 @@ export default [
         url: 'https://www.baidu.com/baidu?ie=UTF-8&word=%E5%81%A5%E5%BA%B7%E7%BD%91%E5%9D%80&tn=maxco3_dg&ch=1',
         children: [
           { title: '39健康网', url: 'https://www.39.net/' },
-          { title: '人民网健康', url: 'http://health.people.com.cn/' },
+          { title: '人民网健康', url: 'https://health.people.com.cn/' },
           { title: '搜狐健康', url: 'https://health.sohu.com/' },
           { title: '挂号网', url: 'https://www.guahao.com/' },
           { title: '好大夫在线', url: 'https://www.haodf.com/' },
@@ -337,7 +337,7 @@ export default [
         title: '银行',
         url: 'https://www.baidu.com/baidu?tn=myie2dg&ch=1&ie=utf-8&wd=%E9%93%B6%E8%A1%8C&ssl_s=1&ssl_c=ssl2_14e002ae358',
         children: [
-          { title: '建设银行', url: 'http://www.ccb.com/' },
+          { title: '建设银行', url: 'https://www.ccb.com/' },
           { title: '工商银行', url: 'https://www.icbc.com.cn/' },
           { title: '中国银行', url: 'https://www.boc.cn/' },
           { title: '交通银行', url: 'https://www.bankcomm.com/' },
@@ -353,7 +353,7 @@ export default [
         title: '生活',
         url: 'https://www.58.com/?path=?utm_source%3dd_5uad%26utm_campaign%3d5uad-101%26spm=wuyou-1010',
         children: [
-          { title: '58同城', url: 'http://go.maxthon.cn/redir/mx5/index.htm?f=58kz' },
+          { title: '58同城', url: 'https://go.mxfast.com/58' },
           { title: '赶集网', url: 'https://ganji.com/' },
           { title: '我爱我家', url: 'https://www.5i5j.com/loading/' },
           { title: '链家地产', url: 'https://www.lianjia.com/' },
@@ -385,11 +385,11 @@ export default [
         children: [
           { title: '房天下', url: 'https://home.fang.com/?source=jiajupr' },
           { title: '搜狐焦点', url: 'https://house.focus.cn/' },
-          { title: '新浪乐居', url: 'http://house.sina.com.cn/' },
+          { title: '新浪乐居', url: 'https://house.sina.com.cn/' },
           { title: '腾讯房产', url: 'https://house.qq.com/' },
           { title: '凤凰房产', url: 'https://house.ifeng.com/' },
           { title: '网易房产', url: 'https://house.163.com/?frp10' },
-          { title: '人民网房产', url: 'http://finance.people.com.cn/' },
+          { title: '人民网房产', url: 'https://finance.people.com.cn/' },
           { title: '365淘房', url: 'https://www.house365.com/' }
         ]
       },
@@ -401,7 +401,7 @@ export default [
           { title: '圆通速递', url: 'https://www.yto.net.cn/' },
           { title: '申通速递', url: 'https://www.sto.cn/' },
           { title: '中通快递', url: 'https://www.zto.com/' },
-          { title: '韵达快递', url: 'http://www.yundaex.com/' },
+          { title: '韵达快递', url: 'https://www.yundaex.com/' },
           { title: 'EMS', url: 'https://www.ems.com.cn/' },
           { title: '德邦快递', url: 'https://www.deppon.com/' },
           { title: '百世快递', url: 'https://800bestex.com/' },
@@ -473,19 +473,19 @@ export default [
           { title: '知己网', url: 'https://www.zhiji.com/' },
           { title: '58交友', url: 'https://jiaoyou.58.com/' },
           { title: '网易花田', url: 'https://love.163.com/' },
-          { title: '缘来客', url: 'http://www.ylike.com/' }
+          { title: '缘来客', url: 'https://www.ylike.com/' }
         ]
       },
       {
         title: '空间',
         url: 'https://blog.163.com/?frp10',
         children: [
-          { title: '新浪博客', url: 'http://blog.sina.com.cn/' },
+          { title: '新浪博客', url: 'https://blog.sina.com.cn/' },
           { title: '网易博客', url: 'https://blog.163.com/?frp10' },
           { title: '搜狐博客', url: 'https://blog.sohu.com/' },
           { title: 'LOFTER', url: 'https://www.lofter.com/' },
           { title: '饭否', url: 'https://fanfou.com/' },
-          { title: 'tumblr', url: 'http://www.tumblr.com/' },
+          { title: 'tumblr', url: 'https://www.tumblr.com/' },
           { title: '花瓣网', url: 'https://huaban.com/' },
           { title: 'Pinterest', url: 'https://www.pinterest.com/' }
         ]
