@@ -34,8 +34,7 @@
     >
       <MxTabPane
         id="homeGame"
-        name="game"
-        label="游戏专区"
+        :data="{ name: 'game', label: '游戏专区' }"
       />
     </MxTabs>
   </div>

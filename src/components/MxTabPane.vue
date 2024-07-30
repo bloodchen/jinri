@@ -1,7 +1,7 @@
 <!-- 标签组件-子组件 -->
 <template>
   <div
-    v-show="props.name === currentTabName"
+    v-show="props.data?.name === currentTabName"
     class="mx-tab-pane"
   >
     <slot />
@@ -12,8 +12,8 @@
 import { inject } from 'vue';
 
 const props = defineProps({
-  name: { type: String, default: '' },
-  label: { type: String, default: '' }
+  // name, label, url
+  data: { type: Object, default: null }
 });
 
 const currentTabName = inject('currentTabName');

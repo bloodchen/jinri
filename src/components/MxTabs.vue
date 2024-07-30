@@ -14,9 +14,9 @@
             'is-active': tabItems.length > 1 && item.name === props.modelValue,
             'is-text': tabItems.length === 1
           }"
-          @mouseenter="onMouseenter(item.name)"
+          @mouseenter="onMouseenter(item)"
           @mouseleave="onMouseleave"
-          @click="onClick(item.name)"
+          @click="onClick(item)"
         >{{ item.label }}</span>
       </div>
       <!-- 顶栏额外内容 -->
@@ -46,7 +46,7 @@ const props = defineProps({
 // 获取子集
 const defaultSlots = useSlots().default();
 const tabPanes = defaultSlots[0]?.props ? defaultSlots : defaultSlots[0]?.children;
-const tabItems = tabPanes.map(({ props }) => props);
+const tabItems = tabPanes.map(({ props }) => props.data);
 
 // 当前标签
 const currentTabName = computed(() => props.modelValue);
@@ -68,20 +68,20 @@ if (props.autoplay) {
 
 // 鼠标滑过切换标签
 let hoveTimer;
-function onMouseenter(name) {
+function onMouseenter({ name }) {
   clearInterval(autoTimer);
   clearTimeout(hoveTimer);
-  hoveTimer = setTimeout(() => onClick(name), 500);
+  hoveTimer = setTimeout(() => updateTab(name), 500);
 }
 function onMouseleave() {
   clearTimeout(hoveTimer);
 }
 
-// 鼠标点击切换标签
-function onClick(name) {
-  clearInterval(autoTimer);
-  clearTimeout(hoveTimer);
-  updateTab(name);
+// 鼠标点击打开链接
+function onClick({ url }) {
+  if (url) {
+    window.open(url, '_blank');
+  }
 }
 
 // 切换标签

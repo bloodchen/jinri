@@ -2,8 +2,8 @@
 export default [
   { title: '百度', url: 'http://www.baidu.com/index.php?tn=myie2&ch=1' },
   { title: '新浪', url: 'http://www.sina.com.cn/' },
-  { title: '腾讯qq', url: 'http://www.qq.com/', icon: './images/home-websites-fav/qq.ico' },
-  { title: '搜狐', url: 'http://www.sohu.com/', icon: './images/home-websites-fav/sohu.ico' },
+  { title: '腾讯qq', url: 'http://www.qq.com/', icon: './images/home-websites-favorite/qq.ico' },
+  { title: '搜狐', url: 'http://www.sohu.com/', icon: './images/home-websites-favorite/sohu.ico' },
   { title: '新浪微博', url: 'http://weibo.com/?c=spr_web_yilang_maxthon_weibo_t001' },
   { title: '人人网', url: 'http://www.renren.com/' },
   { title: '凤凰网', url: 'http://www.ifeng.com/' },

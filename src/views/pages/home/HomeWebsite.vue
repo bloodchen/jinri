@@ -17,7 +17,7 @@
         >恢复默认</span>
         <div
           class="mx-hwebsite-btn-item"
-          @click="addFav"
+          @click="addSite"
         >
           <MxIcon class="mx-hwebsite-btn-icon is-add" />
           <span>添加网址</span>
@@ -41,22 +41,16 @@
       </MxDialog>
     </template>
     <!-- 内容 -->
-    <MxTabPane
-      name="popular"
-      label="常用网址"
-    >
+    <MxTabPane :data="{ name: 'popular', label: '常用网址' }">
       <HomeWebsitePopular
-        v-if="isPopInit"
-        ref="popRef"
+        v-if="isPopularInit"
+        ref="popularRef"
       />
     </MxTabPane>
-    <MxTabPane
-      name="fav"
-      label="经常访问网站"
-    >
-      <HomeWebsiteFav
-        v-if="isFavInit"
-        ref="favRef"
+    <MxTabPane :data="{ name: 'favorite', label: '经常访问网站' }">
+      <HomeWebsiteFavorite
+        v-if="isFavoriteInit"
+        ref="favoriteRef"
       />
     </MxTabPane>
     <!-- 底部广告 -->
@@ -80,38 +74,38 @@ import { ref } from 'vue';
 import { useStorage } from '@vueuse/core';
 
 import HomeWebsitePopular from './HomeWebsitePopular.vue';
-import HomeWebsiteFav from './HomeWebsiteFav.vue';
+import HomeWebsiteFavorite from './HomeWebsiteFavorite.vue';
 import adDataList from '@/data/home-websites-ads';
 
 // 当前tab
 const currentTabName = useStorage('tab-hwebsite', 'popular');
-const isPopInit = ref(false);
-const isFavInit = ref(false);
+const isPopularInit = ref(false);
+const isFavoriteInit = ref(false);
 function onTabChange(name) {
   if (name === 'popular') {
-    isPopInit.value = true;
+    isPopularInit.value = true;
   } else {
-    isFavInit.value = true;
+    isFavoriteInit.value = true;
   }
 }
 
 // 恢复默认
 const dialogVisible = ref(false);
-const popRef = ref(null);
-const favRef = ref(null);
+const popularRef = ref(null);
+const favoriteRef = ref(null);
 async function onConfirm() {
   dialogVisible.value = false;
   if (currentTabName.value === 'popular') {
-    popRef.value.resetPop();
+    popularRef.value.resetSite();
   } else {
-    favRef.value.resetFav();
+    favoriteRef.value.resetSite();
   }
 }
 
 // 添加网址
-function addFav() {
-  currentTabName.value = 'fav';
-  favRef.value.openDialog('添加');
+function addSite() {
+  currentTabName.value = 'favorite';
+  favoriteRef.value.openDialog('添加');
 }
 </script>
 

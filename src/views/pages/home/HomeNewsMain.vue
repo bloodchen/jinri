@@ -8,8 +8,7 @@
     <MxTabPane
       v-for="item in tabItems"
       :key="item.name"
-      :name="item.name"
-      :label="item.label"
+      :data="item"
       class="mx-hmnews-content"
     >
       <template v-if="item.data">
@@ -72,7 +71,7 @@ const tabItems = ref([
   { name: 'ent', label: '娱乐', data: null },
   { name: 'finance', label: '财经', data: null },
   { name: 'social', label: '社会', data: null },
-  { name: 'military', label: '军事', data: null }
+  { name: 'military', label: '军事', data: null, url: 'https://ay.miercn.com/?maxthon' }
 ]);
 
 // 获取新闻

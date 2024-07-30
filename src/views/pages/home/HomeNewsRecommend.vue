@@ -8,8 +8,7 @@
     <MxTabPane
       v-for="item in tabItems"
       :key="item.name"
-      :name="item.name"
-      :label="item.label"
+      :data="item"
       class="mx-hrnews-content"
     >
       <template v-if="item.data">

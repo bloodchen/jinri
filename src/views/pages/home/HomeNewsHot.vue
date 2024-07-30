@@ -5,10 +5,7 @@
     class="mx-hhnews"
   >
     <template #header>搜索指数</template>
-    <MxTabPane
-      name="hot"
-      label="新闻搜索排行榜"
-    >
+    <MxTabPane :data="{ name: 'hot', label: '新闻搜索排行榜' }">
       <MxLink
         v-for="item in dataList"
         :key="item.eventId"
