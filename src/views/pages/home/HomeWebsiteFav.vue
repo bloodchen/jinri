@@ -3,6 +3,7 @@
   <HomeWebsiteGroup
     :data="dataGroup"
     :editable="true"
+    cols="4"
     @edit="openDialog('编辑', $event)"
     @remove="openDialog('删除', $event)"
     @sort="sortFav"
@@ -48,11 +49,6 @@ import HomeWebsiteGroup from './HomeWebsiteGroup.vue';
 import defaultDataList from '@/data/home-websites-fav.js';
 import api from '@/api';
 
-// 添加id
-const formatDataList = defaultDataList.map((item, index) => {
-  return { ...item, id: index };
-});
-
 // 是否已登录
 const cookies = useCookies();
 const isLogin = !!cookies.get('MXTOKEN');
@@ -65,10 +61,10 @@ async function getFavList() {
   if (isInit.value) return;
   // 是否已登录
   if (isLogin) {
-    const { data } = await api.getHomeFavSites('get');
-    dataList.value = data || formatDataList;
+    const data = await api.getHomeFavSites('get');
+    dataList.value = formatDataList(data) || formatDataList(defaultDataList);
   } else {
-    dataList.value = formatDataList;
+    dataList.value = formatDataList(defaultDataList);
   }
   // 初始化完成
   isInit.value = true;
@@ -76,12 +72,20 @@ async function getFavList() {
 }
 getFavList();
 
+// 添加id
+function formatDataList(list) {
+  if (!list) return '';
+  return list.map((item, index) => {
+    return { ...item, id: index };
+  });
+}
+
 // 获取分组
 const dataGroup = computed(() => {
   let groupIndex = -1;
   const groupList = [];
   dataList.value?.forEach((item, index) => {
-    if (index % 18 === 0) {
+    if (index % 12 === 0) {
       groupIndex += 1;
       groupList.push({ groupName: groupIndex, children: [] });
     }
@@ -155,7 +159,7 @@ function resetFav() {
   if (isLogin) {
     api.getHomeFavSites('reset');
   }
-  dataList.value = formatDataList;
+  dataList.value = formatDataList(defaultDataList);
 }
 
 // 调整位置

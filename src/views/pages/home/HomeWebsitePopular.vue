@@ -2,6 +2,7 @@
 <template>
   <HomeWebsiteGroup
     :data="dataGroup"
+    cols="6"
     @sort="sortPop"
   />
 </template>
@@ -13,13 +14,15 @@ import { useStorage } from '@vueuse/core';
 import HomeWebsiteGroup from './HomeWebsiteGroup.vue';
 import defaultDataList from '@/data/home-websites-popular.js';
 
-// 添加id
-const formatDataList = defaultDataList.map((item, index) => {
-  return { ...item, id: index };
-});
-
 // 获取数据
-const dataList = useStorage('home-website-pop', formatDataList);
+const dataList = useStorage('home-website-pop', formatDataList(defaultDataList));
+
+// 添加id
+function formatDataList(list) {
+  return list.map((item, index) => {
+    return { ...item, id: index };
+  });
+}
 
 // 获取分组
 const dataGroup = computed(() => {
@@ -44,7 +47,7 @@ function sortPop({ dragItem, dragIndex, targetIndex }) {
 
 // 恢复默认
 function resetPop() {
-  dataList.value = formatDataList;
+  dataList.value = formatDataList(defaultDataList);
 }
 
 defineExpose({ resetPop });

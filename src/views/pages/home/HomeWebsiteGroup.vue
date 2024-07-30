@@ -3,6 +3,7 @@
   <div
     v-for="group in data"
     :key="group.groupName"
+    :style="{ '--cols': cols }"
     class="mx-hwebsite-list"
   >
     <div
@@ -87,7 +88,8 @@ import { ref } from 'vue';
 
 defineProps({
   data: { type: Array, default: null },
-  editable: { type: Boolean, default: false }
+  editable: { type: Boolean, default: false },
+  cols: { type: String, default: '' }
 });
 
 const emits = defineEmits(['remove', 'edit', 'sort']);
@@ -147,7 +149,7 @@ function handleDragEnd() {
 .mx-hwebsite {
   &-list {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(var(--cols), 1fr);
     padding: 5px 0;
     border-bottom: 1px solid #e7e7e7;
     &:last-child {

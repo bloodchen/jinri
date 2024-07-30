@@ -68,7 +68,6 @@ export default {
   },
   // 首页-最常访问网址（已停用，改为本地存储） get, add, edit, remove, swap, reset, reset-at-start-up
   async getHomeFavSites(path, params) {
-    if (path !== 'get') return null;
     try {
       const { data } = await this.websiteRequest(`https://icn-api.maxthon.com/api/fav/${path}`, params);
       if (data.error_code) {

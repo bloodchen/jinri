@@ -382,7 +382,7 @@ function onClickSuggest(item) {
     position: absolute;
     top: 36px;
     right: -2px;
-    left: -60px;
+    left: -58px;
     z-index: 9999;
     font-size: 12px;
     line-height: 30px;
