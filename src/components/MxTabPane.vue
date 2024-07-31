@@ -18,9 +18,3 @@ const props = defineProps({
 
 const currentTabName = inject('currentTabName');
 </script>
-
-<style>
-.mx-tab-pane {
-  padding: 10px 20px;
-}
-</style>

@@ -44,10 +44,7 @@ api.getBaiduHotword().then(({ data }) => {
     display: flex;
     align-items: center;
     height: 20px;
-    margin-bottom: 10px;
-    &:last-child {
-      margin-bottom: 0;
-    }
+    margin: 10px 20px;
   }
   &-rank {
     flex: none;

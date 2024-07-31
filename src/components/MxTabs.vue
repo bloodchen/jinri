@@ -6,7 +6,7 @@
   >
     <div class="mx-tabs-header">
       <div class="mx-tabs-titles">
-        <span
+        <MxLink
           v-for="item in tabItems"
           :key="item.name"
           class="mx-tabs-title"
@@ -14,10 +14,13 @@
             'is-active': tabItems.length > 1 && item.name === props.modelValue,
             'is-text': tabItems.length === 1
           }"
+          :href="item.url"
           @mouseenter="onMouseenter(item)"
           @mouseleave="onMouseleave"
           @click="onClick(item)"
-        >{{ item.label }}</span>
+        >
+          {{ item.label }}
+        </MxLink>
       </div>
       <!-- 顶栏额外内容 -->
       <slot name="header" />
@@ -77,11 +80,11 @@ function onMouseleave() {
   clearTimeout(hoveTimer);
 }
 
-// 鼠标点击打开链接
-function onClick({ url }) {
-  if (url) {
-    window.open(url, '_blank');
-  }
+// 鼠标点击切换标签
+function onClick({ name, url }) {
+  clearInterval(autoTimer);
+  clearTimeout(hoveTimer);
+  updateTab(name);
 }
 
 // 切换标签

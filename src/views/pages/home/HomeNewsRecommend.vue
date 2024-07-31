@@ -9,7 +9,6 @@
       v-for="item in tabItems"
       :key="item.name"
       :data="item"
-      class="mx-hrnews-content"
     >
       <template v-if="item.data">
         <!-- 轮播图 -->
@@ -46,9 +45,9 @@ const currentTabName = ref('chief');
 // 标签
 const tabItems = ref([
   { name: 'chief', label: '头条', data: null },
-  { name: 'military', label: '军事', data: null },
   { name: 'social', label: '社会', data: null },
-  { name: 'ent', label: '娱乐', data: null }
+  { name: 'ent', label: '娱乐', data: null },
+  { name: 'military', label: '军事', data: null }
 ]);
 
 // 获取新闻
@@ -62,9 +61,8 @@ async function getDataList(name) {
 
 <style lang="scss">
 .mx-hrnews {
-  &-content {
-    padding-right: 8px;
-    padding-left: 8px;
+  .mx-tab-pane {
+    padding: 10px 8px;
   }
 
   // 图片轮播

@@ -116,7 +116,6 @@ function addSite() {
   .mx-tab-pane {
     height: 291px;
     padding: 0 15px;
-    overflow: auto;
   }
 
   // 按钮

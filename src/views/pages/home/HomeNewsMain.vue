@@ -9,9 +9,11 @@
       v-for="item in tabItems"
       :key="item.name"
       :data="item"
-      class="mx-hmnews-content"
     >
-      <template v-if="item.data">
+      <div
+        v-if="item.data"
+        class="mx-hmnews-content"
+      >
         <div class="mx-hmnews-left">
           <!-- 左侧轮播图 -->
           <HomeNewsFocus
@@ -52,7 +54,14 @@
             <span>{{ text[0].title }}</span>
           </MxLink>
         </div>
-      </template>
+      </div>
+      <!-- 底部链接 -->
+      <MxLink
+        class="mx-hmnews-bottom"
+        :href="item.url"
+      >
+        查看更多
+      </MxLink>
     </MxTabPane>
   </MxTabs>
 </template>
@@ -87,6 +96,7 @@ async function getDataList(name) {
 .mx-hmnews {
   &-content {
     display: flex;
+    padding: 10px 20px;
   }
   &-left {
     flex: none;
@@ -97,6 +107,13 @@ async function getDataList(name) {
     flex: auto;
     margin-left: 20px;
     overflow: hidden;
+  }
+  &-bottom {
+    display: block;
+    font-size: 12px;
+    line-height: 28px;
+    text-align: center;
+    background-color: #f7f7f7;
   }
 
   // 图片轮播
