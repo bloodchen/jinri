@@ -50,7 +50,7 @@
           <span>{{ weatherData.city }}</span>
           <span
             class="mx-topbar-tools-toggle"
-            @click="weatherCityVisible = true"
+            @click="showWeatherLocation"
           >[切换]</span>
         </div>
         <MxLink href="/weater">一周天气</MxLink>
@@ -95,11 +95,9 @@
       </div>
     </div>
     <!-- 城市 -->
-    <WeatherCity
-      v-if="weatherCityVisible"
-      :default-city-id="weatherCityId"
-      @close="weatherCityVisible = false"
-      @confirm="changeWeatherCity"
+    <WeatherLocaltion
+      ref="weaterLocaltionRef"
+      @change="changeWeatherLocation"
     />
     <!-- 邮箱 -->
     <MxDialog
@@ -169,7 +167,7 @@ import { ref, computed } from 'vue';
 import { useStorage } from '@vueuse/core';
 import solarLunar from 'solarLunar';
 
-import WeatherCity from '@/views/pages/weather/WeatherCity.vue';
+import WeatherLocaltion from '@/views/pages/weather/WeatherLocaltion.vue';
 
 import api from '@/api';
 import adList from '@/data/header-topbar-ads.js';
@@ -200,14 +198,13 @@ const solarDate = `${dateYear}年${dateMonth}月${dateDate}日 ${solar2lunarData
 // 天气-获取城市
 const weatherCityId = useStorage('weather-city-id', '');
 const weatherData = ref({});
-getCityData();
-async function getCityData() {
+(async function() {
   if (!weatherCityId.value) {
     const res = await api.getWeatherCityByIp();
     weatherCityId.value = res._weather_cityid;
   }
   getWeatherData();
-}
+})();
 
 // 天气-获取详情
 async function getWeatherData() {
@@ -234,10 +231,14 @@ const weatherAqiStyle = computed(() => {
   }
 });
 
-// 切换城市
-const weatherCityVisible = ref(false);
-function changeWeatherCity(id) {
-  weatherCityVisible.value = false;
+// 打开定位弹窗
+const weaterLocaltionRef = ref(null);
+function showWeatherLocation() {
+  weaterLocaltionRef.value.init(weatherCityId.value);
+}
+
+// 切换定位
+function changeWeatherLocation(id) {
   weatherCityId.value = id;
   getWeatherData();
 }
