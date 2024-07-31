@@ -50,7 +50,7 @@
           <span>{{ weatherData.city }}</span>
           <span
             class="mx-topbar-tools-toggle"
-            @click="openAreaDialog"
+            @click="weatherCityVisible = true"
           >[切换]</span>
         </div>
         <MxLink href="/weater">一周天气</MxLink>
@@ -94,6 +94,13 @@
         </MxLink>
       </div>
     </div>
+    <!-- 城市 -->
+    <WeatherCity
+      v-if="weatherCityVisible"
+      :default-city-id="weatherCityId"
+      @close="weatherCityVisible = false"
+      @confirm="changeWeatherCity"
+    />
     <!-- 邮箱 -->
     <MxDialog
       v-model="emailDialogVisible"
@@ -140,62 +147,6 @@
         </MxBtn>
       </template>
     </MxDialog>
-    <!-- 切换城市 -->
-    <MxDialog
-      v-model="areaDialogVisible"
-      title="切换城市"
-    >
-      <MxFormItem
-        v-model="provinceId"
-        label="省："
-        field="select"
-        @change="getCityMap('change')"
-      >
-        <option
-          v-for="(item, key) in provinceMap"
-          :key="key"
-          :value="key"
-        >
-          {{ item.province }}
-        </option>
-      </MxFormItem>
-      <MxFormItem
-        v-model="cityId"
-        label="市："
-        field="select"
-        @change="getDistrictMap('change')"
-      >
-        <option
-          v-for="(item, key) in cityMap"
-          :key="key"
-          :value="key"
-        >
-          {{ item.city }}
-        </option>
-      </MxFormItem>
-      <MxFormItem
-        v-model="districtId"
-        label="区："
-        field="select"
-      >
-        <option
-          v-for="(item, key) in districtMap"
-          :key="key"
-          :value="key"
-        >
-          {{ item.district }}
-        </option>
-      </MxFormItem>
-      <template #footer>
-        <MxBtn @click="changeCity">确认</MxBtn>
-        <MxBtn
-          type="info"
-          @click="areaDialogVisible = false"
-        >
-          取消
-        </MxBtn>
-      </template>
-    </MxDialog>
     <!-- 广告 -->
     <MxSwiper class="mx-topbar-ad">
       <MxSwiperSlide
@@ -214,9 +165,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useStorage } from '@vueuse/core';
 import solarLunar from 'solarLunar';
+
+import WeatherCity from '@/views/pages/weather/WeatherCity.vue';
 
 import api from '@/api';
 import adList from '@/data/header-topbar-ads.js';
@@ -244,8 +197,7 @@ const lunarDate = `${solar2lunarData.monthCn}${solar2lunarData.dayCn}`;
 // 公立日期
 const solarDate = `${dateYear}年${dateMonth}月${dateDate}日 ${solar2lunarData.ncWeek}`;
 
-// 天气
-// 获取城市
+// 天气-获取城市
 const weatherCityId = useStorage('weather-city-id', '');
 const weatherData = ref({});
 getCityData();
@@ -256,105 +208,37 @@ async function getCityData() {
   }
   getWeatherData();
 }
-// 获取天气
+
+// 天气-获取详情
 async function getWeatherData() {
   weatherData.value = await api.getWeatherDetailByCityId(weatherCityId.value);
   const iconName = weatherData.value.today.icon.slice(-6);
   weatherData.value.iconLocal = `./images/weather/${iconName}`;
-  getAqiStyle();
 }
 
-// 获取空气质量
-const weatherAqiStyle = ref({});
-function getAqiStyle() {
-  const aqiObj = {
-    优: '0 0',
-    良: '0 -16px',
-    轻度污染: '0 -32px',
-    中度污染: '0 -48px',
-    重度污染: '0 -64px',
-    严重污染: '0 -80px'
-  };
-  weatherAqiStyle.value = { 'background-position': aqiObj[weatherData.value.today.airGrade] };
-}
+// 天气-获取空气质量
+const weatherAqiLevel = {
+  优: '0 0',
+  良: '0 -16px',
+  轻度污染: '0 -32px',
+  中度污染: '0 -48px',
+  重度污染: '0 -64px',
+  严重污染: '0 -80px'
+};
+const weatherAqiStyle = computed(() => {
+  const level = weatherData.value?.today?.airGrade;
+  if (!level) {
+    return '';
+  } else {
+    return { 'background-position': weatherAqiLevel[weatherData.value?.today?.airGrade] };
+  }
+});
 
 // 切换城市
-const areaDialogVisible = ref(false);
-// 省
-const provinceId = ref('');
-const provinceMap = ref({});
-// 市
-const cityId = ref('');
-const cityMap = ref({});
-// 区
-const districtId = ref('');
-const districtMap = ref({});
-
-// 打开弹窗
-function openAreaDialog() {
-  areaDialogVisible.value = true;
-  // 前5位是省
-  provinceId.value = weatherCityId.value.slice(0, 5);
-  // 第67位是市
-  const id2 = weatherCityId.value.slice(5, 7);
-  // 第89位是区县
-  const id3 = weatherCityId.value.slice(7, 9);
-  // 如果区县是00需要和市调整位置
-  if (id3 === '00') {
-    cityId.value = id3;
-    districtId.value = id2;
-  } else {
-    cityId.value = id2;
-    districtId.value = id3;
-  }
-  // 获取区域
-  getProvinceMap();
-  getCityMap('init');
-  getDistrictMap('init');
-}
-
-// 获取省
-async function getProvinceMap() {
-  const { data } = await api.getWeatherAreaById('provinces');
-  provinceMap.value = data;
-}
-// 获取市
-// 'init'（初始化时）'change'（修改时）
-async function getCityMap(type) {
-  const path = `cities?province-id=${provinceId.value}`;
-  const { data } = await api.getWeatherAreaById(path);
-  cityMap.value = data;
-  if (type === 'init') return;
-  // 如果是修改省份后重新获取城市，需要获取默认选中的城市，然后再获取区县
-  cityId.value = getDefaultValue(cityMap.value);
-  getDistrictMap(type);
-}
-// 获取区县
-// 'init'（初始化时）'change'（修改时）
-async function getDistrictMap(type) {
-  const path = `districts?province-id=${provinceId.value}&city-id=${cityId.value}`;
-  const { data } = await api.getWeatherAreaById(path);
-  districtMap.value = data;
-  if (type === 'init') return;
-  // 如果是修改城市后重新获取区县，需要获取默认选中的区县
-  districtId.value = getDefaultValue(districtMap.value);
-}
-// 获取默认选中的项
-function getDefaultValue(data) {
-  const keys = Object.keys(data).sort();
-  const selectedKey = keys.find(key => data[key].selected);
-  return selectedKey;
-}
-// 切换城市
-function changeCity() {
-  // 使用省市区的ID拼接城市key，如果区县是00需要和市调整位置
-  if (cityId.value === '00') {
-    weatherCityId.value = provinceId.value + districtId.value + cityId.value;
-  } else {
-    weatherCityId.value = provinceId.value + cityId.value + districtId.value;
-  }
-  // 重新查询天气
-  areaDialogVisible.value = false;
+const weatherCityVisible = ref(false);
+function changeWeatherCity(id) {
+  weatherCityVisible.value = false;
+  weatherCityId.value = id;
   getWeatherData();
 }
 </script>

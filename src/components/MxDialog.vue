@@ -43,9 +43,10 @@ onMounted(() => {
 });
 
 // 关闭弹窗
-const emits = defineEmits(['update:modelValue']);
+const emits = defineEmits(['update:modelValue', 'close']);
 function closeDialog() {
   emits('update:modelValue', false);
+  emits('close');
 }
 </script>
 
