@@ -1,1 +1,0 @@
-import{_ as c,a,o as n,k as o}from"./index-2741252e.js";const t={};function r(p,s){const e=a("MxIframe");return n(),o(e,{height:"4950px",src:"https://m.cailu88.com/pro/dspc/index.html#/travel?cnzzId=1274433956&cid=501&appid=37&appkey=2a82161620da4e6090264118c7f30bde&agencyid=34&pid=mm_130388949_46712324_1770230516&channelid=818"})}const _=c(t,[["render",r]]);export{_ as default};
