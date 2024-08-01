@@ -36,7 +36,7 @@ import dataGroup from '@/data/tools-websites';
     font-weight: bold;
     color: #11406f;
     background-color: #e9f8fd;
-    background-image: url('@/assets/sprites/tools-categories.png');
+    background-image: url('@/assets/icons/tools-categories.png');
     background-repeat: no-repeat;
     background-position: 10px 12px;
   }

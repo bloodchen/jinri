@@ -5,7 +5,6 @@
     class="mx-hwebsite"
     :autoplay="false"
     theme="blue"
-    @change="onTabChange"
   >
     <!-- 顶部 -->
     <template #header>
@@ -42,25 +41,19 @@
     </template>
     <!-- 内容 -->
     <MxTabPane :data="{ name: 'popular', label: '常用网址' }">
-      <HomeWebsitePopular
-        v-if="isPopularInit"
-        ref="popularRef"
-      />
+      <HomeWebsitePopular ref="popularRef" />
     </MxTabPane>
     <MxTabPane :data="{ name: 'favorite', label: '经常访问网站' }">
-      <HomeWebsiteFavorite
-        v-if="isFavoriteInit"
-        ref="favoriteRef"
-      />
+      <HomeWebsiteFavorite ref="favoriteRef" />
     </MxTabPane>
     <!-- 底部广告 -->
     <template #footer>
-      <div class="mx-hwebsite-ad">
+      <div class="mx-hwebsite-bottom">
         <MxLink
-          v-for="item in adDataList"
+          v-for="item in homeWebsiteBottomList"
           :key="item.title"
           :href="item.url"
-          class="mx-hwebsite-ad-item"
+          class="mx-hwebsite-bottom-item"
         >
           {{ item.title }}
         </MxLink>
@@ -73,27 +66,17 @@
 import { ref } from 'vue';
 import { useStorage } from '@vueuse/core';
 
+import { homeWebsiteBottomList } from '@/data/ads';
 import HomeWebsitePopular from './HomeWebsitePopular.vue';
 import HomeWebsiteFavorite from './HomeWebsiteFavorite.vue';
 
-import adDataList from '@/data/home-websites-ads';
-
 // 当前tab
 const currentTabName = useStorage('tab-hwebsite', 'popular');
-const isPopularInit = ref(false);
-const isFavoriteInit = ref(false);
-function onTabChange(name) {
-  if (name === 'popular') {
-    isPopularInit.value = true;
-  } else {
-    isFavoriteInit.value = true;
-  }
-}
+const popularRef = ref(null);
+const favoriteRef = ref(null);
 
 // 恢复默认数据
 const dialogVisible = ref(false);
-const popularRef = ref(null);
-const favoriteRef = ref(null);
 function resetSite() {
   dialogVisible.value = false;
   if (currentTabName.value === 'popular') {
@@ -129,7 +112,7 @@ function addSite() {
       --icon-size: 26px;
 
       margin-right: -5px;
-      background-image: url('@/assets/sprites/home-website.png');
+      background-image: url('@/assets/icons/home-website.png');
     }
     &-item {
       margin-left: 10px;
@@ -148,8 +131,8 @@ function addSite() {
     }
   }
 
-  // 广告
-  &-ad {
+  // 底部广告
+  &-bottom {
     padding: 0 20px;
     font-size: 12px;
     line-height: 30px;

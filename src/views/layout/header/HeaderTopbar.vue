@@ -14,6 +14,7 @@
     </MxLink>
     <!-- 工具 -->
     <div class="mx-topbar-tools">
+      <!-- 邮箱登录和设为首页 -->
       <div class="mx-topbar-tools-item">
         <div
           class="mx-topbar-tools-icon"
@@ -30,6 +31,7 @@
           <span>设为首页</span>
         </div>
       </div>
+      <!-- 时间 -->
       <div class="mx-topbar-tools-item">
         <div>{{ solarDate }}</div>
         <div>
@@ -42,6 +44,7 @@
           </MxLink>
         </div>
       </div>
+      <!-- 城市 -->
       <div
         v-if="weatherData.city"
         class="mx-topbar-tools-item"
@@ -55,6 +58,7 @@
         </div>
         <MxLink href="/weater">一周天气</MxLink>
       </div>
+      <!-- 天气 -->
       <MxLink
         v-if="weatherData.today"
         class="mx-topbar-tools-item mx-topbar-weather-row"
@@ -77,6 +81,7 @@
           <div>{{ weatherData.today.ltemp }}~{{ weatherData.today.htemp }}</div>
         </div>
       </MxLink>
+      <!-- 换肤和反馈 -->
       <div class="mx-topbar-tools-item">
         <div
           class="mx-topbar-tools-icon"
@@ -93,8 +98,25 @@
           <span>反馈</span>
         </MxLink>
       </div>
+      <!-- 右侧广告 -->
+      <div
+        v-if="rightAdVisible"
+        class="mx-topbar-right"
+      >
+        <MxLink
+          class="mx-topbar-right-link"
+          :herf="headerTopbarRight.url"
+          :title="headerTopbarRight.title"
+        >
+          <img
+            class="mx-topbar-right-img"
+            :src="headerTopbarRight.img"
+            :alt="headerTopbarRight.title"
+          >
+        </MxLink>
+      </div>
     </div>
-    <!-- 城市 -->
+    <!-- 切换城市 -->
     <WeatherLocaltion
       ref="weaterLocaltionRef"
       @change="changeWeatherLocation"
@@ -145,10 +167,10 @@
         </MxBtn>
       </template>
     </MxDialog>
-    <!-- 广告 -->
-    <MxSwiper class="mx-topbar-ad">
+    <!-- 轮播广告 -->
+    <MxSwiper class="mx-topbar-slider">
       <MxSwiperSlide
-        v-for="item in adList"
+        v-for="item in headerTopbarSliderList"
         :key="item.name"
       >
         <MxLink :href="item.url">
@@ -169,9 +191,14 @@ import solarLunar from 'solarLunar';
 
 import WeatherLocaltion from '@/views/pages/weather/WeatherLocaltion.vue';
 
-import api from '@/api';
-import adList from '@/data/header-topbar-ads.js';
+import { isBetween } from '@/utiles';
+import { headerTopbarRight, headerTopbarSliderList } from '@/data/ads.js';
 import emailList from '@/data/header-topbar-emails.js';
+import api from '@/api';
+
+// 右侧广告
+const rightAdVisible = ref(false);
+rightAdVisible.value = isBetween(headerTopbarRight.startTime, headerTopbarRight.endTime);
 
 // 邮箱
 const emailDialogVisible = ref(false);
@@ -208,9 +235,12 @@ const weatherData = ref({});
 
 // 天气-获取详情
 async function getWeatherData() {
-  weatherData.value = await api.getWeatherDetailByCityId(weatherCityId.value);
-  const iconName = weatherData.value.today.icon.slice(-6);
-  weatherData.value.iconLocal = `./images/weather/${iconName}`;
+  const res = await api.getWeatherDetailByCityId(weatherCityId.value);
+  if (res) {
+    weatherData.value = res;
+    const iconName = weatherData.value.today.icon.slice(-6);
+    weatherData.value.iconLocal = `./images/weather/${iconName}`;
+  }
 }
 
 // 天气-获取空气质量
@@ -251,19 +281,18 @@ function changeWeatherLocation(id) {
   justify-content: space-between;
 
   // logo
-  &-logo {
+  &-logo,
+  &-logo-img {
     display: block;
-    &-img {
-      display: block;
-      width: 140px;
-      height: 60px;
-    }
+    width: 140px;
+    height: 60px;
   }
 
   // 工具
   &-tools {
     display: flex;
     align-items: center;
+    height: 60px;
     font-size: 12px;
     line-height: 20px;
     color: #666;
@@ -282,7 +311,7 @@ function changeWeatherLocation(id) {
       .mx-icon {
         --icon-size: 18px;
 
-        background-image: url('@/assets/sprites/header-common.png');
+        background-image: url('@/assets/icons/header-common.png');
       }
       .is-email {
         --icon-base: 0 0;
@@ -300,7 +329,7 @@ function changeWeatherLocation(id) {
     &-icon:hover {
       color: #07f;
       .mx-icon {
-        background-image: url('@/assets/sprites/header-topbar-common.png');
+        background-image: url('@/assets/icons/header-topbar-common.png');
       }
       .is-home {
         --icon-base: 0 -36px;
@@ -333,7 +362,7 @@ function changeWeatherLocation(id) {
     display: inline-block;
     width: 146px;
     height: 25px;
-    background-image: url('@/assets/sprites/header-topbar-home.png');
+    background-image: url('@/assets/icons/header-topbar-home.png');
     &:hover {
       background-position: 0 -26px;
     }
@@ -353,12 +382,28 @@ function changeWeatherLocation(id) {
       width: 28px;
       height: 16px;
       margin-left: 5px;
-      background-image: url('@/assets/sprites/weather-aqi.png');
+      background-image: url('@/assets/icons/weather-aqi.png');
     }
   }
 
-  // 广告
-  &-ad {
+  // 右侧广告
+  &-right {
+    position: relative;
+    width: 85px;
+    height: 60px;
+    &-link {
+      position: absolute;
+      top: 0;
+    }
+    &-link,
+    &-img {
+      display: block;
+      width: 85px;
+    }
+  }
+
+  // 轮播广告
+  &-slider {
     width: 140px;
     height: 48px;
     .swiper-button-prev,

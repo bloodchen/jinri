@@ -9,12 +9,10 @@
 
 <script setup>
 import { useStorage } from '@vueuse/core';
-
 import HomeWebsiteGroup from './HomeWebsiteGroup.vue';
-
 import defaultDataList from '@/data/home-websites-popular.js';
 
-// 获取列表
+// 初始化数据
 const dataList = useStorage('home-website-popular', defaultDataList);
 
 // 排序

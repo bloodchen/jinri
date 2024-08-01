@@ -1,5 +1,42 @@
-// 首页-网址导航-广告
-export default [
+// 顶栏-右上角撕页广告
+export const headerTriangle = {
+  title: '超级红包',
+  url: 'https://s.click.taobao.com/8ll47du',
+  img: './images/header-triangle/tb.png',
+  startTime: '2024-08-01 19:20:00',
+  endTime: '2024-08-01 19:20:00'
+};
+
+// 顶栏-右上角动图广告
+export const headerTopbarRight = {
+  title: '天猫',
+  url: 'https://s.click.taobao.com/qJZRSnt',
+  img: './images/header-topbar-right/tmall.gif',
+  startTime: '2024-08-01 19:20:00',
+  endTime: '2024-08-01 19:20:00'
+};
+
+// 顶栏-右上角轮播广告
+export const headerTopbarSliderList = [
+  {
+    name: 'jd',
+    url: 'https://u.jd.com/kbQv9J4',
+    img: './images/header-topbar-slider/jd.png'
+  },
+  {
+    name: 'taobao',
+    url: 'https://s.click.taobao.com/qJZRSnt',
+    img: './images/header-topbar-slider/taobao.png'
+  },
+  {
+    name: '58',
+    url: 'https://go.mxfast.com/58/',
+    img: './images/header-topbar-slider/58.png'
+  }
+];
+
+// 首页-网址导航-底部广告
+export const homeWebsiteBottomList = [
   {
     title: '携程酒店',
     url: 'https://go.mxfast.com/ctrip/'

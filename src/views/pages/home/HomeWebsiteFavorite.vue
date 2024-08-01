@@ -61,11 +61,10 @@ import api from '@/api';
 const cookies = useCookies();
 const isLogin = !!cookies.get('MXTOKEN');
 
-// 获取列表
+// 初始化数据
 const isInit = useStorage('home-website-favorite-init', false);
 const dataList = useStorage('home-website-favorite', []);
-getDataList();
-async function getDataList() {
+(async function() {
   // 是否已初始化
   if (isInit.value) return;
   // 是否已登录
@@ -78,7 +77,7 @@ async function getDataList() {
   // 初始化完成
   isInit.value = true;
   closeDialog();
-}
+})();
 
 // 格式化数据
 function formatDataList(list) {

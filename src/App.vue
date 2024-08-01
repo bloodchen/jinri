@@ -28,7 +28,7 @@ import LayoutFooter from '@/views/layout/footer/index.vue';
   min-width: 1000px;
   max-width: 1200px;
   padding: 0 20px;
-  margin: 10px auto;
+  margin: 0 auto 10px;
 }
 .mx-devide {
   height: 1px;

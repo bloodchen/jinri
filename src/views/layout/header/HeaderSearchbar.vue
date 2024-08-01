@@ -314,7 +314,7 @@ function onClickSuggest(item) {
     --icon-size: 12px;
 
     margin: 0 5px;
-    background-image: url('@/assets/sprites/header-common.png');
+    background-image: url('@/assets/icons/header-common.png');
   }
   &-dropdown {
     &-list {

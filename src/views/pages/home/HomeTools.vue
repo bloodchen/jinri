@@ -45,7 +45,7 @@ const toolsList = [
   &-icon {
     --icon-size: 30px;
 
-    background-image: url('@/assets/sprites/home-tools.png');
+    background-image: url('@/assets/icons/home-tools.png');
   }
   &-link:hover &-icon {
     --icon-base: var(--icon-active) !important;

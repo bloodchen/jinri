@@ -95,7 +95,7 @@ api.getBaiduHotword().then(({ data }) => {
     top: 5px;
     right: 5px;
     z-index: 99;
-    background-image: url('@/assets/sprites/header-common.png');
+    background-image: url('@/assets/icons/header-common.png');
   }
 }
 </style>

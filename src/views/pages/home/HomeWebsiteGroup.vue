@@ -244,7 +244,7 @@ function onImgError(item) {
   &-remove {
     flex: none;
     margin-left: 5px;
-    background-image: url('@/assets/sprites/home-website.png');
+    background-image: url('@/assets/icons/home-website.png');
   }
   &-edit {
     --icon-base: -10px -200px;
