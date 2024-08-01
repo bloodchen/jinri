@@ -70,7 +70,7 @@ const dataList = useStorage('home-website-favorite', []);
   // 是否已登录
   if (isLogin) {
     const data = await api.getHomeFavoriteSites('get');
-    dataList.value = formatDataList(data) || formatDataList(defaultDataList);
+    dataList.value = formatDataList(data || defaultDataList);
   } else {
     dataList.value = formatDataList(defaultDataList);
   }

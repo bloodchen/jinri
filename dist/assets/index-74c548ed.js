@@ -1,1 +1,0 @@
-import{r as s,a as t,o,b as _,f as a}from"./index-2ae1e74a.js";const n={class:"mx-weather"},m={__name:"index",setup(c){return s(""),(r,p)=>{const e=t("MxTabs");return o(),_("div",n,[a(e)])}}};export{m as default};
