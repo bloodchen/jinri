@@ -1,3 +1,20 @@
+// 皮肤
+export const adSkin = {
+  title: '天猫',
+  url: 'https://s.click.taobao.com/qJZRSnt',
+  img: './images/ad/skin-bg.png',
+  startTime: '2024-08-01 19:20:00',
+  endTime: '2024-08-01 19:20:00'
+};
+
+// 红包雨
+export const adRain = {
+  title: '天猫',
+  url: 'https://s.click.taobao.com/qJZRSnt',
+  startTime: '2024-08-01 19:20:00',
+  endTime: '2024-08-01 19:20:00'
+};
+
 // 顶栏-中间
 export const adTopbarCenter = {
   title: '天猫',
@@ -21,17 +38,17 @@ export const adTopbarSliders = [
   {
     name: 'jd',
     url: 'https://u.jd.com/kbQv9J4',
-    img: './images/topbar-sliders/jd.png'
+    img: './images/ad/topbar-sliders-jd.png'
   },
   {
     name: 'taobao',
     url: 'https://s.click.taobao.com/qJZRSnt',
-    img: './images/topbar-sliders/taobao.png'
+    img: './images/ad/topbar-sliders-tb.png'
   },
   {
     name: '58',
     url: 'https://go.mxfast.com/58/',
-    img: './images/topbar-sliders/58.png'
+    img: './images/ad/topbar-sliders-58.png'
   }
 ];
 

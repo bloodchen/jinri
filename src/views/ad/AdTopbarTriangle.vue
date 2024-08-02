@@ -25,13 +25,13 @@ import { adTopbarRightTriangle } from '@/data/ad.js';
 
 // 是否显示
 const isVisible = ref(false);
-const closeExpiresDate = useStorage('topbar-triangle-close-expires-date', '');
-isVisible.value = isBetween(adTopbarRightTriangle.startTime, adTopbarRightTriangle.endTime) && isAfter(closeExpiresDate.value);
+const nextOpenDate = useStorage('next-open-date', {});
+isVisible.value = isBetween(adTopbarRightTriangle.startTime, adTopbarRightTriangle.endTime) && isAfter(nextOpenDate.value.triangle);
 
 // 窗口缩放时
 function onResize() {
   const bodyWidth = document.body.offsetWidth;
-  const headerWidth = document.getElementsByClassName('mx-layout')[0].offsetWidth;
+  const headerWidth = document.getElementsByClassName('mx-layout-module')[0].offsetWidth;
   isVisible.value = bodyWidth - headerWidth > 200;
 }
 onMounted(() => {
@@ -43,7 +43,7 @@ onMounted(() => {
 // 关闭
 function onClose() {
   isVisible.value = false;
-  closeExpiresDate.value = getTomorrowDate();
+  nextOpenDate.value.triangle = getTomorrowDate();
 }
 
 // 鼠标移入
@@ -78,7 +78,7 @@ function onMouseleave() {
 
 <style lang="scss">
 .mx-ad-topbar-triangle {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   display: block;
@@ -88,10 +88,9 @@ function onMouseleave() {
   background-position-y: 0;
   background-size: auto 100px;
   &-close {
-    --icon-size: 16px;
-
     position: absolute;
-    background-image: url('@/assets/icons/topbar-triangle-close.png');
+    font-size: 16px;
+    background-image: url('./images/ad/topbar-triangle-close.png');
   }
 }
 </style>

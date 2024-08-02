@@ -109,9 +109,8 @@ function addSite() {
       align-items: center;
     }
     &-icon {
-      --icon-size: 26px;
-
       margin-right: -5px;
+      font-size: 26px;
       background-image: url('@/assets/icons/home-websites.png');
     }
     &-item {
@@ -119,11 +118,11 @@ function addSite() {
       font-size: 12px;
       color: #888;
       cursor: pointer;
-      &:hover {
-        color: #08f;
-      }
       .is-add {
         --icon-base: -10px -4px;
+      }
+      &:hover {
+        color: #08f;
       }
       &:hover .is-add {
         --icon-base: -10px -28px;

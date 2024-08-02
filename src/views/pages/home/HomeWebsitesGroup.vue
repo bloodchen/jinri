@@ -227,11 +227,10 @@ function onImgError(item) {
     text-overflow: ellipsis;
   }
   &-btns {
-    --icon-size: 12px;
-
     flex: auto;
     align-items: center;
     justify-content: flex-end;
+    font-size: 12px;
   }
   &-btns,
   &-item.is-draging &-btns {

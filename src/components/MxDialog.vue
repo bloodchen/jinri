@@ -73,13 +73,12 @@ function closeDialog() {
     color: #212121;
   }
   &-close {
-    --icon-base: 0 0;
     --icon-active: 0 -16px;
-    --icon-size: 16px;
 
     position: absolute;
     top: 10px;
     right: 10px;
+    font-size: 16px;
     background-image: url('@/assets/icons/dialog-close.png');
     background-size: 16px auto;
   }

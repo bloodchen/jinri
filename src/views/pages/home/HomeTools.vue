@@ -43,8 +43,7 @@ const toolsList = [
     }
   }
   &-icon {
-    --icon-size: 30px;
-
+    font-size: 30px;
     background-image: url('@/assets/icons/home-tools.png');
   }
   &-link:hover &-icon {

@@ -279,8 +279,7 @@ function changeWeatherLocation(id) {
       align-items: center;
       cursor: pointer;
       .mx-icon {
-        --icon-size: 18px;
-
+        font-size: 18px;
         background-image: url('@/assets/icons/header-common.png');
       }
       .is-email {

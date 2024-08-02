@@ -311,9 +311,9 @@ function onClickSuggest(item) {
   &-trigger {
     --icon-base: 0 -320px;
     --icon-active: 0 -332px;
-    --icon-size: 12px;
 
     margin: 0 5px;
+    font-size: 12px;
     background-image: url('@/assets/icons/header-common.png');
   }
   &-dropdown {

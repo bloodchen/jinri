@@ -1,6 +1,9 @@
 <!-- 搜索栏-热搜 -->
 <template>
-  <div class="mx-hotword">
+  <div
+    ref="elRef"
+    class="mx-hotword"
+  >
     <!-- 列表 -->
     <div
       class="mx-hotword-list"
@@ -31,13 +34,20 @@
 
 <script setup>
 import { ref } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 import api from '@/api';
 
+// 获取数据
 const dataList = ref([]);
-const isExpend = ref(false);
-
 api.getSearchHotwordFromBaidu().then(({ data }) => {
   dataList.value = data.success ? data.data.cards[0].content.slice(0, 18) : [];
+});
+
+// 关闭
+const elRef = ref(null);
+const isExpend = ref(false);
+onClickOutside(elRef, event => {
+  isExpend.value = false;
 });
 </script>
 
@@ -89,12 +99,12 @@ api.getSearchHotwordFromBaidu().then(({ data }) => {
   &-toggle {
     --icon-base: 0 -296px;
     --icon-active: 0 -308px;
-    --icon-size: 12px;
 
     position: absolute;
     top: 5px;
     right: 5px;
     z-index: 99;
+    font-size: 12px;
     background-image: url('@/assets/icons/header-common.png');
   }
 }
