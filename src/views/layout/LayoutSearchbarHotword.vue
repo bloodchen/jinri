@@ -1,4 +1,4 @@
-<!-- 顶栏-热搜 -->
+<!-- 搜索栏-热搜 -->
 <template>
   <div class="mx-hotword">
     <!-- 列表 -->
@@ -36,7 +36,7 @@ import api from '@/api';
 const dataList = ref([]);
 const isExpend = ref(false);
 
-api.getBaiduHotword().then(({ data }) => {
+api.getSearchHotwordFromBaidu().then(({ data }) => {
   dataList.value = data.success ? data.data.cards[0].content.slice(0, 18) : [];
 });
 </script>

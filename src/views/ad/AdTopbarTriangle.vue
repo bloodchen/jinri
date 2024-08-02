@@ -1,16 +1,16 @@
-<!-- 顶栏-右上角撕角广告 -->
+<!-- 顶栏-右侧撕角 -->
 <template>
   <MxLink
     v-if="isVisible"
-    class="mx-triangle"
-    :title="headerTriangle.title"
-    :href="headerTriangle.url"
-    :style="{ 'background-image': `url(${headerTriangle.img})`, 'background-position-x': `${trianglePositionX}px` }"
+    class="mx-ad-topbar-triangle"
+    :title="adTopbarRightTriangle.title"
+    :href="adTopbarRightTriangle.url"
+    :style="{ 'background-image': `url(${adTopbarRightTriangle.img})`, 'background-position-x': `${trianglePositionX}px` }"
     @mouseenter="onMouseenter"
     @mouseleave="onMouseleave"
   >
     <MxIcon
-      class="mx-triangle-close"
+      class="mx-ad-topbar-triangle-close"
       :style="{ top: `${triangleClosePosition + 2}px`, right: `${triangleClosePosition}px` }"
       @click.prevent="onClose"
     />
@@ -20,18 +20,18 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useStorage } from '@vueuse/core';
-import { headerTriangle } from '@/data/ads.js';
 import { isBetween, isAfter, getTomorrowDate } from '@/utiles';
+import { adTopbarRightTriangle } from '@/data/ad.js';
 
 // 是否显示
 const isVisible = ref(false);
-const closeExpiresDate = useStorage('header-triangle-close-expires-date', '');
-isVisible.value = isBetween(headerTriangle.startTime, headerTriangle.endTime) && isAfter(closeExpiresDate.value);
+const closeExpiresDate = useStorage('topbar-triangle-close-expires-date', '');
+isVisible.value = isBetween(adTopbarRightTriangle.startTime, adTopbarRightTriangle.endTime) && isAfter(closeExpiresDate.value);
 
 // 窗口缩放时
 function onResize() {
   const bodyWidth = document.body.offsetWidth;
-  const headerWidth = document.getElementsByClassName('mx-header')[0].offsetWidth;
+  const headerWidth = document.getElementsByClassName('mx-layout')[0].offsetWidth;
   isVisible.value = bodyWidth - headerWidth > 200;
 }
 onMounted(() => {
@@ -77,7 +77,7 @@ function onMouseleave() {
 </script>
 
 <style lang="scss">
-.mx-triangle {
+.mx-ad-topbar-triangle {
   position: fixed;
   top: 0;
   right: 0;
@@ -91,7 +91,7 @@ function onMouseleave() {
     --icon-size: 16px;
 
     position: absolute;
-    background-image: url('@/assets/icons/close-2.png');
+    background-image: url('@/assets/icons/topbar-triangle-close.png');
   }
 }
 </style>

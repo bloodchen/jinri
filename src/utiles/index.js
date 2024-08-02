@@ -23,7 +23,7 @@ export function isAfter(date) {
   return now >= ts;
 }
 
-// 获取第二天的时间
+// 获取第二天的日期
 export function getTomorrowDate() {
   const date = new Date();
   date.setDate(date.getDate() + 1);

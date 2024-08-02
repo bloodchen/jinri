@@ -29,7 +29,6 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import MxIcon from './MxIcon.vue';
 
 defineProps({
   modelValue: { type: [Boolean, String], required: true },
@@ -81,7 +80,7 @@ function closeDialog() {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-image: url('@/assets/icons/close.png');
+    background-image: url('@/assets/icons/dialog-close.png');
     background-size: 16px auto;
   }
   &-body {

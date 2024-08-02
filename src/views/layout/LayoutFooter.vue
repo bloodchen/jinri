@@ -60,6 +60,8 @@
 
 <script setup>
 import img from '@/assets/images/footer-code.png';
+
+// 今年
 const currentYear = new Date().getFullYear();
 
 // 链接

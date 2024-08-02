@@ -1,6 +1,6 @@
-<!-- 首页-网址导航-经常访问的网站 -->
+<!-- 首页-经常访问的网站 -->
 <template>
-  <HomeWebsiteGroup
+  <HomeWebsitesGroup
     :data="dataList"
     :editable="true"
     cols="4"
@@ -50,11 +50,10 @@
 import { ref } from 'vue';
 import { useCookies } from '@vueuse/integrations/useCookies';
 import { useStorage } from '@vueuse/core';
-
-import HomeWebsiteGroup from './HomeWebsiteGroup.vue';
-
 import { guid } from '@/utiles';
-import defaultDataList from '@/data/home-websites-favorite.js';
+
+import HomeWebsitesGroup from './HomeWebsitesGroup.vue';
+import defaultDataList from '@/data/home-favorite-websites.js';
 import api from '@/api';
 
 // 是否已登录
@@ -187,7 +186,7 @@ function resetSite() {
 
 // 图片错误
 function onImgError(item) {
-  item.icon = './images/home-websites-favorite/default.png';
+  item.icon = './images/home-websites/default.png';
   dataList.value.splice(item.sortIndex, 1, item);
 }
 

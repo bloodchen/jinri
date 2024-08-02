@@ -1,4 +1,4 @@
-<!-- 首页-新闻-推荐新闻 -->
+<!-- 首页-推荐新闻 -->
 <template>
   <MxTabs
     v-model="currentTabName"

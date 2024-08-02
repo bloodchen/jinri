@@ -4,13 +4,13 @@
     <!-- 第一部分 -->
     <div class="mx-home-module">
       <!-- 网址导航 -->
-      <HomeWebsite class="mx-home-left" />
+      <HomeWebsites class="mx-home-left" />
       <div class="mx-home-right">
         <!-- 工具 -->
         <HomeTools />
         <!-- 广告 -->
         <MxIframe
-          src="./ad.html"
+          src="./iframes/jd.html"
           height="279"
           class="mx-mt-10"
         />
@@ -32,17 +32,20 @@
       v-model="currentTabName"
       class="mx-mt-10"
     >
-      <MxTabPane
-        id="homeGame"
-        :data="{ name: 'game', label: '游戏专区' }"
-      />
+      <MxTabPane :data="{ name: 'game', label: '游戏专区' }">
+        <MxIframe
+          src="./iframes/game.html"
+          :border="false"
+          height="340px"
+        />
+      </MxTabPane>
     </MxTabs>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import HomeWebsite from './HomeWebsite.vue';
+import { ref } from 'vue';
+import HomeWebsites from './HomeWebsites.vue';
 import HomeTools from './HomeTools.vue';
 import HomeNewsMain from './HomeNewsMain.vue';
 import HomeNewsHot from './HomeNewsHot.vue';
@@ -50,14 +53,6 @@ import HomeNewsRecommend from './HomeNewsRecommend.vue';
 
 // 当前tab
 const currentTabName = ref('hot');
-
-// 游戏专区
-onMounted(() => {
-  const gameScript = document.createElement('script');
-  gameScript.async = true;
-  gameScript.src = 'https://res.dashet.com/da/da.js?cid=450B6ED0&skey=120fa11b';
-  document.getElementById('homeGame').append(gameScript);
-});
 </script>
 
 <style lang="scss">

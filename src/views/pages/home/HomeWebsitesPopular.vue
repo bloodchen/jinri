@@ -1,6 +1,6 @@
-<!-- 首页-网址导航-常用网址 -->
+<!-- 首页-常用网址 -->
 <template>
-  <HomeWebsiteGroup
+  <HomeWebsitesGroup
     :data="dataList"
     cols="6"
     @sort="sortSite"
@@ -9,11 +9,19 @@
 
 <script setup>
 import { useStorage } from '@vueuse/core';
-import HomeWebsiteGroup from './HomeWebsiteGroup.vue';
-import defaultDataList from '@/data/home-websites-popular.js';
+import HomeWebsitesGroup from './HomeWebsitesGroup.vue';
+import defaultDataList from '@/data/home-popular-websites.js';
 
 // 初始化数据
 const dataList = useStorage('home-website-popular', defaultDataList);
+
+// 更新本地数据
+const newList = [];
+dataList.value.forEach(item => {
+  const newItem = defaultDataList.find(n => n.id === item.id) || item;
+  newList.push(newItem);
+});
+dataList.value = newList;
 
 // 排序
 function sortSite({ dragItem, dragIndex, targetIndex }) {

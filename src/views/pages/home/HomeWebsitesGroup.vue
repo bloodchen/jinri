@@ -1,15 +1,15 @@
-<!-- 首页-网址导航-网址分组 -->
+<!-- 首页-网址分组 -->
 <template>
   <div
     v-for="group in dataGroup"
     :key="group.groupName"
     :style="{ '--cols': cols }"
-    class="mx-hwebsite-list"
+    class="mx-hwebsites-list"
   >
     <div
       v-for="item in group.children"
       :key="item.title"
-      class="mx-hwebsite-item"
+      class="mx-hwebsites-item"
       :class="{
         'is-draging': !!dragStatus,
         'is-dragitem': item.id === dragItem.id,
@@ -24,31 +24,31 @@
     >
       <!-- 主要网址 -->
       <MxLink
-        class="mx-hwebsite-link"
+        class="mx-hwebsites-link"
         :title="item.title"
         :style="{ 'color': item.color, 'font-weight': item.bold ? 'bold' : '' }"
         :href="!!dragStatus ? 'javascript:;' : item.url"
       >
         <img
           v-if="item.titleImg"
-          class="mx-hwebsite-img"
+          class="mx-hwebsites-img"
           :src="item.titleImg"
         >
         <template v-else>
           <img
             v-if="item.icon || item.iconSet"
-            class="mx-hwebsite-icon"
+            class="mx-hwebsites-icon"
             :src="item.icon || item.iconSet"
             @error="onImgError(item)"
           >
-          <span class="mx-hwebsite-text">{{ item.title }}</span>
+          <span class="mx-hwebsites-text">{{ item.title }}</span>
         </template>
       </MxLink>
       <!-- 次要网址 -->
       <template v-if="item.subTitle && item.subUrl">
         <span>&nbsp;•&nbsp;</span>
         <MxLink
-          class="mx-hwebsite-link"
+          class="mx-hwebsites-link"
           :title="item.subTitle"
           :style="{ 'color': item.subColor, 'font-weight': item.subBold ? 'bold' : '' }"
           :href="!!dragStatus ? 'javascript:;' : item.subUrl"
@@ -62,21 +62,21 @@
         :href="!!dragStatus ? 'javascript:;' : item.bubbleUrl"
       >
         <img
-          class="mx-hwebsite-bubble"
+          class="mx-hwebsites-bubble"
           :src="item.bubbleImg"
         >
       </MxLink>
       <!-- 操作栏 -->
       <div
         v-if="editable"
-        class="mx-hwebsite-btns"
+        class="mx-hwebsites-btns"
       >
         <MxIcon
-          class="mx-hwebsite-edit"
+          class="mx-hwebsites-edit"
           @click="onEdit(item)"
         />
         <MxIcon
-          class="mx-hwebsite-remove"
+          class="mx-hwebsites-remove"
           @click="onRemove(item)"
         />
       </div>
@@ -168,7 +168,7 @@ function onImgError(item) {
 </script>
 
 <style lang="scss">
-.mx-hwebsite {
+.mx-hwebsites {
   &-list {
     display: grid;
     grid-template-columns: repeat(var(--cols), 1fr);
@@ -244,7 +244,7 @@ function onImgError(item) {
   &-remove {
     flex: none;
     margin-left: 5px;
-    background-image: url('@/assets/icons/home-website.png');
+    background-image: url('@/assets/icons/home-websites.png');
   }
   &-edit {
     --icon-base: -10px -200px;

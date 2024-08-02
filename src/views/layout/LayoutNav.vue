@@ -1,4 +1,4 @@
-<!-- 导航 -->
+<!-- 导航栏 -->
 <template>
   <div class="mx-nav">
     <RouterLink

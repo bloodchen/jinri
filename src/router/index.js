@@ -15,9 +15,9 @@ const router = createRouter({
       component: () => import('@/views/pages/websites/index.vue')
     },
     {
-      path: '/shopping',
-      name: 'shopping',
-      component: () => import('@/views/pages/shopping/index.vue')
+      path: '/weather',
+      name: 'weather',
+      component: () => import('@/views/pages/weather/index.vue')
     },
     {
       path: '/finance',
@@ -25,14 +25,14 @@ const router = createRouter({
       component: () => import('@/views/pages/finance/index.vue')
     },
     {
+      path: '/shopping',
+      name: 'shopping',
+      component: () => import('@/views/pages/shopping/index.vue')
+    },
+    {
       path: '/tools',
       name: 'tools',
       component: () => import('@/views/pages/tools/index.vue')
-    },
-    {
-      path: '/weather',
-      name: 'weather',
-      component: () => import('@/views/pages/weather/index.vue')
     }
   ]
 });

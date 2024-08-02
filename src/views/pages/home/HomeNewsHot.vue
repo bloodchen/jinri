@@ -1,4 +1,4 @@
-<!-- 首页-新闻-新闻搜索排行榜 -->
+<!-- 首页-新闻搜索排行榜 -->
 <template>
   <MxTabs
     v-model="currentTabName"
@@ -33,7 +33,7 @@ const currentTabName = ref('hot');
 
 // 获取数据
 const dataList = ref([]);
-api.getBaiduHotword().then(({ data }) => {
+api.getSearchHotwordFromBaidu().then(({ data }) => {
   dataList.value = data.success ? data.data.cards[0].content.slice(0, 10) : [];
 });
 </script>

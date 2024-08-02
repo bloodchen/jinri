@@ -1,4 +1,4 @@
-<!-- 首页-新闻-轮播图 -->
+<!-- 首页-新闻轮播图 -->
 <template>
   <MxSwiper class="mx-hfnews">
     <MxSwiperSlide

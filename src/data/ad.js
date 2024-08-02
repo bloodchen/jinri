@@ -1,42 +1,42 @@
-// 顶栏-右上角撕页广告
-export const headerTriangle = {
-  title: '超级红包',
-  url: 'https://s.click.taobao.com/8ll47du',
-  img: './images/header-triangle/tb.png',
-  startTime: '2024-08-01 19:20:00',
-  endTime: '2024-08-01 19:20:00'
-};
-
-// 顶栏-右上角动图广告
-export const headerTopbarRight = {
+// 顶栏-中间
+export const adTopbarCenter = {
   title: '天猫',
   url: 'https://s.click.taobao.com/qJZRSnt',
-  img: './images/header-topbar-right/tmall.gif',
+  img: './images/ad/topbar-center.gif',
   startTime: '2024-08-01 19:20:00',
   endTime: '2024-08-01 19:20:00'
 };
 
-// 顶栏-右上角轮播广告
-export const headerTopbarSliderList = [
+// 顶栏-右侧撕角
+export const adTopbarRightTriangle = {
+  title: '超级红包',
+  url: 'https://s.click.taobao.com/8ll47du',
+  img: './images/ad/topbar-triangle.png',
+  startTime: '2024-08-01 19:20:00',
+  endTime: '2024-08-01 19:20:00'
+};
+
+// 顶栏-右侧轮播
+export const adTopbarSliders = [
   {
     name: 'jd',
     url: 'https://u.jd.com/kbQv9J4',
-    img: './images/header-topbar-slider/jd.png'
+    img: './images/topbar-sliders/jd.png'
   },
   {
     name: 'taobao',
     url: 'https://s.click.taobao.com/qJZRSnt',
-    img: './images/header-topbar-slider/taobao.png'
+    img: './images/topbar-sliders/taobao.png'
   },
   {
     name: '58',
     url: 'https://go.mxfast.com/58/',
-    img: './images/header-topbar-slider/58.png'
+    img: './images/topbar-sliders/58.png'
   }
 ];
 
-// 首页-网址导航-底部广告
-export const homeWebsiteBottomList = [
+// 首页-网址导航-底部
+export const adHomeWebsiteBottom = [
   {
     title: '携程酒店',
     url: 'https://go.mxfast.com/ctrip/'

@@ -1,4 +1,4 @@
-<!-- 顶栏-搜索栏 -->
+<!-- 搜索栏 -->
 <template>
   <div class="mx-searchbar">
     <!-- 搜索引擎 -->
@@ -145,8 +145,8 @@
 import { ref, computed } from 'vue';
 import { useStorage, onClickOutside } from '@vueuse/core';
 
+import engineGroupList from '@/data/searchbar-engines';
 import api from '@/api';
-import engineGroupList from '@/data/header-searchbar-engines';
 
 // 搜索引擎配置 {groupName: 'website', engineName_website: 'baidu'}
 const engineConfig = useStorage('search-engine-config', {});
@@ -266,11 +266,11 @@ async function getServerSuggectList() {
     suggestList.value = [];
   }
   if (currentEngine.value.engineTitle === '汽车之家') {
-    api.getAutohomeSuggest(keyword.value, res => {
+    api.getSearchSuggestFromAutohome(keyword.value, res => {
       suggestList.value = res.split(',');
     });
   } else {
-    const res = await api.getBaiduSuggest(keyword.value);
+    const res = await api.getSearchSuggestFromBaidu(keyword.value);
     suggestList.value = res.s;
   }
 }

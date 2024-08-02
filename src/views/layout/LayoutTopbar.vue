@@ -1,4 +1,4 @@
-<!-- 顶栏-工具栏 -->
+<!-- 顶栏 -->
 <template>
   <div class="mx-topbar">
     <!-- logo -->
@@ -8,7 +8,7 @@
     >
       <img
         class="mx-topbar-logo-img"
-        src="@/assets/images/header-topbar-logo.png"
+        src="@/assets/images/topbar-logo.png"
         alt="logo"
       >
     </MxLink>
@@ -98,23 +98,8 @@
           <span>反馈</span>
         </MxLink>
       </div>
-      <!-- 右侧广告 -->
-      <div
-        v-if="rightAdVisible"
-        class="mx-topbar-right"
-      >
-        <MxLink
-          class="mx-topbar-right-link"
-          :herf="headerTopbarRight.url"
-          :title="headerTopbarRight.title"
-        >
-          <img
-            class="mx-topbar-right-img"
-            :src="headerTopbarRight.img"
-            :alt="headerTopbarRight.title"
-          >
-        </MxLink>
-      </div>
+      <!-- 广告 -->
+      <AdTopbarCenter />
     </div>
     <!-- 切换城市 -->
     <WeatherLocaltion
@@ -167,20 +152,8 @@
         </MxBtn>
       </template>
     </MxDialog>
-    <!-- 轮播广告 -->
-    <MxSwiper class="mx-topbar-slider">
-      <MxSwiperSlide
-        v-for="item in headerTopbarSliderList"
-        :key="item.name"
-      >
-        <MxLink :href="item.url">
-          <img
-            :src="item.img"
-            :alt="item.name"
-          >
-        </MxLink>
-      </MxSwiperSlide>
-    </MxSwiper>
+    <!-- 广告 -->
+    <AdTopbarSliders />
   </div>
 </template>
 
@@ -190,15 +163,11 @@ import { useStorage } from '@vueuse/core';
 import solarLunar from 'solarLunar';
 
 import WeatherLocaltion from '@/views/pages/weather/WeatherLocaltion.vue';
+import AdTopbarCenter from '@/views/ad/AdTopbarCenter.vue';
+import AdTopbarSliders from '@/views/ad/AdTopbarSliders.vue';
 
-import { isBetween } from '@/utiles';
-import { headerTopbarRight, headerTopbarSliderList } from '@/data/ads.js';
-import emailList from '@/data/header-topbar-emails.js';
+import emailList from '@/data/topbar-emails.js';
 import api from '@/api';
-
-// 右侧广告
-const rightAdVisible = ref(false);
-rightAdVisible.value = isBetween(headerTopbarRight.startTime, headerTopbarRight.endTime);
 
 // 邮箱
 const emailDialogVisible = ref(false);
@@ -261,13 +230,13 @@ const weatherAqiStyle = computed(() => {
   }
 });
 
-// 打开定位弹窗
+// 天气-打开定位弹窗
 const weaterLocaltionRef = ref(null);
 function showWeatherLocation() {
   weaterLocaltionRef.value.init(weatherCityId.value);
 }
 
-// 切换定位
+// 天气-切换定位
 function changeWeatherLocation(id) {
   weatherCityId.value = id;
   getWeatherData();
@@ -276,6 +245,7 @@ function changeWeatherLocation(id) {
 
 <style lang="scss">
 .mx-topbar {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -329,7 +299,7 @@ function changeWeatherLocation(id) {
     &-icon:hover {
       color: #07f;
       .mx-icon {
-        background-image: url('@/assets/icons/header-topbar-common.png');
+        background-image: url('@/assets/icons/topbar-common.png');
       }
       .is-home {
         --icon-base: 0 -36px;
@@ -362,7 +332,7 @@ function changeWeatherLocation(id) {
     display: inline-block;
     width: 146px;
     height: 25px;
-    background-image: url('@/assets/icons/header-topbar-home.png');
+    background-image: url('@/assets/icons/topbar-home.png');
     &:hover {
       background-position: 0 -26px;
     }
@@ -383,43 +353,6 @@ function changeWeatherLocation(id) {
       height: 16px;
       margin-left: 5px;
       background-image: url('@/assets/icons/weather-aqi.png');
-    }
-  }
-
-  // 右侧广告
-  &-right {
-    position: relative;
-    width: 85px;
-    height: 60px;
-    &-link {
-      position: absolute;
-      top: 0;
-    }
-    &-link,
-    &-img {
-      display: block;
-      width: 85px;
-    }
-  }
-
-  // 轮播广告
-  &-slider {
-    width: 140px;
-    height: 48px;
-    .swiper-button-prev,
-    .swiper-button-next {
-      --swiper-navigation-size: 12px;
-
-      display: none;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-    }
-    &:hover {
-      .swiper-button-prev,
-      .swiper-button-next {
-        display: flex;
-      }
     }
   }
 }

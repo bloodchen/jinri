@@ -107,7 +107,7 @@ function init(id) {
 
 // 获取省
 async function getProvinceMap() {
-  const { data } = await api.getWeatherAreaById('provinces');
+  const { data } = await api.getWeatherLocationById('provinces');
   provinceMap.value = data;
 }
 
@@ -115,7 +115,7 @@ async function getProvinceMap() {
 // 'init'（初始化时）'change'（修改时）
 async function getCityMap(type) {
   const path = `cities?province-id=${provinceId.value}`;
-  const { data } = await api.getWeatherAreaById(path);
+  const { data } = await api.getWeatherLocationById(path);
   cityMap.value = data;
   if (type === 'init') return;
   // 如果是修改省份后重新获取城市，需要获取默认选中的城市，然后再获取区县
@@ -127,7 +127,7 @@ async function getCityMap(type) {
 // 'init'（初始化时）'change'（修改时）
 async function getDistrictMap(type) {
   const path = `districts?province-id=${provinceId.value}&city-id=${cityId.value}`;
-  const { data } = await api.getWeatherAreaById(path);
+  const { data } = await api.getWeatherLocationById(path);
   districtMap.value = data;
   if (type === 'init') return;
   // 如果是修改城市后重新获取区县，需要获取默认选中的区县

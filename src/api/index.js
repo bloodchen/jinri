@@ -26,28 +26,28 @@ export default {
   getWeatherDetailByCityId(id) {
     return jsonp(`https://api-i.maxthon.cn/tianqi/api/weather.php?id=${id}`);
   },
-  // 天气-获取省市区
-  // provinces
-  // cities?province-id=
-  // districts?province-id=&city-id=
-  getWeatherAreaById(path) {
+  // 天气-获取位置
+  // 省 provinces
+  // 市 cities?province-id=
+  // 区 districts?province-id=&city-id=
+  getWeatherLocationById(path) {
     return axios.post(`https://i.maxthon.cn/geo/${path}`);
   },
-  // 百度热搜
-  getBaiduHotword() {
+  // 搜索-百度热搜
+  getSearchHotwordFromBaidu() {
     return axios.get('https://nowcn-api.maxthon.cn/now/v1/hotword');
   },
-  // 百度搜索建议
-  getBaiduSuggest(wd) {
+  // 搜索-百度搜索建议
+  getSearchSuggestFromBaidu(wd) {
     return jsonp(`https://unionsug.baidu.com/su?json=1&from=imaxthoncn&wd=${wd}`, { jsonpCallback: 'cb' });
   },
-  // 汽车之家搜索建议
-  getAutohomeSuggest(wd, cb) {
+  // 搜索-汽车之家搜索建议
+  getSearchSuggestFromAutohome(wd, cb) {
     window.Sou.Autocomplate.bindAutocomplate = cb;
     jsonp(`https://sou.autohome.com.cn/Controls/AutoComplateQuery.ashx?q=${wd}`);
   },
   // 首页-网址导航
-  websiteRequest(url, params = {}) {
+  websitesRequest(url, params = {}) {
     const data = new URLSearchParams();
     for (const key in params) {
       data.append(key, params[key]);
@@ -60,17 +60,17 @@ export default {
   // 首页-常用网址-排序（已停用，改为本地存储）
   // params = { orders: '1,2,3,4,5' }
   setHomePopularSitesOrders(params) {
-    return this.websiteRequest('https://icn-api.maxthon.com/api/websites/setOrders', params);
+    return this.websitesRequest('https://icn-api.maxthon.com/api/websites/setOrders', params);
   },
   // 首页-常用网址-重置排序（已停用，改为本地存储）
   resetHomePopularSitesOrders() {
-    return this.websiteRequest('https://icn-api.maxthon.com/api/websites/removeOrders');
+    return this.websitesRequest('https://icn-api.maxthon.com/api/websites/removeOrders');
   },
   // 首页-最常访问网址（已停用，改为本地存储） get, add, edit, remove, swap, reset, reset-at-start-up
   async getHomeFavoriteSites(path, params) {
     if (path !== 'get') return;
     try {
-      const { data } = await this.websiteRequest(`https://icn-api.maxthon.com/api/fav/${path}`, params);
+      const { data } = await this.websitesRequest(`https://icn-api.maxthon.com/api/fav/${path}`, params);
       if (data.error_code) {
         return null;
       } else {

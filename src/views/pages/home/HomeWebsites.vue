@@ -2,23 +2,23 @@
 <template>
   <MxTabs
     v-model="currentTabName"
-    class="mx-hwebsite"
+    class="mx-hwebsites"
     :autoplay="false"
     theme="blue"
   >
     <!-- 顶部 -->
     <template #header>
       <!-- 按钮 -->
-      <div class="mx-hwebsite-btn-row">
+      <div class="mx-hwebsites-btn-row">
         <span
-          class="mx-hwebsite-btn-item"
+          class="mx-hwebsites-btn-item"
           @click="dialogVisible = true"
         >恢复默认</span>
         <div
-          class="mx-hwebsite-btn-item"
+          class="mx-hwebsites-btn-item"
           @click="addSite"
         >
-          <MxIcon class="mx-hwebsite-btn-icon is-add" />
+          <MxIcon class="mx-hwebsites-btn-icon is-add" />
           <span>添加网址</span>
         </div>
       </div>
@@ -41,19 +41,19 @@
     </template>
     <!-- 内容 -->
     <MxTabPane :data="{ name: 'popular', label: '常用网址' }">
-      <HomeWebsitePopular ref="popularRef" />
+      <HomeWebsitesPopular ref="popularRef" />
     </MxTabPane>
     <MxTabPane :data="{ name: 'favorite', label: '经常访问网站' }">
-      <HomeWebsiteFavorite ref="favoriteRef" />
+      <HomeWebsitesFavorite ref="favoriteRef" />
     </MxTabPane>
     <!-- 底部广告 -->
     <template #footer>
-      <div class="mx-hwebsite-bottom">
+      <div class="mx-hwebsites-bottom">
         <MxLink
-          v-for="item in homeWebsiteBottomList"
+          v-for="item in adHomeWebsiteBottom"
           :key="item.title"
           :href="item.url"
-          class="mx-hwebsite-bottom-item"
+          class="mx-hwebsites-bottom-item"
         >
           {{ item.title }}
         </MxLink>
@@ -65,13 +65,13 @@
 <script setup>
 import { ref } from 'vue';
 import { useStorage } from '@vueuse/core';
+import { adHomeWebsiteBottom } from '@/data/ad';
 
-import { homeWebsiteBottomList } from '@/data/ads';
-import HomeWebsitePopular from './HomeWebsitePopular.vue';
-import HomeWebsiteFavorite from './HomeWebsiteFavorite.vue';
+import HomeWebsitesPopular from './HomeWebsitesPopular.vue';
+import HomeWebsitesFavorite from './HomeWebsitesFavorite.vue';
 
 // 当前tab
-const currentTabName = useStorage('tab-hwebsite', 'popular');
+const currentTabName = useStorage('tab-hwebsites', 'popular');
 const popularRef = ref(null);
 const favoriteRef = ref(null);
 
@@ -94,7 +94,7 @@ function addSite() {
 </script>
 
 <style lang="scss">
-.mx-hwebsite {
+.mx-hwebsites {
   flex: auto;
   .mx-tab-pane {
     height: 291px;
@@ -112,7 +112,7 @@ function addSite() {
       --icon-size: 26px;
 
       margin-right: -5px;
-      background-image: url('@/assets/icons/home-website.png');
+      background-image: url('@/assets/icons/home-websites.png');
     }
     &-item {
       margin-left: 10px;
