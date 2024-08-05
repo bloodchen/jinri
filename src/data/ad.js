@@ -1,7 +1,7 @@
 // 皮肤
 export const adSkin = {
   title: '天猫',
-  url: 'https://s.click.taobao.com/qJZRSnt',
+  url: '',
   img: './images/ad/skin-bg.png',
   startTime: '2024-08-01 19:20:00',
   endTime: '2024-08-01 19:20:00'
@@ -10,7 +10,7 @@ export const adSkin = {
 // 红包雨
 export const adRain = {
   title: '天猫',
-  url: 'https://s.click.taobao.com/qJZRSnt',
+  url: '',
   startTime: '2024-08-01 19:20:00',
   endTime: '2024-08-01 19:20:00'
 };
@@ -18,7 +18,7 @@ export const adRain = {
 // 顶栏-中间
 export const adTopbarCenter = {
   title: '天猫',
-  url: 'https://s.click.taobao.com/qJZRSnt',
+  url: '',
   img: './images/ad/topbar-center.gif',
   startTime: '2024-08-01 19:20:00',
   endTime: '2024-08-01 19:20:00'
@@ -27,7 +27,7 @@ export const adTopbarCenter = {
 // 顶栏-右侧撕角
 export const adTopbarRightTriangle = {
   title: '超级红包',
-  url: 'https://s.click.taobao.com/8ll47du',
+  url: '',
   img: './images/ad/topbar-triangle.png',
   startTime: '2024-08-01 19:20:00',
   endTime: '2024-08-01 19:20:00'
@@ -37,12 +37,12 @@ export const adTopbarRightTriangle = {
 export const adTopbarSliders = [
   {
     name: 'jd',
-    url: 'https://u.jd.com/kbQv9J4',
+    url: 'https://union-click.jd.com/jdc?e=618%7Cpc%7C&p=JF8BAKkJK1olXDYDZBoCUBVIMzZNXhpXVhgcFgcDTBBPHDRdBAlLARgyLTY1DhtHQzNqTiFhXAFjDwgVYExARWMEK14VXAcAUVhUCU0nAG4IG1wUVAMFUW5tCEonSAEJK1kUXAQFUlpbDE4nA2kLGFIWVQAAU15fAXsQA2Y4z-iWio-Lg9rj0d2u18eRK2slXjYFVFdJDjlWUXsOaWslXDYBZG5fCUoTCl84K2sl',
     img: './images/ad/topbar-sliders-jd.png'
   },
   {
     name: 'taobao',
-    url: 'https://s.click.taobao.com/qJZRSnt',
+    url: 'https://s.click.taobao.com/fSrtxcu',
     img: './images/ad/topbar-sliders-tb.png'
   },
   {

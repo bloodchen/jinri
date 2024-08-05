@@ -7,6 +7,11 @@ export function guid() {
   });
 }
 
+// 获取随机整数
+export function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // 当前时间是否在提供的两个时间之间
 export function isBetween(date1, date2) {
   const now = Date.now();
