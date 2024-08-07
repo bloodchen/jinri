@@ -10,7 +10,7 @@
 <script setup>
 import { useStorage } from '@vueuse/core';
 import HomeWebsitesGroup from './HomeWebsitesGroup.vue';
-import defaultDataList from '@/data/home-popular-websites.js';
+import defaultDataList from '@/data/home-websites-popular.js';
 
 // 初始化数据
 const dataList = useStorage('home-website-popular', defaultDataList);

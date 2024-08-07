@@ -20,7 +20,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { adTopbarRightTriangle } from '@/data/ad.js';
-import { getAdVisible, setAdNextOpenTime } from '@/utiles';
+import { getAdVisible, setAdNextOpenTime } from '@/utils';
 
 // 是否显示
 const isVisible = ref(getAdVisible(adTopbarRightTriangle, 'triangle'));

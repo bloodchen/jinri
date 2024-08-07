@@ -22,16 +22,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
-
-// 导航
-const navItems = [
-  { label: '首页', name: 'home', path: '/' },
-  { label: '网址', name: 'websites', path: '/websites' },
-  { label: '天气', name: 'weather', path: '/weather' },
-  { label: '财经', name: 'finance', path: '/finance' },
-  { label: '购物', name: 'shopping', path: '/shopping' },
-  { label: '工具', name: 'tools', path: '/tools' }
-];
+import navItems from '@/data/layout-nav.js';
 
 // 当前选中项
 const route = useRoute();

@@ -170,7 +170,7 @@ import WeatherLocaltion from '@/views/pages/weather/WeatherLocaltion.vue';
 import AdTopbarCenter from '@/views/ad/AdTopbarCenter.vue';
 import AdTopbarSliders from '@/views/ad/AdTopbarSliders.vue';
 
-import emailList from '@/data/topbar-emails.js';
+import emailList from '@/data/layout-topbar-emails.js';
 import api from '@/api';
 
 // 邮箱

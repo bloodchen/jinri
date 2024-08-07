@@ -27,7 +27,7 @@
 <script setup>
 import { ref } from 'vue';
 import { adRain } from '@/data/ad.js';
-import { getAdVisible, setAdNextOpenTime, getRandomInteger } from '@/utiles';
+import { getAdVisible, setAdNextOpenTime, getRandomInteger } from '@/utils';
 
 const emits = defineEmits(['close']);
 

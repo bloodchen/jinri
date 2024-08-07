@@ -26,7 +26,7 @@
     <!-- 链接 -->
     <div class="mx-footer-links">
       <MxLink
-        v-for="item in linkItems"
+        v-for="item in footerLinks"
         :key="item.label"
         :href="item.url"
         class="mx-footer-links-item"
@@ -37,7 +37,7 @@
     <!-- 下载 -->
     <div class="mx-footer-codes">
       <div
-        v-for="item in codeItems"
+        v-for="item in footerDownloads"
         :key="item.label"
         class="mx-footer-codes-item"
       >
@@ -46,7 +46,7 @@
           :href="item.url"
         >
           <img
-            :src="item.img"
+            src="@/assets/images/footer-code.png"
             :alt="item.label"
             class="mx-footer-codes-img"
           >
@@ -59,26 +59,10 @@
 </template>
 
 <script setup>
-import img from '@/assets/images/footer-code.png';
+import { footerLinks, footerDownloads } from '@/data/layout-footer.js';
 
 // 今年
 const currentYear = new Date().getFullYear();
-
-// 链接
-const linkItems = [
-  { label: '傲游浏览器', url: 'https://www.maxthon.com/zh/' },
-  { label: '傲游微博', url: 'https://weibo.com/maxthon/?c=spr_web_yilang_maxthon_weibo_t001' },
-  { label: '傲游论坛', url: 'https://bbs.maxthon.cn/' },
-  { label: '关于我们', url: 'https://www.maxthon.com/zh/docs/about-us/' },
-  { label: '联系我们', url: 'https://www.maxthon.com/zh/docs/contact' },
-  { label: '用户反馈', url: 'https://report.maxthon.com/mx/bug/post/' }
-];
-
-// 二维码
-const codeItems = [
-  { label: '傲游浏览器 IOS 版', url: 'https://appsto.re/cn/RX8pG.i', img },
-  { label: '傲游浏览器 Android 版', url: 'http://www.maxthon.com/zh/', img }
-];
 </script>
 
 <style lang="scss">

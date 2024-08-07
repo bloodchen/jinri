@@ -50,10 +50,10 @@
 import { ref } from 'vue';
 import { useCookies } from '@vueuse/integrations/useCookies';
 import { useStorage } from '@vueuse/core';
-import { getGuid } from '@/utiles';
+import { getGuid } from '@/utils';
 
 import HomeWebsitesGroup from './HomeWebsitesGroup.vue';
-import defaultDataList from '@/data/home-favorite-websites.js';
+import defaultDataList from '@/data/home-websites-favorite.js';
 import api from '@/api';
 
 // 是否已登录

@@ -17,7 +17,7 @@
 <script setup>
 import { ref } from 'vue';
 import { adSkin } from '@/data/ad';
-import { getAdVisible } from '@/utiles';
+import { getAdVisible } from '@/utils';
 
 // 是否显示
 const isVisible = ref(getAdVisible(adSkin));

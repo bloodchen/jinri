@@ -9,6 +9,7 @@
         <MxLink
           v-for="item in tabItems"
           :key="item.name"
+          :target="props.target"
           class="mx-tabs-title"
           :class="{
             'is-active': tabItems.length > 1 && item.name === props.modelValue,
@@ -42,6 +43,10 @@ const props = defineProps({
   modelValue: { type: String, default: '' },
   // 是否自动轮播
   autoplay: { type: Boolean, default: true },
+  // 切换方式
+  trigger: { type: String, default: 'hover' },
+  // 打开链接的方式
+  target: { type: String, default: '_blank' },
   // 主题
   theme: { type: String, default: 'gray' }
 });
@@ -56,7 +61,7 @@ const currentTabName = computed(() => props.modelValue);
 provide('currentTabName', currentTabName);
 
 // 自动切换标签
-let autoTimer;
+let autoTimer = null;
 if (props.autoplay) {
   const currentTabIndex = tabItems.findIndex(item => item.name === props.modelValue);
   let nextTabIndex = currentTabIndex;
@@ -70,18 +75,21 @@ if (props.autoplay) {
 }
 
 // 鼠标滑过切换标签
-let hoveTimer;
+let hoveTimer = null;
 function onMouseenter({ name }) {
+  if (props.trigger === 'none') return;
   clearInterval(autoTimer);
   clearTimeout(hoveTimer);
   hoveTimer = setTimeout(() => updateTab(name), 500);
 }
 function onMouseleave() {
+  if (props.trigger === 'none') return;
   clearTimeout(hoveTimer);
 }
 
 // 鼠标点击切换标签
 function onClick({ name, url }) {
+  if (props.trigger === 'none') return;
   clearInterval(autoTimer);
   clearTimeout(hoveTimer);
   updateTab(name);

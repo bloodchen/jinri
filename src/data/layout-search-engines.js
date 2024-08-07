@@ -7,7 +7,7 @@ export default [
       {
         engineName: 'baidu',
         engineTitle: '百度',
-        engineLogo: '/images/searchbar-engines/baidu.png',
+        engineLogo: '/images/layout-search-engines/baidu.png',
         engineUrl: 'https://www.baidu.com/?tn=myie2_2_dg&ch=1',
         searchUrl: 'https://www.baidu.com/s',
         searchParams: {
@@ -19,7 +19,7 @@ export default [
       {
         engineName: 'bing',
         engineTitle: '必应',
-        engineLogo: '/images/searchbar-engines/bing.png',
+        engineLogo: '/images/layout-search-engines/bing.png',
         engineUrl: 'https://cn.bing.com/?pc=CNPA13',
         searchUrl: 'https://www.bing.com/search',
         searchParams: {
@@ -36,7 +36,7 @@ export default [
       {
         engineName: 'youku',
         engineTitle: '优酷视频',
-        engineLogo: '/images/searchbar-engines/youku.png',
+        engineLogo: '/images/layout-search-engines/youku.png',
         engineUrl: 'https://www.youku.com/',
         searchUrl: 'https://www.soku.com/v',
         searchParams: {
@@ -47,7 +47,7 @@ export default [
       {
         engineName: 'baidu-video',
         engineTitle: '百度视频',
-        engineLogo: '/images/searchbar-engines/baidu-video.png',
+        engineLogo: '/images/layout-search-engines/baidu-video.png',
         engineUrl: 'https://v.baidu.com/',
         searchUrl: 'https://video.baidu.com/v',
         searchParams: {
@@ -63,7 +63,7 @@ export default [
       {
         engineName: 'kankan',
         engineTitle: '迅雷视频',
-        engineLogo: '/images/searchbar-engines/kankan.png',
+        engineLogo: '/images/layout-search-engines/kankan.png',
         engineUrl: 'https://www.kankan.com/',
         searchUrl: 'https://search.kankan.com/search.php',
         searchParams: {
@@ -79,7 +79,7 @@ export default [
       {
         engineName: 'baidu-photo',
         engineTitle: '百度图片',
-        engineLogo: '/images/searchbar-engines/baidu-photo.png',
+        engineLogo: '/images/layout-search-engines/baidu-photo.png',
         engineUrl: 'https://image.baidu.com/',
         searchUrl: 'https://image.baidu.com/search/index',
         searchParams: {
@@ -98,7 +98,7 @@ export default [
       {
         engineName: 'baidu-music',
         engineTitle: '百度音乐',
-        engineLogo: '/images/searchbar-engines/baidu-music.png',
+        engineLogo: '/images/layout-search-engines/baidu-music.png',
         engineUrl: 'https://music.baidu.com/',
         searchUrl: 'https://music.baidu.com/search',
         searchParams: {
@@ -114,7 +114,7 @@ export default [
       {
         engineName: 'baidu-zhidao',
         engineTitle: '百度知道',
-        engineLogo: '/images/searchbar-engines/baidu-zhidao.png',
+        engineLogo: '/images/layout-search-engines/baidu-zhidao.png',
         engineUrl: 'https://zhidao.baidu.com/',
         searchUrl: 'https://zhidao.baidu.com/q',
         searchParams: {
@@ -129,7 +129,7 @@ export default [
       {
         engineName: 'baidu-baike',
         engineTitle: '百度百科',
-        engineLogo: '/images/searchbar-engines/baidu-baike.png',
+        engineLogo: '/images/layout-search-engines/baidu-baike.png',
         engineUrl: 'https://baike.baidu.com/',
         searchUrl: 'https://baike.baidu.com/search/word',
         searchParams: {
@@ -147,7 +147,7 @@ export default [
       {
         engineName: 'baidu-map',
         engineTitle: '百度地图',
-        engineLogo: '/images/searchbar-engines/baidu-map.png',
+        engineLogo: '/images/layout-search-engines/baidu-map.png',
         engineUrl: 'https://map.baidu.com/',
         searchUrl: 'https://map.baidu.com/m',
         searchParams: {
@@ -163,7 +163,7 @@ export default [
       {
         engineName: 'taobao',
         engineTitle: '淘宝',
-        engineLogo: '/images/searchbar-engines/taobao.png',
+        engineLogo: '/images/layout-search-engines/taobao.png',
         engineUrl: 'https://www.taobao.com/?mode=&ref=&ali_trackid=2%3Amm_12431063_0_0%3A92705700_2_282229071',
         searchUrl: 'https://ai.taobao.com/search/index.htm',
         searchParams: {
@@ -182,7 +182,7 @@ export default [
       {
         engineName: 'dangdang',
         engineTitle: '当当',
-        engineLogo: '/images/searchbar-engines/dangdang.png',
+        engineLogo: '/images/layout-search-engines/dangdang.png',
         engineUrl: 'https://union.dangdang.com/transfer.php?from=P-303956&sys_id=1&ad_type=40&backurl=https://www.dangdang.com',
         searchUrl: 'https://union.dangdang.com/transfer.php',
         searchParams: {
@@ -196,7 +196,7 @@ export default [
       {
         engineName: 'amazon',
         engineTitle: '亚马逊',
-        engineLogo: '/images/searchbar-engines/amazon.png',
+        engineLogo: '/images/layout-search-engines/amazon.png',
         engineUrl: 'https://www.amazon.cn/?tag=maxthon02-23',
         searchUrl: 'https://www.amazon.cn/s/ref=nb_sb_noss',
         searchParams: {
@@ -211,7 +211,7 @@ export default [
       {
         engineName: 'jd',
         engineTitle: '京东',
-        engineLogo: '/images/searchbar-engines/jd.png',
+        engineLogo: '/images/layout-search-engines/jd.png',
         engineUrl: 'https://dwz.cn/6nhQjN',
         searchUrl: 'https://search.jd.com/Search',
         searchParams: {
@@ -227,7 +227,7 @@ export default [
       {
         engineName: 'youdao-fanyi',
         engineTitle: '有道翻译',
-        engineLogo: '/images/searchbar-engines/youdao-fanyi.png',
+        engineLogo: '/images/layout-search-engines/youdao-fanyi.png',
         engineUrl: 'https://www.youdao.com/',
         searchUrl: 'https://fanyi.youdao.com/translate',
         searchParams: {
@@ -237,7 +237,7 @@ export default [
       {
         engineName: 'baidu-fanyi',
         engineTitle: '百度翻译',
-        engineLogo: '/images/searchbar-engines/baidu-fanyi.png',
+        engineLogo: '/images/layout-search-engines/baidu-fanyi.png',
         engineUrl: 'https://fanyi.baidu.com/translate',
         searchUrl: 'https://fanyi.baidu.com/',
         searchParams: {}
@@ -251,7 +251,7 @@ export default [
       {
         engineName: 'autohome',
         engineTitle: '汽车之家',
-        engineLogo: '/images/searchbar-engines/autohome.png',
+        engineLogo: '/images/layout-search-engines/autohome.png',
         engineUrl: 'https://www.autohome.com.cn/?pvareaid=101194',
         searchUrl: 'https://sou.autohome.com.cn/zonghe',
         searchParams: {

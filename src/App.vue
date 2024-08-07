@@ -43,6 +43,7 @@ const isAdCenterVisible = ref(!adCenter.openAfterRain);
   &-layout {
     position: relative;
     z-index: 1;
+    padding-bottom: 30px;
   }
   &-layout-module {
     min-width: 1000px;

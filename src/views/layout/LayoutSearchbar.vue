@@ -145,7 +145,7 @@
 import { ref, computed } from 'vue';
 import { useStorage, onClickOutside } from '@vueuse/core';
 
-import engineGroupList from '@/data/searchbar-engines';
+import engineGroupList from '@/data/layout-search-engines.js';
 import api from '@/api';
 
 // 搜索引擎配置 {groupName: 'website', engineName_website: 'baidu'}

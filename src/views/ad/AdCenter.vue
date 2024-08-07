@@ -24,7 +24,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { getAdVisible, setAdNextOpenTime } from '@/utiles';
+import { getAdVisible, setAdNextOpenTime } from '@/utils';
 import { adCenter } from '@/data/ad.js';
 
 // 是否显示

@@ -68,6 +68,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import { newsMain } from '@/data/home-news-nav.js';
 import api from '@/api';
 import HomeNewsFocus from './HomeNewsFocus.vue';
 
@@ -75,13 +76,7 @@ import HomeNewsFocus from './HomeNewsFocus.vue';
 const currentTabName = ref('chief');
 
 // 标签
-const tabItems = ref([
-  { name: 'chief', label: '要闻', data: null },
-  { name: 'ent', label: '娱乐', data: null },
-  { name: 'finance', label: '财经', data: null },
-  { name: 'social', label: '社会', data: null },
-  { name: 'military', label: '军事', data: null, url: 'https://ay.miercn.com/?maxthon' }
-]);
+const tabItems = ref(newsMain);
 
 // 获取新闻
 async function getDataList(name) {

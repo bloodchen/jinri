@@ -35,7 +35,7 @@
       <MxTabPane :data="{ name: 'game', label: '游戏专区' }">
         <MxIframe
           src="./iframes/game.html"
-          :border="false"
+          style="border: 0"
           height="340px"
         />
       </MxTabPane>

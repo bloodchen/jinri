@@ -21,7 +21,7 @@
 <script setup>
 import { ref } from 'vue';
 import { adTopbarCenter } from '@/data/ad.js';
-import { getAdVisible } from '@/utiles';
+import { getAdVisible } from '@/utils';
 
 const isVisible = ref(getAdVisible(adTopbarCenter));
 </script>

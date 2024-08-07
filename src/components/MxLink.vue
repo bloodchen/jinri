@@ -2,7 +2,7 @@
 <template>
   <a
     class="mx-link"
-    target="_blank"
+    :target="target"
     :class="{ 'need-hover': hover }"
   >
     <slot />
@@ -11,6 +11,7 @@
 
 <script setup>
 defineProps({
+  target: { type: String, default: '_blank' },
   hover: { type: Boolean, default: true }
 });
 </script>
