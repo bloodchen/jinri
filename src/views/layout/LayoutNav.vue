@@ -1,18 +1,19 @@
 <!-- 导航栏 -->
 <template>
   <div class="mx-nav">
-    <RouterLink
+    <MxLink
       v-for="(item, index) in navItems"
       :key="item.name"
-      :to="item.path"
+      :href="item.url"
       class="mx-nav-item"
       :class="{ 'is-active': item.name === route.name }"
       @mouseenter="cursorIndex = index"
       @mouseleave="cursorIndex = currentIndex"
     >
       {{ item.label }}
-    </RouterLink>
+    </MxLink>
     <div
+      v-if="currentIndex > -1"
       class="mx-nav-cursor"
       :style="cursorStyle"
     />
@@ -21,7 +22,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { useRoute, RouterLink } from 'vue-router';
+import { useRoute } from 'vue-router';
 import navItems from '@/data/layout-nav.js';
 
 // 当前选中项

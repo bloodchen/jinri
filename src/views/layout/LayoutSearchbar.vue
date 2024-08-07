@@ -5,8 +5,8 @@
     <div class="mx-searchbar-engine">
       <!-- logo -->
       <MxLink
-        :title="currentEngine.engineTitle"
         :href="currentEngine.engineUrl"
+        :title="currentEngine.engineTitle"
       >
         <img
           class="mx-searchbar-engine-logo"

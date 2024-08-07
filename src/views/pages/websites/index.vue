@@ -63,8 +63,8 @@
               <MxLink
                 v-for="n3 in n2.children"
                 :key="n3.title"
-                :title="n3.title"
                 :href="n3.url"
+                :title="n3.title"
                 class="mx-websites-n3-item"
               >
                 {{ n3.title }}

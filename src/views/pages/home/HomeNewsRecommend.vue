@@ -21,9 +21,9 @@
           <MxLink
             v-for="text in item.data.list"
             :key="text.title"
-            class="mx-hrnews-list-item"
-            :title="text.title"
             :href="text.url"
+            :title="text.title"
+            class="mx-hrnews-list-item"
           >
             <span class="mx-hrnews-list-dot">•</span>
             <span>{{ text.title }}</span>

@@ -3,8 +3,8 @@
   <MxLink
     v-if="isVisible"
     class="mx-ad-topbar-triangle"
-    :title="adTopbarRightTriangle.title"
     :href="adTopbarRightTriangle.url"
+    :title="adTopbarRightTriangle.title"
     :style="{ 'background-image': `url(${adTopbarRightTriangle.img})`, 'background-position-x': `${trianglePositionX}px` }"
     @mouseenter="onMouseenter"
     @mouseleave="onMouseleave"

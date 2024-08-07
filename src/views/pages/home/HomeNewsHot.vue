@@ -9,9 +9,9 @@
       <MxLink
         v-for="item in dataList"
         :key="item.eventId"
-        class="mx-hhnews-item"
-        :title="item.word"
         :href="`${item.url}&tn=68018901_dg`"
+        :title="item.word"
+        class="mx-hhnews-item"
       >
         <span
           class="mx-hhnews-rank"

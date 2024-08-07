@@ -12,9 +12,9 @@
       <MxLink
         v-for="item in dataList"
         :key="item.eventId"
-        class="mx-hotword-item"
-        :title="item.word"
         :href="`${item.url}&tn=68018901_dg`"
+        :title="item.word"
+        class="mx-hotword-item"
       >
         <span class="mx-hotword-title">{{ item.word }}</span>
         <img

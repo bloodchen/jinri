@@ -1,18 +1,26 @@
 <!-- 链接 -->
 <template>
   <a
-    class="mx-link"
+    :href="href"
     :target="target"
-    :class="{ 'need-hover': hover }"
+    class="mx-link"
+    :class="{ 'no-hover': !hover }"
   >
     <slot />
   </a>
 </template>
 
 <script setup>
-defineProps({
-  target: { type: String, default: '_blank' },
+import { computed } from 'vue';
+
+const props = defineProps({
+  href: { type: String, default: null },
   hover: { type: Boolean, default: true }
+});
+
+// 是否是外部链接
+const target = computed(() => {
+  return typeof props.href === 'string' && props.href.startsWith('http') ? '_target' : '_self';
 });
 </script>
 
@@ -20,8 +28,11 @@ defineProps({
 .mx-link {
   color: #222;
   cursor: pointer;
-  &.need-hover:hover {
+  :hover {
     color: #07f;
+  }
+  &.no-hover:hover {
+    color: inherit;
   }
 }
 </style>

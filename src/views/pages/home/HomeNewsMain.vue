@@ -25,9 +25,9 @@
             <MxLink
               v-for="midImg in item.data.midImg"
               :key="midImg.title"
-              class="mx-hmnews-img-link"
-              :title="midImg.title"
               :href="midImg.url"
+              :title="midImg.title"
+              class="mx-hmnews-img-link"
             >
               <img
                 class="mx-hmnews-img-img"
@@ -43,9 +43,9 @@
           <MxLink
             v-for="(text, index) in item.data.text"
             :key="text[0].title"
-            class="mx-hmnews-text-item"
-            :title="text[0].title"
             :href="text[0].url"
+            :title="text[0].title"
+            class="mx-hmnews-text-item"
           >
             <span
               v-if="index % 5 !== 0"
@@ -57,8 +57,8 @@
       </div>
       <!-- 底部链接 -->
       <MxLink
-        class="mx-hmnews-bottom"
         :href="item.url"
+        class="mx-hmnews-bottom"
       >
         查看更多
       </MxLink>

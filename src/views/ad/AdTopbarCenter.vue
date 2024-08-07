@@ -6,7 +6,7 @@
   >
     <MxLink
       class="mx-ad-topbar-center-link"
-      :herf="adTopbarCenter.url"
+      :href="adTopbarCenter.url"
       :title="adTopbarCenter.title"
     >
       <img

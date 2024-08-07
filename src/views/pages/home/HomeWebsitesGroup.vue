@@ -25,9 +25,9 @@
       <!-- 主要网址 -->
       <MxLink
         class="mx-hwebsites-link"
+        :href="!!dragStatus ? 'javascript:;' : item.url"
         :title="item.title"
         :style="{ 'color': item.color, 'font-weight': item.bold ? 'bold' : '' }"
-        :href="!!dragStatus ? 'javascript:;' : item.url"
       >
         <img
           v-if="item.titleImg"
@@ -49,9 +49,9 @@
         <span>&nbsp;•&nbsp;</span>
         <MxLink
           class="mx-hwebsites-link"
+          :href="!!dragStatus ? 'javascript:;' : item.subUrl"
           :title="item.subTitle"
           :style="{ 'color': item.subColor, 'font-weight': item.subBold ? 'bold' : '' }"
-          :href="!!dragStatus ? 'javascript:;' : item.subUrl"
         >
           {{ item.subTitle }}
         </MxLink>

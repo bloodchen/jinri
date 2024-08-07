@@ -37,8 +37,8 @@
         <div>
           <span>{{ lunarDate }}</span>
           <MxLink
-            class="mx-topbar-tools-toggle"
             href="http://qq.ip138.com/day/"
+            class="mx-topbar-tools-toggle"
           >
             [万年历]
           </MxLink>
@@ -53,32 +53,32 @@
           <span>{{ weatherData.city }}</span>
           <span
             class="mx-topbar-tools-toggle"
-            @click="weaterLocaltionVisible = true"
+            @click="weatherLocaltionVisible = true"
           >[切换]</span>
         </div>
-        <MxLink href="/weater">一周天气</MxLink>
+        <MxLink href="/weather">一周天气</MxLink>
       </div>
       <!-- 天气 -->
       <MxLink
         v-if="weatherData.today"
-        class="mx-topbar-tools-item mx-topbar-weather-row"
-        href="/weater"
+        href="/weather"
         :hover="false"
+        class="mx-topbar-tools-item mx-topbar-weather-row"
       >
         <img
           class="mx-topbar-weather-icon"
           :src="weatherData.iconLocal"
-          :alt="weatherData.today.iconTitle"
+          :alt="weatherData.today?.iconTitle"
         >
         <div class="mx-ml-5">
           <div class="mx-topbar-weather-row">
-            <span>{{ weatherData.today.iconTitle }}</span>
+            <span>{{ weatherData.today?.iconTitle }}</span>
             <span
               class="mx-topbar-weather-aqi"
               :style="weatherAqiStyle"
             />
           </div>
-          <div>{{ weatherData.today.ltemp }}~{{ weatherData.today.htemp }}</div>
+          <div>{{ weatherData.today?.ltemp }}~{{ weatherData.today?.htemp }}</div>
         </div>
       </MxLink>
       <!-- 换肤和反馈 -->
@@ -91,8 +91,8 @@
           <span>换肤</span>
         </div>
         <MxLink
-          class="mx-topbar-tools-icon"
           href="https://report.maxthon.com/mx/bug/post/"
+          class="mx-topbar-tools-icon"
         >
           <MxIcon class="is-feedback" />
           <span>反馈</span>
@@ -103,10 +103,10 @@
     </div>
     <!-- 切换城市 -->
     <WeatherLocaltion
-      v-if="weaterLocaltionVisible"
+      v-if="weatherLocaltionVisible"
       :default-id="weatherCityId"
       @confirm="changeWeatherLocation"
-      @close="weaterLocaltionVisible = false"
+      @close="weatherLocaltionVisible = false"
     />
     <!-- 邮箱 -->
     <MxDialog
@@ -142,9 +142,9 @@
       <div>把傲游今日下载到桌面，访问更方便</div>
       <template #footer>
         <MxLink
-          class="mx-topbar-home-link"
           href="/desktop/傲游今日.url"
           download="傲游今日.url"
+          class="mx-topbar-home-link"
           @click="homeDialogVisible = false"
         />
         <MxBtn
@@ -235,11 +235,11 @@ const weatherAqiStyle = computed(() => {
 });
 
 // 天气-定位弹窗
-const weaterLocaltionVisible = ref(false);
+const weatherLocaltionVisible = ref(false);
 
 // 天气-切换定位
 function changeWeatherLocation(id) {
-  weaterLocaltionVisible.value = false;
+  weatherLocaltionVisible.value = false;
   if (id !== weatherCityId.value) {
     weatherCityId.value = id;
     getWeatherData();

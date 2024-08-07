@@ -7,8 +7,8 @@
     >
       <MxLink
         class="mx-hfnews-link"
-        :title="focus.title"
         :href="focus.url"
+        :title="focus.title"
       >
         <img
           class="mx-hfnews-img"

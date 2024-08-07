@@ -4,9 +4,9 @@
     <MxLink
       v-for="item in toolsList"
       :key="item.label"
-      class="mx-htools-link"
-      :title="item.label"
       :href="item.url"
+      :title="item.label"
+      class="mx-htools-link"
     >
       <MxIcon
         class="mx-htools-icon"

@@ -9,13 +9,12 @@
         <MxLink
           v-for="item in tabItems"
           :key="item.name"
-          :target="props.target"
+          :href="item.url"
           class="mx-tabs-title"
           :class="{
             'is-active': tabItems.length > 1 && item.name === props.modelValue,
             'is-text': tabItems.length === 1
           }"
-          :href="item.url"
           @mouseenter="onMouseenter(item)"
           @mouseleave="onMouseleave"
           @click="onClick(item)"
@@ -45,8 +44,6 @@ const props = defineProps({
   autoplay: { type: Boolean, default: true },
   // 切换方式
   trigger: { type: String, default: 'hover' },
-  // 打开链接的方式
-  target: { type: String, default: '_blank' },
   // 主题
   theme: { type: String, default: 'gray' }
 });

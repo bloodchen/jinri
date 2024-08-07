@@ -7,14 +7,14 @@
       <span class="mx-footer-infos-bold">©</span>
       <span>{{ currentYear }} 北京傲游天下科技有限公司.</span>
       <MxLink
-        class="mx-footer-infos-link"
         href="https://beian.miit.gov.cn/#/Integrated/index"
+        class="mx-footer-infos-link"
       >
         京ICP备08011055号-2
       </MxLink>
       <MxLink
-        class="mx-footer-infos-link"
         href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802036007"
+        class="mx-footer-infos-link"
       >
         <img
           src="@/assets/images/footer-record.png"
@@ -42,8 +42,8 @@
         class="mx-footer-codes-item"
       >
         <MxLink
-          class="mx-footer-codes-link"
           :href="item.url"
+          class="mx-footer-codes-link"
         >
           <img
             src="@/assets/images/footer-code.png"
