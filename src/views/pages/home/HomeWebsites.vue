@@ -24,8 +24,9 @@
       </div>
       <!-- 恢复默认 -->
       <MxDialog
-        v-model="dialogVisible"
+        v-if="dialogVisible"
         title="恢复默认"
+        @close="dialogVisible = false"
       >
         <div>恢复默认将覆盖你当前的操作和显示，确认要执行此操作吗？</div>
         <template #footer>

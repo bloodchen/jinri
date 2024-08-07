@@ -6,7 +6,7 @@ export default [
     titleImg: '',
     url: 'https://www.baidu.com/index.php?tn=myie2_2_dg',
     color: null,
-    icon: './images/home-websites/baidu.png',
+    icon: '/images/home-websites/baidu.png',
     subTitle: '贴吧',
     subUrl: 'https://tieba.baidu.com/',
     bubbleImg: ''
@@ -16,7 +16,7 @@ export default [
     title: '新浪',
     titleImg: '',
     url: 'https://www.sina.com.cn',
-    icon: './images/home-websites/sina.png',
+    icon: '/images/home-websites/sina.png',
     subTitle: '微博',
     subUrl: 'https://weibo.com',
     bubbleImg: ''
@@ -27,7 +27,7 @@ export default [
     titleImg: '',
     url: 'https://www.sohu.com/',
     color: null,
-    icon: './images/home-websites/sohu.png',
+    icon: '/images/home-websites/sohu.png',
     subTitle: '搜狗',
     subUrl: 'https://www.sogou.com/index.php?pid=sogou-brse-201ecef3255bae21',
     bubbleImg: ''
@@ -38,7 +38,7 @@ export default [
     titleImg: '',
     url: 'https://www.qq.com/',
     color: null,
-    icon: './images/home-websites/qq.png',
+    icon: '/images/home-websites/qq.png',
     subTitle: '空间',
     subUrl: 'https://qzone.qq.com',
     bubbleImg: ''
@@ -48,7 +48,7 @@ export default [
     title: '网易',
     titleImg: '',
     url: 'https://www.163.com',
-    icon: './images/home-websites/163.png',
+    icon: '/images/home-websites/163.png',
     subTitle: '邮箱',
     subUrl: 'https://email.163.com',
     bubbleImg: ''
@@ -60,7 +60,7 @@ export default [
     url: 'https://www.zhihu.com/explore',
     color: null,
     bold: false,
-    icon: './images/home-websites/zhihu.png',
+    icon: '/images/home-websites/zhihu.png',
     subTitle: '专栏',
     subUrl: 'https://zhuanlan.zhihu.com/',
     subColor: null,
@@ -75,31 +75,31 @@ export default [
     url: 'https://union-click.jd.com/jdc?e=618%7Cpc%7C&p=JF8BAKkJK1olXDYDZBoCUBVIMzZNXhpXVhgcFgcDTBBPHDRdBAlLARgyLTY1DhtHQzNqTiFhXAFjDwgVYExARWMEK14VXAcAUVhUCU0nAG4IG1wUVAMFUW5tCEonSAEJK1kUXAQFUlpbDE4nA2kLGFIWVQAAU15fAXsQA2Y4z-iWio-Lg9rj0d2u18eRK2slXjYFVFdJDjlWUXsOaWslXDYBZG5fCUoTCl84K2sl',
     color: null,
     bold: false,
-    icon: './images/home-websites/jd.png',
+    icon: '/images/home-websites/jd.png',
     subTitle: '',
     subUrl: '',
     subColor: '#383838',
     subBold: false,
     bubbleUrl: 'https://union-click.jd.com/jdc?e=618%7Cpc%7C&p=JF8BAKkJK1olXDYDZBoCUBVIMzZNXhpXVhgcFgcDTBBPHDRdBAlLARgyLTY1DhtHQzNqTiFhXAFjDwgVYExARWMEK14VXAcAUVhUCU0nAG4IG1wUVAMFUW5tCEonSAEJK1kUXAQFUlpbDE4nA2kLGFIWVQAAU15fAXsQA2Y4z-iWio-Lg9rj0d2u18eRK2slXjYFVFdJDjlWUXsOaWslXDYBZG5fCUoTCl84K2sl',
-    bubbleImg: './images/home-websites/jd-2.png'
+    bubbleImg: '/images/home-websites/jd-2.png'
   },
   {
     id: '08',
     title: '淘宝',
     titleImg: '',
     url: 'https://www.taobao.com/?pid=mm_12431063_2220385_111469400049',
-    icon: './images/home-websites/taobao.png',
+    icon: '/images/home-websites/taobao.png',
     subTitle: '',
     subUrl: '',
     bubbleUrl: 'https://redirect.simba.taobao.com/rd?c=un&amp;w=bd&amp;k=3fdfd54ab132d50e&amp;p=mm_12431063_2220385_109544350018&amp;f=https%3A%2F%2Fmos.m.taobao.com%2Funion%2F201911%3Fpid%3Dmm_12431063_2220385_109544350018',
-    bubbleImg: './images/home-websites/taobao-2.png'
+    bubbleImg: '/images/home-websites/taobao-2.png'
   },
   {
     id: '09',
     title: '拼多多',
     titleImg: '',
     url: 'https://p.gouwubang.com/59h3P2',
-    icon: './images/home-websites/pdd.png',
+    icon: '/images/home-websites/pdd.png',
     subTitle: '',
     subUrl: '',
     bubbleImg: ''
@@ -109,7 +109,7 @@ export default [
     title: '阿里1688',
     titleImg: '',
     url: 'https://tb.jiuxinban.com/7b3PAO',
-    icon: './images/home-websites/1688.png',
+    icon: '/images/home-websites/1688.png',
     subTitle: '',
     subUrl: '',
     bubbleUrl: 'https://www.amazon.cn/?tag=maxthon02-23',
@@ -121,7 +121,7 @@ export default [
     titleImg: '',
     url: 'https://mos.m.taobao.com/union/jhsjx2020?pid=mm_12431063_2220385_279456551',
     color: null,
-    icon: './images/home-websites/jhs.png',
+    icon: '/images/home-websites/jhs.png',
     subTitle: '',
     subUrl: '',
     subColor: null,
@@ -136,12 +136,12 @@ export default [
     url: 'http://redirect.simba.taobao.com/rd?c=un&w=bd&f=https%3A%2F%2Fs.click.taobao.com%2Ft%3Funion_lens%3DlensId%253AOPT%25401615280124%25402104be69_0782_1781632b34a_ced8%254001%253BeventPageId%253A8655681%26e%3Dm%253D2%2526s%253Dv%252Bp6OF1HixccQipKwQzePCperVdZeJviePMclkcdtjxyINtkUhsv0MS6Blk41Mgmiybki%252FObwflD415GGSsrJ4YxhNUZ2i3GTlT4SLzYDiBT2M421%252BABgTvflh4%252Fhqj89CGjsatFbg%252FkxFiXT%252FI5kZuVJ2zJE2c0ACFpTaudtkEaHks2%252FfPFu3EqY%252Bakgpmw%26pid%3Dmm_12431063_2220385_279480289&k=67a22f436b17a341&p=mm_12431063_2220385_279480289',
     color: null,
     bold: false,
-    icon: './images/home-websites/tmall.png',
+    icon: '/images/home-websites/tmall.png',
     subTitle: '',
     subUrl: '',
     subColor: null,
     bubbleUrl: 'https://s.click.taobao.com/fSrtxcu',
-    bubbleImg: './images/home-websites/tmall-2.gif'
+    bubbleImg: '/images/home-websites/tmall-2.gif'
   },
   {
     id: '13',
@@ -149,18 +149,18 @@ export default [
     titleImg: '',
     url: 'https://v.qq.com/',
     color: null,
-    icon: './images/home-websites/v.qq.png',
+    icon: '/images/home-websites/v.qq.png',
     subTitle: '',
     subUrl: '',
     bubbleUrl: 'https://p.gouwubang.com/4pYf2P',
-    bubbleImg: './images/home-websites/v.qq-2.png'
+    bubbleImg: '/images/home-websites/v.qq-2.png'
   },
   {
     id: '14',
     title: '爱奇艺',
     titleImg: '',
     url: 'https://www.iqiyi.com/',
-    icon: './images/home-websites/iqiyi.png',
+    icon: '/images/home-websites/iqiyi.png',
     subTitle: '',
     subUrl: '',
     subColor: null,
@@ -175,7 +175,7 @@ export default [
     url: 'https://www.youku.com/',
     color: null,
     bold: false,
-    icon: './images/home-websites/youku.png',
+    icon: '/images/home-websites/youku.png',
     subTitle: '土豆',
     subUrl: 'https://www.tudou.com/',
     subColor: '#383838',
@@ -190,7 +190,7 @@ export default [
     url: 'https://www.bilibili.com',
     color: null,
     bold: false,
-    icon: './images/home-websites/bilibili.png',
+    icon: '/images/home-websites/bilibili.png',
     subTitle: '',
     subUrl: '',
     bubbleImg: ''
@@ -200,7 +200,7 @@ export default [
     title: '小红书',
     titleImg: '',
     url: 'https://www.xiaohongshu.com/explore?m_source=xiaomanaoyouliulanqi',
-    icon: './images/home-websites/xiaohongshu.png',
+    icon: '/images/home-websites/xiaohongshu.png',
     bubbleUrl: '',
     bubbleImg: ''
   },
@@ -211,7 +211,7 @@ export default [
     url: 'https://www.douyin.com/',
     color: null,
     bold: false,
-    icon: './images/home-websites/douyin.png',
+    icon: '/images/home-websites/douyin.png',
     subTitle: '快手',
     subUrl: 'https://www.kuaishou.com/',
     bubbleImg: ''
@@ -222,7 +222,7 @@ export default [
     titleImg: '',
     url: 'https://www.ifeng.com/?_aoyou',
     color: null,
-    icon: './images/home-websites/ifeng.png',
+    icon: '/images/home-websites/ifeng.png',
     bubbleUrl: '',
     bubbleImg: ''
   },
@@ -233,7 +233,7 @@ export default [
     url: 'https://www.xinhuanet.com/',
     color: null,
     bold: false,
-    icon: './images/home-websites/xinhuanet.png',
+    icon: '/images/home-websites/xinhuanet.png',
     bubbleImg: ''
   },
   {
@@ -242,7 +242,7 @@ export default [
     titleImg: '',
     url: 'https://toutiao.china.com/huanqiu/?ay1',
     bold: false,
-    icon: './images/home-websites/huanqiu.png',
+    icon: '/images/home-websites/huanqiu.png',
     subTitle: '',
     subUrl: '',
     subColor: null,
@@ -254,7 +254,7 @@ export default [
     title: '头条军事',
     titleImg: '',
     url: 'https://ay.miercn.com/?maxthon',
-    icon: './images/home-websites/miercn.png',
+    icon: '/images/home-websites/miercn.png',
     bubbleImg: ''
   },
   {
@@ -262,7 +262,7 @@ export default [
     title: '中华军事网',
     titleImg: '',
     url: 'http://military.china.com/zh_cn/',
-    icon: './images/home-websites/military.china.png',
+    icon: '/images/home-websites/military.china.png',
     subTitle: '',
     subUrl: '',
     subColor: '#000000',
@@ -275,7 +275,7 @@ export default [
     url: 'https://www.eastmoney.com/',
     color: null,
     bold: false,
-    icon: './images/home-websites/eastmoney.png',
+    icon: '/images/home-websites/eastmoney.png',
     subTitle: '',
     subUrl: '',
     subColor: '#383838',
@@ -289,7 +289,7 @@ export default [
     titleImg: '',
     url: 'https://go.mxfast.com/ctrip/',
     bold: false,
-    icon: './images/home-websites/ctrip.png',
+    icon: '/images/home-websites/ctrip.png',
     bubbleImg: ''
   },
   {
@@ -299,7 +299,7 @@ export default [
     url: 'https://www.12306.cn/mormhweb/',
     color: '#383838',
     bold: false,
-    icon: './images/home-websites/12306.png',
+    icon: '/images/home-websites/12306.png',
     subTitle: '',
     subUrl: '',
     subColor: '#ff0000',
@@ -345,7 +345,7 @@ export default [
     titleImg: '',
     url: 'https://go.mxfast.com/58',
     color: null,
-    icon: './images/home-websites/58.png',
+    icon: '/images/home-websites/58.png',
     subTitle: '',
     subUrl: '',
     bubbleUrl: '',
@@ -398,7 +398,7 @@ export default [
     title: '文心一言',
     titleImg: '',
     url: 'https://yiyan.baidu.com/?utm_source=aoyou',
-    icon: './images/home-websites/yiyan.png',
+    icon: '/images/home-websites/yiyan.png',
     bubbleImg: ''
   },
   {
@@ -416,7 +416,7 @@ export default [
     titleImg: '',
     url: 'https://s.click.taobao.com/qJZRSnt',
     color: null,
-    icon: './images/home-websites/ai.taobao.png',
+    icon: '/images/home-websites/ai.taobao.png',
     subTitle: '',
     subUrl: '',
     bubbleUrl: '',
@@ -427,7 +427,7 @@ export default [
     title: '苏宁易购',
     titleImg: '',
     url: 'https://p.gouwubang.com/c?w=628&amp;c=4459&amp;i=5662&amp;pf=y&amp;e=&amp;t=https://www.suning.com/',
-    icon: './images/home-websites/suning.png',
+    icon: '/images/home-websites/suning.png',
     subTitle: '',
     subUrl: '',
     bubbleImg: ''
@@ -438,7 +438,7 @@ export default [
     titleImg: '',
     url: 'https://www.dangdang.com/?_ddclickunion=P-303956-mingzhan|ad_type=10|sys_id=1#dd_refer=',
     color: null,
-    icon: './images/home-websites/dangdang.png',
+    icon: '/images/home-websites/dangdang.png',
     subTitle: '',
     subUrl: '',
     bubbleUrl: '',
@@ -449,7 +449,7 @@ export default [
     title: '唯品会',
     titleImg: '',
     url: 'https://click.union.vip.com/redirect.php?code=6IgKgCc',
-    icon: './images/home-websites/vip.png',
+    icon: '/images/home-websites/vip.png',
     subTitle: '',
     bubbleImg: ''
   },
@@ -460,7 +460,7 @@ export default [
     url: 'https://p.gouwubang.com/Jc0rO',
     color: null,
     bold: false,
-    icon: './images/home-websites/gouwubang.png',
+    icon: '/images/home-websites/gouwubang.png',
     subTitle: '',
     subUrl: '',
     subColor: null,
@@ -474,7 +474,7 @@ export default [
     url: 'https://www.mogujie.com/cps/open/track?uid=12o3xbw&amp;feedback=mingzhan&amp;channel=&amp;target=https%3A%2F%2Fwww.mogujie.com%2F',
     color: null,
     bold: false,
-    icon: './images/home-websites/mogujie.png',
+    icon: '/images/home-websites/mogujie.png',
     subTitle: '',
     subUrl: '',
     bubbleImg: ''
@@ -485,7 +485,7 @@ export default [
     titleImg: '',
     url: 'https://tb.jiuxinban.com/7b3PW3',
     color: null,
-    icon: './images/home-websites/youpin.png',
+    icon: '/images/home-websites/youpin.png',
     subTitle: '',
     subUrl: '',
     subColor: null,
@@ -499,7 +499,7 @@ export default [
     titleImg: '',
     url: 'https://p.yiqifa.com/n?k=2mLErnWm1NRSrI6H2mLErI6H6EKO1QLF6NtSWl4HWNWqWl3qrI6HYQLErnDSWn3S3ljLrn6x1Z4ENmL-&amp;t=https://www.vmall.com',
     color: null,
-    icon: './images/home-websites/vmall.png',
+    icon: '/images/home-websites/vmall.png',
     bubbleImg: ''
   },
   {
@@ -508,7 +508,7 @@ export default [
     titleImg: '',
     url: 'https://p.gouwubang.com/59esCa',
     color: null,
-    icon: './images/home-websites/apple.png',
+    icon: '/images/home-websites/apple.png',
     bubbleImg: ''
   },
   {
@@ -517,7 +517,7 @@ export default [
     titleImg: '',
     url: 'https://www.amazon.cn/?tag=maxthon02-23',
     color: null,
-    icon: './images/home-websites/amazon.png',
+    icon: '/images/home-websites/amazon.png',
     subTitle: '',
     subUrl: '',
     bubbleUrl: '',
@@ -528,7 +528,7 @@ export default [
     title: '澳洲PO药房',
     titleImg: '',
     url: 'https://p.gouwubang.com/13Baxv',
-    icon: './images/home-websites/po.png',
+    icon: '/images/home-websites/po.png',
     bubbleUrl: '',
     bubbleImg: ''
   },

@@ -2,7 +2,7 @@
 export default [
   {
     title: '新闻',
-    icon: './images/websites-collection/xinwen.png',
+    icon: '/images/websites-collection/xinwen.png',
     colorText: '#60c8ff',
     colorBg: '#c9eafc',
     children: [
@@ -87,7 +87,7 @@ export default [
   },
   {
     title: '消费',
-    icon: './images/websites-collection/xiaofei.png',
+    icon: '/images/websites-collection/xiaofei.png',
     colorText: '#ffac7f',
     colorBg: '#fed9c5',
     children: [
@@ -166,7 +166,7 @@ export default [
   },
   {
     title: '娱乐',
-    icon: './images/websites-collection/yule.png',
+    icon: '/images/websites-collection/yule.png',
     colorText: '#ff77a7',
     colorBg: '#ffd5e4',
     children: [
@@ -246,7 +246,7 @@ export default [
   },
   {
     title: '资讯',
-    icon: './images/websites-collection/zixun.png',
+    icon: '/images/websites-collection/zixun.png',
     colorText: '#777c87',
     colorBg: '#cdd2dd',
     children: [
@@ -329,7 +329,7 @@ export default [
   },
   {
     title: '服务',
-    icon: './images/websites-collection/fuwu.png',
+    icon: '/images/websites-collection/fuwu.png',
     colorText: '#959ee7',
     colorBg: '#d5d9f4',
     children: [
@@ -412,7 +412,7 @@ export default [
   },
   {
     title: '其他',
-    icon: './images/websites-collection/qita.png',
+    icon: '/images/websites-collection/qita.png',
     colorText: '#6fe7ad',
     colorBg: '#c6f0dc',
     children: [

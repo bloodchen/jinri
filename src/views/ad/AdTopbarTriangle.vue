@@ -12,38 +12,36 @@
     <MxIcon
       class="mx-ad-topbar-triangle-close"
       :style="{ top: `${triangleClosePosition + 2}px`, right: `${triangleClosePosition}px` }"
-      @click.prevent="onClose"
+      @click.prevent="closeAd"
     />
   </MxLink>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useStorage } from '@vueuse/core';
-import { isBetween, isAfter, getTomorrowDate } from '@/utiles';
 import { adTopbarRightTriangle } from '@/data/ad.js';
+import { getAdVisible, setAdNextOpenTime } from '@/utiles';
 
 // 是否显示
-const isVisible = ref(false);
-const nextOpenDate = useStorage('next-open-date', {});
-isVisible.value = isBetween(adTopbarRightTriangle.startTime, adTopbarRightTriangle.endTime) && isAfter(nextOpenDate.value.triangle);
+const isVisible = ref(getAdVisible(adTopbarRightTriangle, 'triangle'));
 
 // 窗口缩放时
+onMounted(() => {
+  if (isVisible.value) {
+    onResize();
+    window.addEventListener('resize', onResize);
+  }
+});
 function onResize() {
   const bodyWidth = document.body.offsetWidth;
-  const headerWidth = document.getElementsByClassName('mx-layout-module')[0].offsetWidth;
-  isVisible.value = bodyWidth - headerWidth > 200;
+  const topbarWidth = document.getElementsByClassName('mx-layout-module')[0].offsetWidth;
+  isVisible.value = bodyWidth - topbarWidth > 200;
 }
-onMounted(() => {
-  if (!isVisible.value) return;
-  onResize();
-  window.addEventListener('resize', onResize);
-});
 
-// 关闭
-function onClose() {
+// 关闭广告
+function closeAd() {
   isVisible.value = false;
-  nextOpenDate.value.triangle = getTomorrowDate();
+  setAdNextOpenTime('triangle');
 }
 
 // 鼠标移入
@@ -90,7 +88,7 @@ function onMouseleave() {
   &-close {
     position: absolute;
     font-size: 16px;
-    background-image: url('./images/ad/topbar-triangle-close.png');
+    background-image: url('/images/ad/topbar-triangle-close.png');
   }
 }
 </style>

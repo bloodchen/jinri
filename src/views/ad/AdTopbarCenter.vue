@@ -20,11 +20,10 @@
 
 <script setup>
 import { ref } from 'vue';
-import { isBetween } from '@/utiles';
 import { adTopbarCenter } from '@/data/ad.js';
+import { getAdVisible } from '@/utiles';
 
-const isVisible = ref(false);
-isVisible.value = isBetween(adTopbarCenter.startTime, adTopbarCenter.endTime);
+const isVisible = ref(getAdVisible(adTopbarCenter));
 </script>
 
 <style lang="scss">

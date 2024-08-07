@@ -1,7 +1,6 @@
 <!-- 弹窗 -->
 <template>
   <div
-    v-show="!!modelValue"
     ref="dialogRef"
     class="mx-dialog"
     @click.self="closeDialog"
@@ -31,7 +30,6 @@
 import { onMounted, ref } from 'vue';
 
 defineProps({
-  modelValue: { type: [Boolean, String], required: true },
   title: { type: String, default: '' }
 });
 
@@ -42,9 +40,8 @@ onMounted(() => {
 });
 
 // 关闭弹窗
-const emits = defineEmits(['update:modelValue', 'close']);
+const emits = defineEmits(['close']);
 function closeDialog() {
-  emits('update:modelValue', false);
   emits('close');
 }
 </script>

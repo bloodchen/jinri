@@ -12,8 +12,8 @@
   <!-- 操作弹窗 -->
   <MxDialog
     v-if="dialogType"
-    v-model="dialogType"
     :title="`${dialogType}网址`"
+    @click="closeDialog"
   >
     <!-- 删除 -->
     <div v-if="dialogType === '删除'">你确定要删除这条网址？</div>
@@ -50,7 +50,7 @@
 import { ref } from 'vue';
 import { useCookies } from '@vueuse/integrations/useCookies';
 import { useStorage } from '@vueuse/core';
-import { guid } from '@/utiles';
+import { getGuid } from '@/utiles';
 
 import HomeWebsitesGroup from './HomeWebsitesGroup.vue';
 import defaultDataList from '@/data/home-favorite-websites.js';
@@ -88,7 +88,7 @@ function formatDataItem(item) {
   const urlObj = new URL(newUrl);
   return {
     ...item,
-    id: item.id || guid(),
+    id: item.id || getGuid(),
     url: newUrl,
     iconSet: `${urlObj.origin}/favicon.ico`
   };
@@ -186,7 +186,7 @@ function resetSite() {
 
 // 图片错误
 function onImgError(item) {
-  item.icon = './images/home-websites/default.png';
+  item.icon = '/images/home-websites/default.png';
   dataList.value.splice(item.sortIndex, 1, item);
 }
 

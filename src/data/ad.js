@@ -2,7 +2,7 @@
 export const adSkin = {
   title: '天猫',
   url: '',
-  img: './images/ad/skin-bg.png',
+  img: '/images/ad/skin-bg.png',
   startTime: '2024-08-01 19:20:00',
   endTime: '2024-08-01 19:20:00'
 };
@@ -15,11 +15,20 @@ export const adRain = {
   endTime: '2024-08-01 19:20:00'
 };
 
+// 开屏中间
+export const adCenter = {
+  title: '天猫',
+  url: '',
+  startTime: '2024-08-01 19:20:00',
+  endTime: '2024-08-01 19:20:00',
+  openAfterRain: true
+};
+
 // 顶栏-中间
 export const adTopbarCenter = {
   title: '天猫',
   url: '',
-  img: './images/ad/topbar-center.gif',
+  img: '/images/ad/topbar-center.gif',
   startTime: '2024-08-01 19:20:00',
   endTime: '2024-08-01 19:20:00'
 };
@@ -28,7 +37,7 @@ export const adTopbarCenter = {
 export const adTopbarRightTriangle = {
   title: '超级红包',
   url: '',
-  img: './images/ad/topbar-triangle.png',
+  img: '/images/ad/topbar-triangle.png',
   startTime: '2024-08-01 19:20:00',
   endTime: '2024-08-01 19:20:00'
 };
@@ -38,17 +47,17 @@ export const adTopbarSliders = [
   {
     name: 'jd',
     url: 'https://union-click.jd.com/jdc?e=618%7Cpc%7C&p=JF8BAKkJK1olXDYDZBoCUBVIMzZNXhpXVhgcFgcDTBBPHDRdBAlLARgyLTY1DhtHQzNqTiFhXAFjDwgVYExARWMEK14VXAcAUVhUCU0nAG4IG1wUVAMFUW5tCEonSAEJK1kUXAQFUlpbDE4nA2kLGFIWVQAAU15fAXsQA2Y4z-iWio-Lg9rj0d2u18eRK2slXjYFVFdJDjlWUXsOaWslXDYBZG5fCUoTCl84K2sl',
-    img: './images/ad/topbar-sliders-jd.png'
+    img: '/images/ad/topbar-sliders-jd.png'
   },
   {
     name: 'taobao',
     url: 'https://s.click.taobao.com/fSrtxcu',
-    img: './images/ad/topbar-sliders-tb.png'
+    img: '/images/ad/topbar-sliders-tb.png'
   },
   {
     name: '58',
     url: 'https://go.mxfast.com/58/',
-    img: './images/ad/topbar-sliders-58.png'
+    img: '/images/ad/topbar-sliders-58.png'
   }
 ];
 

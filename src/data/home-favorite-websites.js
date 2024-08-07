@@ -11,12 +11,12 @@ export default [
   {
     title: '腾讯qq',
     url: 'https://www.qq.com/',
-    icon: './images/home-websites/qq.png'
+    icon: '/images/home-websites/qq.png'
   },
   {
     title: '搜狐',
     url: 'https://www.sohu.com/',
-    icon: './images/home-websites/sohu.png'
+    icon: '/images/home-websites/sohu.png'
   },
   {
     title: '新浪微博',
@@ -69,7 +69,7 @@ export default [
   {
     title: '亚马逊',
     url: 'https://www.amazon.cn/?source=maxthon',
-    icon: './images/home-websites/amazon.png'
+    icon: '/images/home-websites/amazon.png'
   },
   {
     title: '世纪佳缘',

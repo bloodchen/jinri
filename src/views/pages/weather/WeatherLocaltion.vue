@@ -1,7 +1,6 @@
 <!-- 二级页-天气-选择城市 -->
 <template>
   <MxDialog
-    v-model="dialogVisible"
     title="切换城市"
     @close="onClose"
   >
@@ -62,11 +61,11 @@
 import { ref } from 'vue';
 import api from '@/api';
 
-// 弹窗
-const dialogVisible = ref(false);
+// 默认id
+const props = defineProps({
+  defaultId: { type: String, required: true }
+});
 
-// 定位
-const locationId = ref('');
 // 省
 const provinceId = ref('');
 const provinceMap = ref({});
@@ -78,32 +77,25 @@ const districtId = ref('');
 const districtMap = ref({});
 
 // 初始化
-function init(id) {
-  // 打开弹窗
-  dialogVisible.value = true;
-  if (id === locationId.value) return;
-  locationId.value = id;
-
-  // 前5位是省
-  provinceId.value = id.slice(0, 5);
-  // 第67位是市
-  const id2 = id.slice(5, 7);
-  // 第89位是区县
-  const id3 = id.slice(7, 9);
-  // 如果区县是00需要和市调整位置
-  if (id3 === '00') {
-    cityId.value = id3;
-    districtId.value = id2;
-  } else {
-    cityId.value = id2;
-    districtId.value = id3;
-  }
-
-  // 获取定位
-  getProvinceMap();
-  getCityMap('init');
-  getDistrictMap('init');
+// 前5位是省
+provinceId.value = props.defaultId.slice(0, 5);
+// 第67位是市
+const id2 = props.defaultId.slice(5, 7);
+// 第89位是区县
+const id3 = props.defaultId.slice(7, 9);
+// 如果区县是00需要和市调整位置
+if (id3 === '00') {
+  cityId.value = id3;
+  districtId.value = id2;
+} else {
+  cityId.value = id2;
+  districtId.value = id3;
 }
+
+// 获取定位
+getProvinceMap();
+getCityMap('init');
+getDistrictMap('init');
 
 // 获取省
 async function getProvinceMap() {
@@ -141,32 +133,22 @@ function getDefaultValue(data) {
   return selectedKey;
 }
 
+const emits = defineEmits(['confirm', 'close']);
+
 // 确定
-const emits = defineEmits(['change']);
-function onConfirm() {
-  dialogVisible.value = false;
-  const newId = updateLocatinoId();
-  if (newId === locationId.value) return;
-  locationId.value = newId;
-  emits('change', newId);
-}
-
-// 关闭
-function onClose() {
-  locationId.value = updateLocatinoId();
-  dialogVisible.value = false;
-}
-
 // 使用省市区的ID拼接城市key，如果区县是00需要和市调整位置
-function updateLocatinoId() {
+function onConfirm() {
   let newId;
   if (cityId.value === '00') {
     newId = provinceId.value + districtId.value + cityId.value;
   } else {
     newId = provinceId.value + cityId.value + districtId.value;
   }
-  return newId;
+  emits('confirm', newId);
 }
 
-defineExpose({ init });
+// 关闭
+function onClose() {
+  emits('close');
+}
 </script>

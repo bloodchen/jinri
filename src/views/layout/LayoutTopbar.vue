@@ -53,7 +53,7 @@
           <span>{{ weatherData.city }}</span>
           <span
             class="mx-topbar-tools-toggle"
-            @click="showWeatherLocation"
+            @click="weaterLocaltionVisible = true"
           >[切换]</span>
         </div>
         <MxLink href="/weater">一周天气</MxLink>
@@ -103,14 +103,17 @@
     </div>
     <!-- 切换城市 -->
     <WeatherLocaltion
-      ref="weaterLocaltionRef"
-      @change="changeWeatherLocation"
+      v-if="weaterLocaltionVisible"
+      :default-id="weatherCityId"
+      @confirm="changeWeatherLocation"
+      @close="weaterLocaltionVisible = false"
     />
     <!-- 邮箱 -->
     <MxDialog
-      v-model="emailDialogVisible"
+      v-if="emailDialogVisible"
       :style="{ '--width': '600px' }"
       title="邮箱登录"
+      @close="emailDialogVisible = false"
     >
       <div class="mx-topbar-email">
         <MxLink
@@ -132,8 +135,9 @@
     </MxDialog>
     <!-- 设为首页 -->
     <MxDialog
-      v-model="homeDialogVisible"
+      v-if="homeDialogVisible"
       title="下载桌面快捷方式"
+      @close="homeDialogVisible = false"
     >
       <div>把傲游今日下载到桌面，访问更方便</div>
       <template #footer>
@@ -230,16 +234,16 @@ const weatherAqiStyle = computed(() => {
   }
 });
 
-// 天气-打开定位弹窗
-const weaterLocaltionRef = ref(null);
-function showWeatherLocation() {
-  weaterLocaltionRef.value.init(weatherCityId.value);
-}
+// 天气-定位弹窗
+const weaterLocaltionVisible = ref(false);
 
 // 天气-切换定位
 function changeWeatherLocation(id) {
-  weatherCityId.value = id;
-  getWeatherData();
+  weaterLocaltionVisible.value = false;
+  if (id !== weatherCityId.value) {
+    weatherCityId.value = id;
+    getWeatherData();
+  }
 }
 </script>
 

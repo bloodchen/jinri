@@ -1,5 +1,7 @@
-// 生成随机ID
-export function guid() {
+import { useStorage } from '@vueuse/core';
+
+// 获取随机ID
+export function getGuid() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
     const r = (Math.random() * 16) | 0;
     const v = c === 'x' ? r : (r & 0x3) | 0x8;
@@ -12,26 +14,27 @@ export function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// 当前时间是否在提供的两个时间之间
-export function isBetween(date1, date2) {
+// 是否显示广告
+export function getAdVisible(data, key) {
+  let isOpen = false;
   const now = Date.now();
-  const ts1 = new Date(date1).getTime();
-  const ts2 = new Date(date2).getTime();
-  return now >= ts1 && now <= ts2;
+  // 开始时间 <= 当前时间 <= 结束时间
+  const ts1 = new Date(data.startTime).getTime();
+  const ts2 = new Date(data.endTime).getTime();
+  isOpen = ts1 <= now && now <= ts2;
+  // 重新开启时间 <= 当前时间
+  if (isOpen && key) {
+    const nextOpenTs = useStorage('next-open-time', {});
+    const ts3 = nextOpenTs.value[key];
+    isOpen = !ts3 || ts3 <= now;
+  }
+  return isOpen;
 }
 
-// 当前时间是否在提供的时间之后
-export function isAfter(date) {
-  if (!date) return true;
-  const now = Date.now();
-  const ts = new Date(date).getTime();
-  return now >= ts;
-}
-
-// 获取第二天的日期
-export function getTomorrowDate() {
-  const date = new Date();
-  date.setDate(date.getDate() + 1);
-  const tomorrow = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-  return tomorrow;
+// 关闭广告
+export function setAdNextOpenTime(key) {
+  const nextOpenTs = useStorage('next-open-time', {});
+  const today = new Date();
+  const tomarrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+  nextOpenTs.value[key] = tomarrow.getTime();
 }

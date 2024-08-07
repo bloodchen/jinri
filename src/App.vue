@@ -11,23 +11,31 @@
       <RouterView class="mx-mt-10" />
       <LayoutFooter class="mx-mt-10" />
     </div>
-    <AdSkin />
-    <AdRain />
+    <!-- 广告 -->
     <AdTopbarTriangle />
+    <AdSkin />
+    <AdRain @close="isAdCenterVisible = true" />
+    <AdCenter v-if="isAdCenterVisible" />
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { RouterView } from 'vue-router';
+import { adCenter } from '@/data/ad.js';
 
 import LayoutTopbar from '@/views/layout/LayoutTopbar.vue';
 import LayoutSearchbar from '@/views/layout/LayoutSearchbar.vue';
 import LayoutSearchbarHotword from '@/views/layout/LayoutSearchbarHotword.vue';
 import LayoutNav from '@/views/layout/layoutNav.vue';
 import LayoutFooter from '@/views/layout/layoutFooter.vue';
+import AdTopbarTriangle from '@/views/ad/AdTopbarTriangle.vue';
 import AdSkin from '@/views/ad/AdSkin.vue';
 import AdRain from '@/views/ad/AdRain.vue';
-import AdTopbarTriangle from '@/views/ad/AdTopbarTriangle.vue';
+import AdCenter from '@/views/ad/AdCenter.vue';
+
+// 开屏广告：判断是否需要在红包雨之后展示
+const isAdCenterVisible = ref(!adCenter.openAfterRain);
 </script>
 
 <style lang="scss">
