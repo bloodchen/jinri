@@ -1,21 +1,21 @@
 <!-- 首页-新闻轮播图 -->
 <template>
-  <MxSwiper class="mx-hfnews">
+  <MxSwiper class="mx-news-focus">
     <MxSwiperSlide
-      v-for="focus in data.focus"
-      :key="focus.title"
+      v-for="item in dataList"
+      :key="item.title"
     >
       <MxLink
-        class="mx-hfnews-link"
-        :href="focus.url"
-        :title="focus.title"
+        class="mx-news-focus-link"
+        :href="item.url"
+        :title="item.title"
       >
         <img
-          class="mx-hfnews-img"
-          :src="focus.img"
-          :alt="focus.title"
+          class="mx-news-focus-img"
+          :src="item.img"
+          :alt="item.title"
         >
-        <div class="mx-hfnews-text">{{ focus.title }}</div>
+        <div class="mx-news-focus-text">{{ item.title }}</div>
       </MxLink>
     </MxSwiperSlide>
   </MxSwiper>
@@ -23,12 +23,12 @@
 
 <script setup>
 defineProps({
-  data: { type: Object, default: null }
+  dataList: { type: Array, default: null }
 });
 </script>
 
 <style lang="scss">
-.mx-hfnews {
+.mx-news-focus {
   &-link {
     position: relative;
   }

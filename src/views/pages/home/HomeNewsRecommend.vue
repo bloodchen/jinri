@@ -12,9 +12,9 @@
     >
       <template v-if="item.data">
         <!-- 轮播图 -->
-        <HomeNewsFocus
+        <NewsFocus
           class="mx-hrnews-focus"
-          :data="item.data"
+          :data-list="item.data.focus"
         />
         <!-- 列表 -->
         <div class="mx-hrnews-list">
@@ -38,7 +38,7 @@
 import { ref } from 'vue';
 import { newsRecommend } from '@/data/home-news-nav.js';
 import api from '@/api';
-import HomeNewsFocus from './HomeNewsFocus.vue';
+import NewsFocus from '@/views/pages/news/NewsFocus.vue';
 
 // 当前tab
 const currentTabName = ref('chief');

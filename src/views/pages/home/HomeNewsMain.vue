@@ -16,9 +16,9 @@
       >
         <div class="mx-hmnews-left">
           <!-- 左侧轮播图 -->
-          <HomeNewsFocus
+          <NewsFocus
             class="mx-hmnews-focus"
-            :data="item.data"
+            :data-list="item.data.focus"
           />
           <!-- 左侧图片 -->
           <div class="mx-hmnews-img">
@@ -70,7 +70,7 @@
 import { ref } from 'vue';
 import { newsMain } from '@/data/home-news-nav.js';
 import api from '@/api';
-import HomeNewsFocus from './HomeNewsFocus.vue';
+import NewsFocus from '@/views/pages/news/NewsFocus.vue';
 
 // 当前tab
 const currentTabName = ref('chief');
