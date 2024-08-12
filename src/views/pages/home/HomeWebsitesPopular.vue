@@ -13,12 +13,12 @@ import HomeWebsitesGroup from './HomeWebsitesGroup.vue';
 import defaultDataList from '@/data/home-websites-popular.js';
 
 // 初始化数据
-const dataList = useStorage('home-website-popular', defaultDataList);
+const dataList = useStorage('home-website-popular-v2', defaultDataList);
 
 // 更新本地数据
 const newList = [];
 dataList.value.forEach(item => {
-  const newItem = defaultDataList.find(n => n.id === item.id || n.title === item.title) || item;
+  const newItem = defaultDataList.find(n => n.id === item.id) || item;
   newList.push(newItem);
 });
 dataList.value = newList;
