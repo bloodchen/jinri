@@ -31,7 +31,7 @@ export default {
   // 市 cities?province-id=
   // 区 districts?province-id=&city-id=
   getWeatherLocationById(path) {
-    return axios.post(`https://i.maxthon.cn/geo/${path}`);
+    return axios.post(`https://icn-api.maxthon.com/geo/${path}`);
   },
   // 搜索-百度热搜
   getSearchHotwordFromBaidu() {
