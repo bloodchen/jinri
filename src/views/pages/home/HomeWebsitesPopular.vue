@@ -18,7 +18,7 @@ const dataList = useStorage('home-website-popular', defaultDataList);
 // 更新本地数据
 const newList = [];
 dataList.value.forEach(item => {
-  const newItem = defaultDataList.find(n => n.id === item.id) || item;
+  const newItem = defaultDataList.find(n => n.id === item.id || n.title === item.title) || item;
   newList.push(newItem);
 });
 dataList.value = newList;
