@@ -201,7 +201,7 @@ const keyword = ref('');
 function searchSubmit() {
   // 空打开主页
   if (!keyword.value) {
-    window.open(currentEngine.value.engineUrl, '_target');
+    window.open(currentEngine.value.engineUrl, '_blank');
     return;
   }
   // 否则搜索
@@ -211,7 +211,7 @@ function searchSubmit() {
     params.append(key, val);
   }
   const url = `${currentEngine.value.searchUrl}?${params.toString().replace('%7BKEY%7D', keyword.value)}`;
-  window.open(url, '_target');
+  window.open(url, '_blank');
   addHistory(keyword.value);
 }
 

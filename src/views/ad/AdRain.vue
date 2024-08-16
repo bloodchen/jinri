@@ -43,7 +43,7 @@ if (isVisible.value) {
 
 // 打开链接
 function openLink() {
-  window.open(adRain.url, '_target');
+  window.open(adRain.url, '_blank');
 }
 
 // 关闭广告

@@ -20,7 +20,7 @@ const props = defineProps({
 
 // 是否是外部链接
 const target = computed(() => {
-  return typeof props.href === 'string' && props.href.startsWith('http') ? '_target' : '_self';
+  return typeof props.href === 'string' && props.href.startsWith('http') ? '_blank' : '_self';
 });
 </script>
 

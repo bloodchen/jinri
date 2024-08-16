@@ -24,7 +24,7 @@ const isVisible = ref(getAdVisible(adSkin));
 
 // 打开链接
 function openLink() {
-  window.open(adSkin.url, '_target');
+  window.open(adSkin.url, '_blank');
 }
 
 // 关闭广告

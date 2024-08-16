@@ -50,7 +50,7 @@ if (isVisible.value) {
 
 // 打开链接
 function openLink() {
-  window.open(adCenter.url, '_target');
+  window.open(adCenter.url, '_blank');
 }
 
 // 关闭广告
