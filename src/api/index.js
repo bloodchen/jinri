@@ -85,17 +85,17 @@ export default {
   // index/news/v1/category   数据源 toutiao.china.com 目前使用
   // index/news/v2/category   数据源 new.qq.com 2021/03/17停止更新
   getHomeMainNews(category) {
-    return axios.get(`https://icn-news.maxthon.com/files/index/news/v1/${category}.json`);
+    return axios.get(`https://icn-news.maxthon.com/index/news/v1/${category}.json`);
   },
   // 首页-获取推荐新闻
   // index/news/recommends/category   数据源 toutiao.china.com 目前使用
   getHomeRecommendNews(category) {
-    return axios.get(`https://icn-news.maxthon.com/files/index/news/recommends/${category}.json`);
+    return axios.get(`https://icn-news.maxthon.com/index/news/recommends/${category}.json`);
   },
   // 新闻二级页-获取数据
   // news/category    数据源 toutiao.china.com 目前使用
   // news/v2/category 数据源 new.qq.com 2021/03/17停止更新
   getNewsData(category) {
-    return axios.get(`https://icn-news.maxthon.com/files/news/${category}.json`);
+    return axios.get(`https://icn-news.maxthon.com/news/${category}.json`);
   }
 };
