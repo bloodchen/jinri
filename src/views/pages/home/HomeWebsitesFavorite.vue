@@ -13,7 +13,7 @@
   <MxDialog
     v-if="dialogType"
     :title="`${dialogType}网址`"
-    @click="closeDialog"
+    @close="closeDialog"
   >
     <!-- 删除 -->
     <div v-if="dialogType === '删除'">你确定要删除这条网址？</div>

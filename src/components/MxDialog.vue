@@ -3,7 +3,6 @@
   <div
     ref="dialogRef"
     class="mx-dialog"
-    @click.self="closeDialog"
   >
     <div class="mx-dialog-content">
       <!-- 顶栏 -->
