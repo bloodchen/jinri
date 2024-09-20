@@ -33,9 +33,12 @@ import AdTopbarTriangle from '@/views/ad/AdTopbarTriangle.vue';
 import AdSkin from '@/views/ad/AdSkin.vue';
 import AdRain from '@/views/ad/AdRain.vue';
 import AdCenter from '@/views/ad/AdCenter.vue';
-console.log('update: 2024-09-18');
+
 // 开屏广告：判断是否需要在红包雨之后展示
 const isAdCenterVisible = ref(!adCenter.openAfterRain);
+
+// 更新时间
+console.log('update: 2024-09-20');
 </script>
 
 <style lang="scss">

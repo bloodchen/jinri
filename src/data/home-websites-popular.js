@@ -72,7 +72,7 @@ export default [
     id: '07',
     title: '京东商城',
     titleImg: '',
-    url: 'https://union-click.jd.com/jdc?e=618%7Cpc%7C&p=JF8BAKkJK1olXDYDZBoCUBVIMzZNXhpXVhgcFgcDTBBPHDRdBAlLARgyLTY1DhtHQzNqTiFhXAFjDwgVYExARWMEK14VXAcAUVhUCU0nAG4IG1wUVAMFUW5tCEonSAEJK1kUXAQFUlpbDE4nA2kLGFIWVQAAU15fAXsQA2Y4z-iWio-Lg9rj0d2u18eRK2slXjYFVFdJDjlWUXsOaWslXDYBZG5fCUoTCl84K2sl',
+    url: 'https://www.jd.com',
     color: null,
     bold: false,
     icon: '/images/home-websites/jd.png',
@@ -80,7 +80,7 @@ export default [
     subUrl: '',
     subColor: '#383838',
     subBold: false,
-    bubbleUrl: 'https://union-click.jd.com/jdc?e=618%7Cpc%7C&p=JF8BAKkJK1olXDYDZBoCUBVIMzZNXhpXVhgcFgcDTBBPHDRdBAlLARgyLTY1DhtHQzNqTiFhXAFjDwgVYExARWMEK14VXAcAUVhUCU0nAG4IG1wUVAMFUW5tCEonSAEJK1kUXAQFUlpbDE4nA2kLGFIWVQAAU15fAXsQA2Y4z-iWio-Lg9rj0d2u18eRK2slXjYFVFdJDjlWUXsOaWslXDYBZG5fCUoTCl84K2sl',
+    bubbleUrl: 'https://www.jd.com',
     bubbleImg: '/images/home-websites/jd-2.png'
   },
   {

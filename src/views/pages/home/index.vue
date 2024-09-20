@@ -9,11 +9,7 @@
         <!-- 工具 -->
         <HomeTools />
         <!-- 广告 -->
-        <MxIframe
-          src="./iframes/jd.html"
-          height="279"
-          class="mx-mt-10"
-        />
+        <AdHomeRight class="mx-mt-10" />
       </div>
     </div>
     <!-- 第二部分 -->
@@ -50,6 +46,7 @@ import HomeTools from './HomeTools.vue';
 import HomeNewsMain from './HomeNewsMain.vue';
 import HomeNewsHot from './HomeNewsHot.vue';
 import HomeNewsRecommend from './HomeNewsRecommend.vue';
+import AdHomeRight from '@/views/ad/AdHomeRight.vue';
 
 // 当前tab
 const currentTabName = ref('hot');

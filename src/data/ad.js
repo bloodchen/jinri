@@ -46,7 +46,7 @@ export const adTopbarRightTriangle = {
 export const adTopbarSliders = [
   {
     name: 'jd',
-    url: 'https://union-click.jd.com/jdc?e=618%7Cpc%7C&p=JF8BAKkJK1olXDYDZBoCUBVIMzZNXhpXVhgcFgcDTBBPHDRdBAlLARgyLTY1DhtHQzNqTiFhXAFjDwgVYExARWMEK14VXAcAUVhUCU0nAG4IG1wUVAMFUW5tCEonSAEJK1kUXAQFUlpbDE4nA2kLGFIWVQAAU15fAXsQA2Y4z-iWio-Lg9rj0d2u18eRK2slXjYFVFdJDjlWUXsOaWslXDYBZG5fCUoTCl84K2sl',
+    url: 'https://www.jd.com',
     img: '/images/ad/topbar-sliders-jd.png'
   },
   {
@@ -60,6 +60,13 @@ export const adTopbarSliders = [
     img: '/images/ad/topbar-sliders-58.png'
   }
 ];
+
+// 首页-右侧橱窗
+export const adHomeRight = {
+  name: 'tmall',
+  url: 'https://s.click.taobao.com/t?union_lens=lensId%3APUB%401726708928%400bf8e76f_0de9_19207df50b1_e6c8%4001%40eyJmbG9vcklkIjozODg1Miiwiic3BtQiiI6Il9wb3J0YWxfdjJfcGFnZXNfYWN0aXZpdHlfb2ZmaWNpYWxfaW5kZXhfaHRtIn0ie%3BeventPageId%3A20150318020008733&e=m%3D2%26s%3DlH88F4cdsjIcQipKwQzePCperVdZeJviU%2F9%2F0taeK29yINtkUhsv0Mfvh6F10l7PjiRkxbhwQNwqdXuB2ywoyHsv77g9cteRVzhPkjk6%2B2QhkTmZhniFX%2FAy%2Fay3dFHhcfoqCASFBE0Sylq0DylJrqED5kW4yHt0jidl2Va2D8m4fWFYbf5VhIz6G0fvVpfqA2WfMOiylBFLUSMt2PJRg%2FB0z8qlrv%2Bj8DLfXVn5qACSXMV4ozPsJ9ZK2MhSOL36BIhITc5%2B2hRXPgMwgePtslhfTxPu3doaPRhyWlsWoBi9SaBlz4XU9iC8ZkOTzcBGGWuT0Akgen9gYh%2Bm7jOlA20lFJQq%2Fn2QfiF5i%2B8irZRGz3Q7pPtsUf71bQanqbOY0tvvdXDFxy0WP3znFjTMWf%2Bw49CWefhctWtNSdvIsZv9STq%2FDBhXPcYl7w3%2FA2kb',
+  img: '/images/ad/home-right-tmall.jpg'
+};
 
 // 首页-网址导航-底部
 export const adHomeWebsiteBottom = [
