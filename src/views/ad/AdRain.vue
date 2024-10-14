@@ -1,5 +1,5 @@
-<!-- 红包雨 -->
 <template>
+  <!-- 红包雨 -->
   <div
     v-if="isVisible"
     class="mx-ad-rain"
@@ -22,17 +22,18 @@
     <!-- 广告标识 -->
     <MxIcon class="mx-ad-rain-icon is-sign" />
   </div>
+  <!-- 中间开屏 -->
+  <AdCenter v-if="centerVisible" />
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import { adRain } from '@/data/ad.js';
-import { getAdVisible, setAdNextOpenTime, getRandomInteger } from '@/utils';
-
-const emits = defineEmits(['close']);
+import { adRain, isShow, setReopenDate } from '@/data/ad.js';
+import { getRandomInteger } from '@/utils';
+import AdCenter from '@/views/ad/AdCenter.vue';
 
 // 是否显示
-const isVisible = ref(getAdVisible(adRain, 'rain'));
+const isVisible = ref(isShow(adRain));
 let closeTimer = null;
 
 // 显示的时候执行的操作
@@ -47,11 +48,14 @@ function openLink() {
 }
 
 // 关闭广告
+const centerVisible = ref(false);
 function closeAd() {
   isVisible.value = false;
   clearTimeout(closeTimer);
-  setAdNextOpenTime('rain');
-  emits('close');
+  setReopenDate(adRain);
+  if (adRain.openCenterAfterClose) {
+    centerVisible.value = true;
+  }
 }
 
 // 随机图片

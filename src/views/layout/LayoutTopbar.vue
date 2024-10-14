@@ -99,7 +99,7 @@
         </MxLink>
       </div>
       <!-- 广告 -->
-      <AdTopbarCenter />
+      <AdTopbarPendant />
     </div>
     <!-- 切换城市 -->
     <WeatherLocaltion
@@ -164,10 +164,11 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useStorage } from '@vueuse/core';
+import dayjs from 'dayjs';
 import solarLunar from 'solarLunar';
 
 import WeatherLocaltion from '@/views/pages/weather/WeatherLocaltion.vue';
-import AdTopbarCenter from '@/views/ad/AdTopbarCenter.vue';
+import AdTopbarPendant from '@/views/ad/AdTopbarPendant.vue';
 import AdTopbarSliders from '@/views/ad/AdTopbarSliders.vue';
 
 import emailList from '@/data/layout-topbar-emails.js';
@@ -184,16 +185,17 @@ function changeSkin() {
   alert('敬请期待！');
 }
 
-// 日期
-const dateObj = new Date();
-const dateYear = dateObj.getFullYear();
-const dateMonth = dateObj.getMonth() + 1;
-const dateDate = dateObj.getDate();
-// 农历日期
-const solar2lunarData = solarLunar.solar2lunar(dateYear, dateMonth, dateDate);
-const lunarDate = `${solar2lunarData.monthCn}${solar2lunarData.dayCn}`;
 // 公立日期
+const dateNow = dayjs();
+const dateYear = dateNow.year();
+const dateMonth = dateNow.month() + 1;
+const dateDate = dateNow.date();
+// 公立日期转农历
+const solar2lunarData = solarLunar.solar2lunar(dateYear, dateMonth, dateDate);
+// 公立日期+星期
 const solarDate = `${dateYear}年${dateMonth}月${dateDate}日 ${solar2lunarData.ncWeek}`;
+// 农历日期
+const lunarDate = `${solar2lunarData.monthCn}${solar2lunarData.dayCn}`;
 
 // 天气-获取城市
 const weatherCityId = useStorage('weather-city-id', '');

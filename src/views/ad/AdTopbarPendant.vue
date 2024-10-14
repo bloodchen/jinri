@@ -6,13 +6,13 @@
   >
     <MxLink
       class="mx-ad-topbar-center-link"
-      :href="adTopbarCenter.url"
-      :title="adTopbarCenter.title"
+      :href="adTopbarPendant.url"
+      :title="adTopbarPendant.title"
     >
       <img
         class="mx-ad-topbar-center-img"
-        :src="adTopbarCenter.img"
-        :alt="adTopbarCenter.title"
+        :src="adTopbarPendant.img"
+        :alt="adTopbarPendant.title"
       >
     </MxLink>
   </div>
@@ -20,10 +20,9 @@
 
 <script setup>
 import { ref } from 'vue';
-import { adTopbarCenter } from '@/data/ad.js';
-import { getAdVisible } from '@/utils';
+import { adTopbarPendant, isShow } from '@/data/ad.js';
 
-const isVisible = ref(getAdVisible(adTopbarCenter));
+const isVisible = ref(isShow(adTopbarPendant));
 </script>
 
 <style lang="scss">

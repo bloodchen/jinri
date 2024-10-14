@@ -14,15 +14,12 @@
     <!-- 广告 -->
     <AdTopbarTriangle />
     <AdSkin />
-    <AdRain @close="isAdCenterVisible = true" />
-    <AdCenter v-if="isAdCenterVisible" />
+    <AdRain />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { RouterView } from 'vue-router';
-import { adCenter } from '@/data/ad.js';
 
 import LayoutTopbar from '@/views/layout/LayoutTopbar.vue';
 import LayoutSearchbar from '@/views/layout/LayoutSearchbar.vue';
@@ -32,13 +29,6 @@ import LayoutFooter from '@/views/layout/layoutFooter.vue';
 import AdTopbarTriangle from '@/views/ad/AdTopbarTriangle.vue';
 import AdSkin from '@/views/ad/AdSkin.vue';
 import AdRain from '@/views/ad/AdRain.vue';
-import AdCenter from '@/views/ad/AdCenter.vue';
-
-// 开屏广告：判断是否需要在红包雨之后展示
-const isAdCenterVisible = ref(!adCenter.openAfterRain);
-
-// 更新时间
-console.log('update: 2024-09-20');
 </script>
 
 <style lang="scss">

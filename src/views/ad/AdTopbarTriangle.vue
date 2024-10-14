@@ -19,11 +19,10 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { adTopbarRightTriangle } from '@/data/ad.js';
-import { getAdVisible, setAdNextOpenTime } from '@/utils';
+import { adTopbarRightTriangle, isShow } from '@/data/ad.js';
 
 // 是否显示
-const isVisible = ref(getAdVisible(adTopbarRightTriangle, 'triangle'));
+const isVisible = ref(isShow(adTopbarRightTriangle));
 
 // 窗口缩放时
 onMounted(() => {
@@ -41,7 +40,6 @@ function onResize() {
 // 关闭广告
 function closeAd() {
   isVisible.value = false;
-  setAdNextOpenTime('triangle');
 }
 
 // 鼠标移入

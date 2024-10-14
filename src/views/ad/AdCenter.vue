@@ -24,11 +24,10 @@
 
 <script setup>
 import { ref } from 'vue';
-import { getAdVisible, setAdNextOpenTime } from '@/utils';
-import { adCenter } from '@/data/ad.js';
+import { adCenter, isShow, setReopenDate } from '@/data/ad.js';
 
 // 是否显示
-const isVisible = ref(getAdVisible(adCenter, 'center'));
+const isVisible = ref(isShow(adCenter));
 const isActive = ref(false);
 const countdownS = ref(10);
 let countDownTimer = null;
@@ -59,7 +58,7 @@ function closeAd() {
   clearInterval(countDownTimer);
   setTimeout(() => {
     isVisible.value = false;
-    setAdNextOpenTime('center');
+    setReopenDate(adCenter);
   }, 100);
 }
 </script>

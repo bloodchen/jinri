@@ -16,11 +16,10 @@
 
 <script setup>
 import { ref } from 'vue';
-import { adSkin } from '@/data/ad';
-import { getAdVisible } from '@/utils';
+import { adSkin, isShow } from '@/data/ad';
 
 // 是否显示
-const isVisible = ref(getAdVisible(adSkin));
+const isVisible = ref(isShow(adSkin));
 
 // 打开链接
 function openLink() {

@@ -59,10 +59,11 @@
 </template>
 
 <script setup>
+import dayjs from 'dayjs';
 import { footerLinks, footerDownloads } from '@/data/layout-footer.js';
 
 // 今年
-const currentYear = new Date().getFullYear();
+const currentYear = dayjs().year();
 </script>
 
 <style lang="scss">

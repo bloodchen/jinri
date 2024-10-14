@@ -1,44 +1,90 @@
+import { useStorage } from '@vueuse/core';
+import dayjs from 'dayjs';
+
+// 是否显示
+export function isShow(data) {
+  const now = dayjs();
+  // 是否处于活动日期内
+  const isBegin = now.isAfter(data.beginTime);
+  const isEnd = now.isAfter(data.endTime);
+  const isActive = isBegin && !isEnd;
+  // 活动已结束：不显示
+  if (!isActive) {
+    return false;
+  }
+  // 活动进行中：再看是否需要记录重新打开时间
+  // 不需要记录：直接显示
+  if (!data.reopenDaysAfterClose) {
+    return true;
+  }
+  // 需要记录：再看是否已记录
+  const reopenDateObj = useStorage('reopen-date', {});
+  const reopenDateStr = reopenDateObj.value[data.key];
+  // 未记录：直接显示
+  if (!reopenDateStr) {
+    return true;
+  }
+  // 已记录：是否到时间
+  const isReopen = now.isAfter(reopenDateStr);
+  return isReopen;
+}
+
+// 设置重新打开的日期
+export function setReopenDate(data) {
+  if (!data.reopenDaysAfterClose) return;
+  const nextOpenTs = useStorage('reopen-date', {});
+  nextOpenTs.value[data.key] = dayjs().add(data.reopenDaysAfterClose, 'day').format('YYYY-MM-DD');
+}
+
 // 皮肤
 export const adSkin = {
+  key: 'skin',
   title: '天猫',
-  url: '',
-  img: '/images/ad/skin-bg.png',
-  startTime: '2024-08-01 19:20:00',
-  endTime: '2024-08-01 19:20:00'
+  url: 'https://s.click.taobao.com/abZrpOt',
+  img: '/images/ad/skin-bg.png?t=20241014',
+  beginTime: '2024/10/14 19:00:00',
+  endTime: '2024/11/11 23:59:00'
 };
 
-// 红包雨
+// 红包雨：1天1次
 export const adRain = {
+  key: 'rain',
   title: '天猫',
-  url: '',
-  startTime: '2024-08-01 19:20:00',
-  endTime: '2024-08-01 19:20:00'
+  reopenDaysAfterClose: 1,
+  openCenterAfterClose: false,
+  url: 'https://s.click.taobao.com/yjPppOt',
+  beginTime: '2024/10/14 19:00:00',
+  endTime: '2024/11/11 23:59:00'
 };
 
-// 开屏中间
+// 开屏中间：1天1次
 export const adCenter = {
-  title: '天猫',
-  url: '',
-  startTime: '2024-08-01 19:20:00',
-  endTime: '2024-08-01 19:20:00',
-  openAfterRain: true
+  key: 'center',
+  title: '京东',
+  reopenDaysAfterClose: 1,
+  url: 'https://www.jd.com/',
+  img: '/images/ad/center-bg.png?t=20241014',
+  beginTime: '2024/10/14 19:00:00',
+  endTime: '2024/11/11 23:59:00'
 };
 
-// 顶栏-中间
-export const adTopbarCenter = {
+// 顶栏-右上角吊坠
+export const adTopbarPendant = {
+  key: 'topbarCenter',
   title: '天猫',
-  url: '',
-  img: '/images/ad/topbar-center.gif',
-  startTime: '2024-08-01 19:20:00',
-  endTime: '2024-08-01 19:20:00'
+  url: 'https://s.click.taobao.com/m6FWhPt',
+  img: '/images/ad/topbar-center.gif?t=20241014',
+  beginTime: '2024/10/14 19:00:00',
+  endTime: '2024/11/11 23:59:00'
 };
 
 // 顶栏-右侧撕角
 export const adTopbarRightTriangle = {
+  key: 'triangle',
   title: '超级红包',
   url: '',
-  img: '/images/ad/topbar-triangle.png',
-  startTime: '2024-08-01 19:20:00',
+  img: '/images/ad/topbar-triangle.png?t=20240801',
+  beginTime: '2024-08-01 19:20:00',
   endTime: '2024-08-01 19:20:00'
 };
 
@@ -47,17 +93,17 @@ export const adTopbarSliders = [
   {
     name: 'jd',
     url: 'https://www.jd.com',
-    img: '/images/ad/topbar-sliders-jd.png'
+    img: '/images/ad/topbar-sliders-jd.png?t=20241014'
   },
   {
     name: 'taobao',
-    url: 'https://s.click.taobao.com/fSrtxcu',
-    img: '/images/ad/topbar-sliders-tb.png'
+    url: 'https://s.click.taobao.com/m6FWhPt',
+    img: '/images/ad/topbar-sliders-tb.png?t=20241014'
   },
   {
     name: '58',
     url: 'https://go.mxfast.com/58/',
-    img: '/images/ad/topbar-sliders-58.png'
+    img: '/images/ad/topbar-sliders-58.png?t=20241014'
   }
 ];
 
@@ -65,7 +111,7 @@ export const adTopbarSliders = [
 export const adHomeRight = {
   name: 'tmall',
   url: 'https://s.click.taobao.com/t?union_lens=lensId%3APUB%401726708928%400bf8e76f_0de9_19207df50b1_e6c8%4001%40eyJmbG9vcklkIjozODg1Miiwiic3BtQiiI6Il9wb3J0YWxfdjJfcGFnZXNfYWN0aXZpdHlfb2ZmaWNpYWxfaW5kZXhfaHRtIn0ie%3BeventPageId%3A20150318020008733&e=m%3D2%26s%3DlH88F4cdsjIcQipKwQzePCperVdZeJviU%2F9%2F0taeK29yINtkUhsv0Mfvh6F10l7PjiRkxbhwQNwqdXuB2ywoyHsv77g9cteRVzhPkjk6%2B2QhkTmZhniFX%2FAy%2Fay3dFHhcfoqCASFBE0Sylq0DylJrqED5kW4yHt0jidl2Va2D8m4fWFYbf5VhIz6G0fvVpfqA2WfMOiylBFLUSMt2PJRg%2FB0z8qlrv%2Bj8DLfXVn5qACSXMV4ozPsJ9ZK2MhSOL36BIhITc5%2B2hRXPgMwgePtslhfTxPu3doaPRhyWlsWoBi9SaBlz4XU9iC8ZkOTzcBGGWuT0Akgen9gYh%2Bm7jOlA20lFJQq%2Fn2QfiF5i%2B8irZRGz3Q7pPtsUf71bQanqbOY0tvvdXDFxy0WP3znFjTMWf%2Bw49CWefhctWtNSdvIsZv9STq%2FDBhXPcYl7w3%2FA2kb',
-  img: '/images/ad/home-right-tmall.jpg'
+  img: '/images/ad/home-right-tmall.jpg?t=20241014'
 };
 
 // 首页-网址导航-底部

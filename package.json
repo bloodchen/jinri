@@ -12,6 +12,7 @@
   "dependencies": {
     "@vueuse/integrations": "^10.11.0",
     "axios": "^1.7.2",
+    "dayjs": "^1.11.13",
     "fetch-jsonp": "^1.3.0",
     "pinia": "^2.1.3",
     "solarlunar": "^2.0.7",
