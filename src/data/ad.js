@@ -51,7 +51,7 @@ export const adRain = {
   key: 'rain',
   title: '天猫',
   reopenDaysAfterClose: 1,
-  openCenterAfterClose: false,
+  openCenterAfterClose: true,
   url: 'https://s.click.taobao.com/yjPppOt',
   beginTime: '2024/10/14 19:00:00',
   endTime: '2024/11/11 23:59:00'
@@ -62,7 +62,7 @@ export const adCenter = {
   key: 'center',
   title: '京东',
   reopenDaysAfterClose: 1,
-  url: 'https://www.jd.com/',
+  url: 'https://u.jd.com/MGnp85J',
   img: '/images/ad/center-bg.png?t=20241014',
   beginTime: '2024/10/14 19:00:00',
   endTime: '2024/11/11 23:59:00'
@@ -92,7 +92,7 @@ export const adTopbarRightTriangle = {
 export const adTopbarSliders = [
   {
     name: 'jd',
-    url: 'https://www.jd.com',
+    url: 'https://u.jd.com/MGnp85J',
     img: '/images/ad/topbar-sliders-jd.png?t=20241014'
   },
   {
