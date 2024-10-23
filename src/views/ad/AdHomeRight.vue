@@ -2,7 +2,8 @@
 <template>
   <MxIframe
     src="./iframes/jd.html"
-    height="279"
+    height="278"
+    :border="false"
   />
   <!-- <MxLink
     :href="adHomeRight.url"
