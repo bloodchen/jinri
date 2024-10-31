@@ -41,7 +41,7 @@ export const adSkin = {
   key: 'skin',
   title: '天猫',
   url: 'https://s.click.taobao.com/abZrpOt',
-  img: '/images/ad/skin-bg.png?t=20241014',
+  img: '/images/ad/skin-bg-1111-tm.png?t=20241111',
   beginTime: '2024/10/14 19:00:00',
   endTime: '2024/11/11 23:59:00'
 };
