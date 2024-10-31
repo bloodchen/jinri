@@ -72,7 +72,7 @@ export default [
     id: '07',
     title: '京东商城',
     titleImg: '',
-    url: 'https://www.jd.com',
+    url: 'https://go.mxfast.com/jd/',
     color: null,
     bold: false,
     icon: '/images/home-websites/jd.png',
@@ -80,7 +80,7 @@ export default [
     subUrl: '',
     subColor: '#383838',
     subBold: false,
-    bubbleUrl: 'https://www.jd.com',
+    bubbleUrl: 'https://go.mxfast.com/jd/',
     bubbleImg: '/images/home-websites/jd-2.png'
   },
   {
