@@ -84,12 +84,11 @@ function formatDataList(list) {
   return list.map(item => formatDataItem(item));
 }
 function formatDataItem(item) {
-  const newUrl = item.url.replace('http://', 'https://');
-  const urlObj = new URL(newUrl);
+  const urlObj = new URL(item.url);
   return {
     ...item,
     id: item.id || getGuid(),
-    url: newUrl,
+    url: item.url,
     iconSet: `${urlObj.origin}/favicon.ico`
   };
 }
