@@ -10,7 +10,7 @@
         class="mx-topbar-logo-img"
         src="@/assets/images/topbar-logo.png"
         alt="logo"
-      >
+      />
     </MxLink>
     <!-- 工具 -->
     <div class="mx-topbar-tools">
@@ -44,43 +44,8 @@
           </MxLink>
         </div>
       </div>
-      <!-- 城市 -->
-      <div
-        v-if="weatherData.city"
-        class="mx-topbar-tools-item"
-      >
-        <div>
-          <span>{{ weatherData.city }}</span>
-          <span
-            class="mx-topbar-tools-toggle"
-            @click="weatherLocaltionVisible = true"
-          >[切换]</span>
-        </div>
-        <MxLink href="/weather">一周天气</MxLink>
-      </div>
       <!-- 天气 -->
-      <MxLink
-        v-if="weatherData.today"
-        href="/weather"
-        :hover="false"
-        class="mx-topbar-tools-item mx-topbar-weather-row"
-      >
-        <img
-          class="mx-topbar-weather-icon"
-          :src="weatherData.iconLocal"
-          :alt="weatherData.today?.iconTitle"
-        >
-        <div class="mx-ml-5">
-          <div class="mx-topbar-weather-row">
-            <span>{{ weatherData.today?.iconTitle }}</span>
-            <span
-              class="mx-topbar-weather-aqi"
-              :style="weatherAqiStyle"
-            />
-          </div>
-          <div>{{ weatherData.today?.ltemp }}~{{ weatherData.today?.htemp }}</div>
-        </div>
-      </MxLink>
+      <WeatherSimple />
       <!-- 换肤和反馈 -->
       <div class="mx-topbar-tools-item">
         <div
@@ -101,13 +66,6 @@
       <!-- 广告 -->
       <AdTopbarPendant />
     </div>
-    <!-- 切换城市 -->
-    <WeatherLocaltion
-      v-if="weatherLocaltionVisible"
-      :default-id="weatherCityId"
-      @confirm="changeWeatherLocation"
-      @close="weatherLocaltionVisible = false"
-    />
     <!-- 邮箱 -->
     <MxDialog
       v-if="emailDialogVisible"
@@ -162,17 +120,15 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { useStorage } from '@vueuse/core';
+import { ref } from 'vue';
 import dayjs from 'dayjs';
 import solarLunar from 'solarLunar';
 
-import WeatherLocaltion from '@/views/pages/weather/WeatherLocaltion.vue';
+import WeatherSimple from '@/views/pages/weather/WeatherSimple.vue';
 import AdTopbarPendant from '@/views/ad/AdTopbarPendant.vue';
 import AdTopbarSliders from '@/views/ad/AdTopbarSliders.vue';
 
 import emailList from '@/data/layout-topbar-emails.js';
-import api from '@/api';
 
 // 邮箱
 const emailDialogVisible = ref(false);
@@ -196,57 +152,6 @@ const solar2lunarData = solarLunar.solar2lunar(dateYear, dateMonth, dateDate);
 const solarDate = `${dateYear}年${dateMonth}月${dateDate}日 ${solar2lunarData.ncWeek}`;
 // 农历日期
 const lunarDate = `${solar2lunarData.monthCn}${solar2lunarData.dayCn}`;
-
-// 天气-获取城市
-const weatherCityId = useStorage('weather-city-id', '');
-const weatherData = ref({});
-(async function() {
-  if (!weatherCityId.value) {
-    const res = await api.getWeatherCityByIp();
-    weatherCityId.value = res._weather_cityid;
-  }
-  getWeatherData();
-})();
-
-// 天气-获取详情
-async function getWeatherData() {
-  const res = await api.getWeatherDetailByCityId(weatherCityId.value);
-  if (res) {
-    weatherData.value = res;
-    const iconName = weatherData.value.today.icon.slice(-6);
-    weatherData.value.iconLocal = `./images/weather/${iconName}`;
-  }
-}
-
-// 天气-获取空气质量
-const weatherAqiLevel = {
-  优: '0 0',
-  良: '0 -16px',
-  轻度污染: '0 -32px',
-  中度污染: '0 -48px',
-  重度污染: '0 -64px',
-  严重污染: '0 -80px'
-};
-const weatherAqiStyle = computed(() => {
-  const level = weatherData.value?.today?.airGrade;
-  if (!level) {
-    return '';
-  } else {
-    return { 'background-position': weatherAqiLevel[weatherData.value?.today?.airGrade] };
-  }
-});
-
-// 天气-定位弹窗
-const weatherLocaltionVisible = ref(false);
-
-// 天气-切换定位
-function changeWeatherLocation(id) {
-  weatherLocaltionVisible.value = false;
-  if (id !== weatherCityId.value) {
-    weatherCityId.value = id;
-    getWeatherData();
-  }
-}
 </script>
 
 <style lang="scss">
@@ -275,6 +180,7 @@ function changeWeatherLocation(id) {
     &-item {
       padding: 5px 10px;
       margin: 0 5px;
+      white-space: nowrap;
       border-radius: 2px;
       &:hover {
         background-color: rgb(0 0 0 / 4%);
@@ -340,24 +246,6 @@ function changeWeatherLocation(id) {
     background-image: url('@/assets/icons/topbar-home.png');
     &:hover {
       background-position: 0 -26px;
-    }
-  }
-
-  // 天气
-  &-weather {
-    &-row {
-      display: flex;
-      align-items: center;
-    }
-    &-icon {
-      width: 30px;
-      height: 30px;
-    }
-    &-aqi {
-      width: 28px;
-      height: 16px;
-      margin-left: 5px;
-      background-image: url('@/assets/icons/weather-aqi.png');
     }
   }
 }

@@ -18,20 +18,28 @@ window.Sou = { Autocomplate: { bindAutocomplate() {} } };
 
 // api
 export default {
-  // 天气-获取城市
-  getWeatherCityByIp() {
-    return jsonp('https://api-i.maxthon.cn/tianqi/api/js_v5.php');
+  // // 天气-获取城市
+  // getWeatherCityByIp() {
+  //   return jsonp('https://api-i.maxthon.cn/tianqi/api/js_v5.php');
+  // },
+  // // 天气-获取详情
+  // getWeatherDetailByCityId(id) {
+  //   return jsonp(`https://api-i.maxthon.cn/tianqi/api/weather.php?id=${id}`);
+  // },
+  // // 天气-获取位置
+  // // 省 provinces
+  // // 市 cities?province-id=
+  // // 区 districts?province-id=&city-id=
+  // getWeatherLocationById(path) {
+  //   return axios.post(`https://icn-api.maxthon.com/geo/${path}`);
+  // },
+  // 获取当前天气信息
+  getWeatherDetail({ lat, lon }) {
+    return axios.post('https://api.maxthon.com/service/weather', { lat, lon });
   },
-  // 天气-获取详情
-  getWeatherDetailByCityId(id) {
-    return jsonp(`https://api-i.maxthon.cn/tianqi/api/weather.php?id=${id}`);
-  },
-  // 天气-获取位置
-  // 省 provinces
-  // 市 cities?province-id=
-  // 区 districts?province-id=&city-id=
-  getWeatherLocationById(path) {
-    return axios.post(`https://icn-api.maxthon.com/geo/${path}`);
+  // 根据关键字搜索城市
+  getWeatherCityByKeyword(keyword) {
+    return axios.post('https://api.maxthon.com/service/weather', { cmd: 'getCity', keyword });
   },
   // 搜索-百度热搜
   getSearchHotwordFromBaidu() {

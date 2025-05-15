@@ -28,7 +28,7 @@ const target = computed(() => {
 .mx-link {
   color: #222;
   cursor: pointer;
-  :hover {
+  &:hover {
     color: #07f;
   }
   &.no-hover:hover {

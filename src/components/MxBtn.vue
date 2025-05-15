@@ -7,7 +7,7 @@
 
 <script setup>
 defineProps({
-  // primary, info
+  // primary, info, link
   type: { type: String, default: 'primary' },
   // custom, medium
   size: { type: String, default: 'medium' }
@@ -22,9 +22,10 @@ defineProps({
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
+  background-color: transparent;
   &:disabled {
     cursor: not-allowed;
-    opacity: .5 !important;
+    opacity: 0.5 !important;
   }
 
   // type
@@ -43,6 +44,10 @@ defineProps({
       color: #08f;
       border-color: #08f;
     }
+  }
+  &.is-link {
+    padding: 0;
+    color: #08f;
   }
 
   // size
