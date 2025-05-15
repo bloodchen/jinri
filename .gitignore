@@ -32,3 +32,4 @@ coverage
 .prettier*
 .eslint*
 .stylelint*
+.yalc

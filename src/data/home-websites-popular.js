@@ -87,12 +87,12 @@ export default [
     id: '08',
     title: '淘宝',
     titleImg: '',
-    url: 'https://www.taobao.com/?pid=mm_12431063_2220385_111469400049',
+    url: 'https://s.click.taobao.com/t3Xrvor',
     icon: '/images/home-websites/taobao.png',
     subTitle: '',
     subUrl: '',
-    bubbleUrl: 'https://redirect.simba.taobao.com/rd?c=un&amp;w=bd&amp;k=3fdfd54ab132d50e&amp;p=mm_12431063_2220385_109544350018&amp;f=https%3A%2F%2Fmos.m.taobao.com%2Funion%2F201911%3Fpid%3Dmm_12431063_2220385_109544350018',
-    bubbleImg: '/images/home-websites/taobao-2.png'
+    bubbleUrl: 'https://s.click.taobao.com/t3Xrvor',
+    bubbleImg: '/images/home-websites/taobao-2.gif?t=20250515'
   },
   {
     id: '09',
@@ -133,15 +133,15 @@ export default [
     id: '12',
     title: '天猫精选',
     titleImg: '',
-    url: 'http://redirect.simba.taobao.com/rd?c=un&w=bd&f=https%3A%2F%2Fs.click.taobao.com%2Ft%3Funion_lens%3DlensId%253AOPT%25401615280124%25402104be69_0782_1781632b34a_ced8%254001%253BeventPageId%253A8655681%26e%3Dm%253D2%2526s%253Dv%252Bp6OF1HixccQipKwQzePCperVdZeJviePMclkcdtjxyINtkUhsv0MS6Blk41Mgmiybki%252FObwflD415GGSsrJ4YxhNUZ2i3GTlT4SLzYDiBT2M421%252BABgTvflh4%252Fhqj89CGjsatFbg%252FkxFiXT%252FI5kZuVJ2zJE2c0ACFpTaudtkEaHks2%252FfPFu3EqY%252Bakgpmw%26pid%3Dmm_12431063_2220385_279480289&k=67a22f436b17a341&p=mm_12431063_2220385_279480289',
+    url: 'https://s.click.taobao.com/t3Xrvor',
     color: null,
     bold: false,
     icon: '/images/home-websites/tmall.png',
     subTitle: '',
     subUrl: '',
     subColor: null,
-    bubbleUrl: 'https://s.click.taobao.com/fSrtxcu',
-    bubbleImg: '/images/home-websites/tmall-2.gif'
+    bubbleUrl: 'https://s.click.taobao.com/t3Xrvor',
+    bubbleImg: '/images/home-websites/tmall-2.gif?t=20250515'
   },
   {
     id: '13',
@@ -259,13 +259,13 @@ export default [
   },
   {
     id: '23',
-    title: '中华军事网',
-    titleImg: '',
-    url: 'http://military.china.com/zh_cn/',
-    icon: '/images/home-websites/military.china.png',
+    title: '天猫狂欢节',
+    titleImg: '/images/home-websites/tmall-618.png',
+    url: 'https://s.click.taobao.com/t3Xrvor',
+    icon: '',
     subTitle: '',
     subUrl: '',
-    subColor: '#000000',
+    subColor: '',
     bubbleImg: ''
   },
   {
@@ -414,7 +414,7 @@ export default [
     id: '38',
     title: '爱淘宝',
     titleImg: '',
-    url: 'https://s.click.taobao.com/qJZRSnt',
+    url: 'https://s.click.taobao.com/t3Xrvor',
     color: null,
     icon: '/images/home-websites/ai.taobao.png',
     subTitle: '',

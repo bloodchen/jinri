@@ -12,7 +12,7 @@
       :src="getImgUrl()"
       :style="getImgStyle()"
       class="mx-ad-rain-img"
-    >
+    />
     <!-- 关闭按钮 -->
     <MxIcon
       class="mx-ad-rain-icon is-close"

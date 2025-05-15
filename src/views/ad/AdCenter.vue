@@ -11,8 +11,8 @@
     >
       <img
         class="mx-ad-center-img"
-        src="/images/ad/center-bg.png"
-      >
+        :src="adCenter.img"
+      />
       <MxIcon
         class="mx-ad-center-close"
         @click.stop="closeAd"
@@ -70,8 +70,8 @@ function closeAd() {
   z-index: 999;
   cursor: pointer;
   opacity: 0;
-  transition: all .5s;
   transform: scale(0);
+  transition: all 0.5s;
   &.is-active {
     opacity: 1;
     transform: scale(1);
