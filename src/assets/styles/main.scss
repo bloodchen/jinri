@@ -10,11 +10,12 @@ body {
   color: #222;
   background-color: #f7f7f7;
 }
+iframe,
 input,
 button {
+  font-family: inherit;
   outline: none;
   border: none;
-  font-family: inherit;
 }
 a {
   text-decoration: none;
