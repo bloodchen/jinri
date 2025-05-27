@@ -158,6 +158,7 @@ const lunarDate = `${solar2lunarData.monthCn}${solar2lunarData.dayCn}`;
 .mx-topbar {
   position: relative;
   display: flex;
+  gap: 10px;
   align-items: center;
   justify-content: space-between;
 
@@ -172,6 +173,7 @@ const lunarDate = `${solar2lunarData.monthCn}${solar2lunarData.dayCn}`;
   // 工具
   &-tools {
     display: flex;
+    gap: 10px;
     align-items: center;
     height: 60px;
     font-size: 12px;
@@ -179,7 +181,6 @@ const lunarDate = `${solar2lunarData.monthCn}${solar2lunarData.dayCn}`;
     color: #666;
     &-item {
       padding: 5px 10px;
-      margin: 0 5px;
       white-space: nowrap;
       border-radius: 2px;
       &:hover {

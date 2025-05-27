@@ -18,22 +18,22 @@
   <!-- 天气 -->
   <MxLink
     v-if="weatherData"
-    class="mx-topbar-tools-item"
+    class="mx-topbar-tools-item mx-topbar-weather-row"
     href="/weather"
   >
-    <div class="mx-topbar-weather-row">
-      <img
-        class="mx-topbar-weather-icon"
-        :src="weatherData?.icon"
-        :alt="weatherData?.text"
-      />
+    <img
+      class="mx-topbar-weather-icon"
+      :src="weatherData?.icon"
+      :alt="weatherData?.text"
+    />
+    <div>
       <!-- <span
         class="mx-topbar-weather-aqi"
         :style="weatherAqiStyle"
       /> -->
-      <span>{{ weatherData?.temperatureValue }} ℃</span>
+      <div>{{ weatherData?.text }}</div>
+      <div>{{ weatherData?.temp }}</div>
     </div>
-    <div>{{ weatherData?.text }}</div>
   </MxLink>
   <!-- 切换城市 -->
   <WeatherLocaltion
@@ -62,8 +62,8 @@ async function getWeatherData() {
   if (data.success === false) return;
   weatherData.value = {
     text: data.condition,
-    icon: `https://yastatic.net/weather/i/icons/funky/dark/${data.icon}.svg`,
-    temperatureValue: data.temp
+    icon: data.icon,
+    temp: `${data.temp} °C`
   };
 }
 
@@ -90,7 +90,7 @@ const localtionVisible = ref(false);
 function changeLocation(data) {
   localtionVisible.value = false;
   cityData.value = {
-    cityName: data.name_short,
+    cityName: data.name,
     lat: data.lat,
     lon: data.lon
   };
@@ -104,10 +104,12 @@ function changeLocation(data) {
     display: flex;
     gap: 5px;
     align-items: center;
+    padding: 0 !important;
+    padding-right: 10px !important;
   }
   &-icon {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
   }
   &-aqi {
     width: 28px;

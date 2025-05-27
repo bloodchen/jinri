@@ -40,7 +40,7 @@
         </div>
         <div
           v-for="item in searchResult"
-          :key="item.geoid"
+          :key="item.id"
           :title="item.name"
           class="mx-weather-dropdown-item"
           @click.stop="onSelect(item)"
