@@ -58,12 +58,12 @@ const weatherData = ref(null);
 async function getWeatherData() {
   const { lat, lon } = cityData.value;
   const params = lat && lon ? { lat, lon } : {};
-  const { data } = await api.getWeatherDetail(params);
-  if (data.success === false) return;
+  const res = await api.getWeatherDetail(params);
+  if (!res || res.code) return;
   weatherData.value = {
-    text: data.condition,
-    icon: data.icon,
-    temp: `${data.temp} °C`
+    text: res.condition,
+    icon: res.icon,
+    temp: `${res.temp} °C`
   };
 }
 

@@ -2,6 +2,21 @@
 // https://www.axios-http.cn/docs/api_intro
 import axios from 'axios';
 import fetchJsonp from 'fetch-jsonp';
+import { Util } from './util';
+
+// 天气
+const util = new Util();
+const weatherRequest = params => {
+  return util.mxFetch({
+    fid: 'weather',
+    timeout: 5000,
+    url: 'https://api.maxthon.com/service/weather',
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: params,
+    rateLimit: true
+  });
+};
 
 // jsonp请求
 function jsonp(url, config) {
@@ -35,11 +50,11 @@ export default {
   // },
   // 获取当前天气信息
   getWeatherDetail({ lat, lon }) {
-    return axios.post('https://api.maxthon.com/service/weather', { lat, lon });
+    return weatherRequest({ lat, lon });
   },
   // 根据关键字搜索城市
   getWeatherCityByKeyword(keyword) {
-    return axios.post('https://api.maxthon.com/service/weather', { cmd: 'getCity', keyword });
+    return weatherRequest({ cmd: 'getCity', keyword });
   },
   // 搜索-百度热搜
   getSearchHotwordFromBaidu() {

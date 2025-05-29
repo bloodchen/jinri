@@ -80,10 +80,10 @@ async function getSearchResult() {
   searchVisible.value = true;
   if (searchKeyword.value) {
     searchLoading.value = true;
-    const { data } = await api.getWeatherCityByKeyword(searchKeyword.value);
+    const res = await api.getWeatherCityByKeyword(searchKeyword.value);
     searchLoading.value = false;
-    if (data.success === false) return;
-    searchResult.value = data[1];
+    if (!res || res.code) return;
+    searchResult.value = res[1];
   }
 }
 
