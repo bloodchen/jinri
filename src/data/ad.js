@@ -109,9 +109,9 @@ export const adTopbarSliders = [
 
 // 首页-右侧橱窗
 export const adHomeRight = {
-  name: 'tmall',
-  url: 'https://s.click.taobao.com/t?union_lens=lensId%3APUB%401726708928%400bf8e76f_0de9_19207df50b1_e6c8%4001%40eyJmbG9vcklkIjozODg1Miiwiic3BtQiiI6Il9wb3J0YWxfdjJfcGFnZXNfYWN0aXZpdHlfb2ZmaWNpYWxfaW5kZXhfaHRtIn0ie%3BeventPageId%3A20150318020008733&e=m%3D2%26s%3DlH88F4cdsjIcQipKwQzePCperVdZeJviU%2F9%2F0taeK29yINtkUhsv0Mfvh6F10l7PjiRkxbhwQNwqdXuB2ywoyHsv77g9cteRVzhPkjk6%2B2QhkTmZhniFX%2FAy%2Fay3dFHhcfoqCASFBE0Sylq0DylJrqED5kW4yHt0jidl2Va2D8m4fWFYbf5VhIz6G0fvVpfqA2WfMOiylBFLUSMt2PJRg%2FB0z8qlrv%2Bj8DLfXVn5qACSXMV4ozPsJ9ZK2MhSOL36BIhITc5%2B2hRXPgMwgePtslhfTxPu3doaPRhyWlsWoBi9SaBlz4XU9iC8ZkOTzcBGGWuT0Akgen9gYh%2Bm7jOlA20lFJQq%2Fn2QfiF5i%2B8irZRGz3Q7pPtsUf71bQanqbOY0tvvdXDFxy0WP3znFjTMWf%2Bw49CWefhctWtNSdvIsZv9STq%2FDBhXPcYl7w3%2FA2kb',
-  img: '/images/ad/home-right-tmall.jpg?t=20241014'
+  name: 'jd',
+  url: 'https://pro.jd.com/mall/active/2XRZFnPNx1465pPHTyb93ruR3n2p/index.html',
+  img: '/images/ad/home-right-jd.png?t=20251010'
 };
 
 // 首页-网址导航-底部

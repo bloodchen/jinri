@@ -72,7 +72,7 @@ export default [
     id: '07',
     title: '京东商城',
     titleImg: '',
-    url: 'https://go.mxfast.com/jd/',
+    url: 'https://pro.jd.com/mall/active/2XRZFnPNx1465pPHTyb93ruR3n2p/index.html',
     color: null,
     bold: false,
     icon: '/images/home-websites/jd.png',
@@ -80,7 +80,7 @@ export default [
     subUrl: '',
     subColor: '#383838',
     subBold: false,
-    bubbleUrl: 'https://go.mxfast.com/jd/',
+    bubbleUrl: 'https://pro.jd.com/mall/active/2XRZFnPNx1465pPHTyb93ruR3n2p/index.html',
     bubbleImg: '/images/home-websites/jd-2.png'
   },
   {
@@ -259,9 +259,9 @@ export default [
   },
   {
     id: '23',
-    title: '天猫狂欢节',
-    titleImg: '/images/home-websites/tmall-618.png',
-    url: 'https://s.click.taobao.com/t3Xrvor',
+    title: '京东红包',
+    titleImg: '',
+    url: 'https://pro.jd.com/mall/active/2XRZFnPNx1465pPHTyb93ruR3n2p/index.html',
     icon: '',
     subTitle: '',
     subUrl: '',
