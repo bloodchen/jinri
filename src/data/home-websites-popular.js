@@ -72,7 +72,7 @@ export default [
     id: '07',
     title: '京东商城',
     titleImg: '',
-    url: 'https://pro.jd.com/mall/active/2XRZFnPNx1465pPHTyb93ruR3n2p/index.html',
+    url: 'https://u.jd.com/0G7YUWq',
     color: null,
     bold: false,
     icon: '/images/home-websites/jd.png',
@@ -80,7 +80,7 @@ export default [
     subUrl: '',
     subColor: '#383838',
     subBold: false,
-    bubbleUrl: 'https://pro.jd.com/mall/active/2XRZFnPNx1465pPHTyb93ruR3n2p/index.html',
+    bubbleUrl: 'https://u.jd.com/0G7YUWq',
     bubbleImg: '/images/home-websites/jd-2.png'
   },
   {
@@ -261,7 +261,7 @@ export default [
     id: '23',
     title: '京东红包',
     titleImg: '',
-    url: 'https://pro.jd.com/mall/active/2XRZFnPNx1465pPHTyb93ruR3n2p/index.html',
+    url: 'https://u.jd.com/0G7YUWq',
     icon: '',
     subTitle: '',
     subUrl: '',

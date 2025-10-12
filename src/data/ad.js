@@ -110,7 +110,7 @@ export const adTopbarSliders = [
 // 首页-右侧橱窗
 export const adHomeRight = {
   name: 'jd',
-  url: 'https://pro.jd.com/mall/active/2XRZFnPNx1465pPHTyb93ruR3n2p/index.html',
+  url: 'https://u.jd.com/0G7YUWq',
   img: '/images/ad/home-right-jd.png?t=20251010'
 };
 
