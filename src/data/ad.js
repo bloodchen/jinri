@@ -1,34 +1,6 @@
 import { useStorage } from '@vueuse/core';
 import dayjs from 'dayjs';
 
-// 是否显示
-export function isShow(data) {
-  const now = dayjs();
-  // 是否处于活动日期内
-  const isBegin = now.isAfter(data.beginTime);
-  const isEnd = now.isAfter(data.endTime);
-  const isActive = isBegin && !isEnd;
-  // 活动已结束：不显示
-  if (!isActive) {
-    return false;
-  }
-  // 活动进行中：再看是否需要记录重新打开时间
-  // 不需要记录：直接显示
-  if (!data.reopenDaysAfterClose) {
-    return true;
-  }
-  // 需要记录：再看是否已记录
-  const reopenDateObj = useStorage('reopen-date', {});
-  const reopenDateStr = reopenDateObj.value[data.key];
-  // 未记录：直接显示
-  if (!reopenDateStr) {
-    return true;
-  }
-  // 已记录：是否到时间
-  const isReopen = now.isAfter(reopenDateStr);
-  return isReopen;
-}
-
 // 设置重新打开的日期
 export function setReopenDate(data) {
   if (!data.reopenDaysAfterClose) return;
@@ -41,7 +13,7 @@ export const adSkin = {
   key: 'skin',
   title: '天猫',
   url: 'https://s.click.taobao.com/XmLDq1q',
-  img: '/images/ad/skin-bg-618-tm.png?t=20250515',
+  img: '/images/ad/skin-bg-1111-tm.png?t=20251015',
   beginTime: '2025/10/15 10:00:00',
   endTime: '2025/11/12 23:59:00'
 };
@@ -63,7 +35,7 @@ export const adCenter = {
   title: '天猫',
   reopenDaysAfterClose: 1,
   url: 'https://s.click.taobao.com/XmLDq1q',
-  img: '/images/ad/center-bg.png?t=20250515',
+  img: '/images/ad/center-bg.png?t=20251015',
   beginTime: '2025/10/15 10:00:00',
   endTime: '2025/11/12 23:59:00'
 };
@@ -73,7 +45,7 @@ export const adTopbarPendant = {
   key: 'topbarCenter',
   title: '天猫',
   url: 'https://s.click.taobao.com/XmLDq1q',
-  img: '/images/ad/topbar-center.gif?t=20250515',
+  img: '/images/ad/topbar-center.gif?t=20251015',
   beginTime: '2025/10/15 10:00:00',
   endTime: '2025/11/12 23:59:00'
 };
@@ -98,7 +70,7 @@ export const adTopbarSliders = [
   {
     name: 'taobao',
     url: 'https://s.click.taobao.com/XmLDq1q',
-    img: '/images/ad/topbar-sliders-tb.png?t=20250515'
+    img: '/images/ad/topbar-sliders-tb.png?t=20251015'
   },
   {
     name: '58',
@@ -153,3 +125,31 @@ export const adHomeWebsiteBottom = [
     url: 'https://go.mxfast.com/58'
   }
 ];
+
+// 是否显示
+export function isShow(data) {
+  const now = dayjs();
+  // 是否处于活动日期内
+  const isBegin = now.isAfter(data.beginTime);
+  const isEnd = now.isAfter(data.endTime);
+  const isActive = isBegin && !isEnd;
+  // 活动已结束：不显示
+  if (!isActive) {
+    return false;
+  }
+  // 活动进行中：再看是否需要记录重新打开时间
+  // 不需要记录：直接显示
+  if (!data.reopenDaysAfterClose) {
+    return true;
+  }
+  // 需要记录：再看是否已记录
+  const reopenDateObj = useStorage('reopen-date', {});
+  const reopenDateStr = reopenDateObj.value[data.key];
+  // 未记录：直接显示
+  if (!reopenDateStr) {
+    return true;
+  }
+  // 已记录：是否到时间
+  const isReopen = now.isAfter(reopenDateStr);
+  return isReopen;
+}
