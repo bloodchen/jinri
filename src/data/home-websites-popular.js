@@ -525,10 +525,10 @@ export default [
   },
   {
     id: '49',
-    title: '澳洲PO药房',
+    title: 'iherb',
     titleImg: '',
-    url: 'https://tb.j5k6.com/hqV9P',
-    icon: '/images/home-websites/po.png',
+    url: 'https://c.duomai.com/track.php?k=3dnRyUiRyUSQzUycwRHdo1Ddm0DZpVXZmMjM1QTPklWYmEzNykzMzETPmVmcmUTNwUDO4YzN0MTPfRmcu9lJyUDM2ETPklmZf1GZmYkMl02bj5iYyVGap5yd',
+    icon: '',
     bubbleUrl: '',
     bubbleImg: ''
   },

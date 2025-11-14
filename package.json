@@ -22,7 +22,6 @@
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.3",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
@@ -31,10 +30,10 @@
     "vite": "^4.3.9"
   },
   "prettier": "linter-configs/prettier",
-  "eslintConfig": {
-    "extends": "./node_modules/linter-configs/eslint/vue3"
-  },
   "stylelint": {
     "extends": "linter-configs/stylelint/html-scss"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/linter-configs/eslint/vue3"
   }
 }
