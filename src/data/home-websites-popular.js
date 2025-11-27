@@ -495,11 +495,11 @@ export default [
   },
   {
     id: '46',
-    title: 'iherb',
+    title: '荣耀商城',
     titleImg: '',
     url: 'https://tb.j5k6.com/iaRcp',
     color: null,
-    icon: '/images/home-websites/vmall.png',
+    // icon: '/images/home-websites/vmall.png',
     bubbleImg: ''
   },
   {
