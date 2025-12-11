@@ -15,18 +15,18 @@ export default [
           ch: '1',
           wd: '{KEY}'
         }
-      },
-      {
-        engineName: 'bing',
-        engineTitle: '必应',
-        engineLogo: '/images/layout-search-engines/bing.png',
-        engineUrl: 'https://cn.bing.com/?pc=CNPA13',
-        searchUrl: 'https://www.bing.com/search',
-        searchParams: {
-          pc: 'CNPA13',
-          q: '{KEY}'
-        }
       }
+      // {
+      //   engineName: 'bing',
+      //   engineTitle: '必应',
+      //   engineLogo: '/images/layout-search-engines/bing.png',
+      //   engineUrl: 'https://cn.bing.com/?pc=CNPA13',
+      //   searchUrl: 'https://www.bing.com/search',
+      //   searchParams: {
+      //     pc: 'CNPA13',
+      //     q: '{KEY}'
+      //   }
+      // }
     ]
   },
   {

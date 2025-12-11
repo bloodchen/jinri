@@ -12,7 +12,7 @@
           class="mx-searchbar-engine-logo"
           :src="currentEngine.engineLogo"
           :alt="currentEngine.engineTitle"
-        >
+        />
       </MxLink>
       <!-- 下拉列表 -->
       <MxIcon
@@ -34,7 +34,7 @@
             class="mx-searchbar-engine-logo"
             :src="item.engineLogo"
             :alt="item.engineTitle"
-          >
+          />
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@
           @focus="inputIsFoucs = true"
           @input="getServerSuggectList"
           @keydown.enter="searchSubmit"
-        >
+        />
         <!-- 搜索建议 -->
         <div
           v-show="inputIsFoucs"
@@ -117,7 +117,7 @@
                 id="searchHistoryCheckbox"
                 v-model="historyVisible"
                 type="checkbox"
-              >
+              />
               <span class="mx-ml-5">显示历史记录</span>
             </label>
             <span
