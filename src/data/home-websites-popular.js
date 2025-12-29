@@ -457,7 +457,7 @@ export default [
     id: '43',
     title: '豆包',
     titleImg: '/images/home-websites/doubao.png',
-    url: 'https://www.doubao.com?channel=csj&source=49283952d',
+    url: 'https://www.doubao.com/chat/?channel=aoyouliulanqi&source=doutui_hw_db_ayllq_n24pwx',
     color: null,
     bold: false,
     icon: '',
