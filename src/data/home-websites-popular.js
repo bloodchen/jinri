@@ -455,9 +455,9 @@ export default [
   },
   {
     id: '43',
-    title: '京东双十一',
-    titleImg: '',
-    url: 'https://tb.j5k6.com/iaTOD',
+    title: '豆包',
+    titleImg: '/images/home-websites/doubao.png',
+    url: 'https://www.doubao.com?channel=csj&source=49283952d',
     color: null,
     bold: false,
     icon: '',
