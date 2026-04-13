@@ -33,7 +33,7 @@
                 class="mx-hmnews-img-img"
                 :src="midImg.img"
                 :alt="midImg.title"
-              >
+              />
               <div class="mx-hmnews-img-text">{{ midImg.title }}</div>
             </MxLink>
           </div>
@@ -137,10 +137,10 @@ async function getDataList(name) {
     }
     &-text {
       overflow: hidden;
+      text-overflow: ellipsis;
       font-size: 12px;
       line-height: 20px;
       text-align: center;
-      text-overflow: ellipsis;
       white-space: nowrap;
     }
     &-link:hover &-text {
@@ -154,8 +154,8 @@ async function getDataList(name) {
       display: block;
       margin-top: 10px;
       overflow: hidden;
-      line-height: 1.2;
       text-overflow: ellipsis;
+      line-height: 1.2;
       white-space: nowrap;
       &:nth-child(5n + 1) {
         margin-top: 20px;

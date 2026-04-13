@@ -5,25 +5,29 @@
     height="278"
     :border="false"
   /> -->
-  <MxLink
-    :href="adHomeRight.url"
+  <div
     class="mx-ad-home-right"
+    @mousedown="onAdElMouseDown"
+    @mouseup="onAdElMouseUp"
   >
     <img
       class="mx-ad-home-right-img"
       :src="adHomeRight.img"
       :alt="adHomeRight.name"
     />
-  </MxLink>
+  </div>
 </template>
 
 <script setup>
 import { adHomeRight } from '@/data/ad.js';
+import { use360Crul } from '@/utils/use-360-curl.js';
+const { onAdElMouseDown, onAdElMouseUp } = use360Crul();
 </script>
 
 <style lang="scss">
 .mx-ad-home-right,
 .mx-ad-home-right-img {
   display: block;
+  cursor: pointer;
 }
 </style>

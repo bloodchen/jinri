@@ -120,5 +120,15 @@ export default {
   // news/v2/category 数据源 new.qq.com 2021/03/17停止更新
   getNewsData(category) {
     return axios.get(`https://icn-news.maxthon.com/news/${category}.json`);
+  },
+  // 获取ip
+  getIp() {
+    return axios.get('https://ipinfo.io/json');
+  },
+  // 360跳转链接
+  get360Curl(params) {
+    // const devUrl = 'https://tf.360.cn/browser/addr';
+    const prodUrl = 'https://extdd1.browser.360.cn/browser/addr';
+    return axios.get(prodUrl, { params });
   }
 };

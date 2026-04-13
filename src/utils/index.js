@@ -11,3 +11,20 @@ export function getGuid() {
 export function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+// 生成随机字符串
+export const randomString = (length = 32) => {
+  // 字符集
+  const chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+
+  // 生成随机字符
+  let code = '';
+  for (let i = 0; i < length; i++) {
+    // 随机索引
+    const randomIndex = Math.floor(Math.random() * chars.length);
+    // 从字符集中获取随机字符并添加到验证码
+    code += chars[randomIndex];
+  }
+
+  return code;
+};

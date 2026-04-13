@@ -83,7 +83,7 @@ export const adTopbarSliders = [
 export const adHomeRight = {
   name: 'jd',
   url: 'https://u.jd.com/0G7YUWq',
-  img: '/images/ad/home-right-jd.png?t=20251010'
+  img: '/images/ad/home-right-jd.20260410.png'
 };
 
 // 首页-网址导航-底部

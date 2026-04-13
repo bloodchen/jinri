@@ -25,22 +25,25 @@
       <!-- 主要网址 -->
       <MxLink
         class="mx-hwebsites-link"
-        :href="!!dragStatus ? 'javascript:;' : item.url"
+        :href="item.url"
         :title="item.title"
         :style="{ 'color': item.color, 'font-weight': item.bold ? 'bold' : '' }"
+        @click.prevent="openUrl(item.url)"
+        @mousedown.left="openAdUrl($event, item.url)"
+        @mouseup.left="openAdUrl($event, item.url)"
       >
         <img
           v-if="item.titleImg"
           class="mx-hwebsites-img"
           :src="item.titleImg"
-        >
+        />
         <template v-else>
           <img
             v-if="item.icon || item.iconSet"
             class="mx-hwebsites-icon"
             :src="item.icon || item.iconSet"
             @error="onImgError(item)"
-          >
+          />
           <span class="mx-hwebsites-text">{{ item.title }}</span>
         </template>
       </MxLink>
@@ -49,9 +52,12 @@
         <span>&nbsp;•&nbsp;</span>
         <MxLink
           class="mx-hwebsites-link"
-          :href="!!dragStatus ? 'javascript:;' : item.subUrl"
+          :href="item.subUrl"
           :title="item.subTitle"
           :style="{ 'color': item.subColor, 'font-weight': item.subBold ? 'bold' : '' }"
+          @click.prevent="openUrl(item.subUrl)"
+          @mousedown.left="openAdUrl($event, item.subUrl)"
+          @mouseup.left="openAdUrl($event, item.subUrl)"
         >
           {{ item.subTitle }}
         </MxLink>
@@ -59,12 +65,15 @@
       <!-- 附加图片 -->
       <MxLink
         v-if="item.bubbleUrl && item.bubbleImg"
-        :href="!!dragStatus ? 'javascript:;' : item.bubbleUrl"
+        :href="item.bubbleUrl"
+        @click.prevent="openUrl($event, item.bubbleUrl)"
+        @mousedown.left="openAdUrl($event, item.bubbleUrl)"
+        @mouseup.left="openAdUrl($event, item.bubbleUrl)"
       >
         <img
           class="mx-hwebsites-bubble"
           :src="item.bubbleImg"
-        >
+        />
       </MxLink>
       <!-- 操作栏 -->
       <div
@@ -86,6 +95,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { use360Crul } from '@/utils/use-360-curl.js';
 
 const props = defineProps({
   data: { type: Array, default: null },
@@ -110,6 +120,26 @@ const dataGroup = computed(() => {
   });
   return groupList;
 });
+
+// 点击链接
+const { onAdElMouseDown, onAdElMouseUp } = use360Crul();
+// 打开链接
+function openUrl(url) {
+  if (dragStatus.value) return;
+  if (url.startsWith('http')) {
+    window.open(url, '_blank');
+  }
+}
+// 打开360特定链接
+function openAdUrl(event, url) {
+  if (dragStatus.value) return;
+  if (url !== '360') return;
+  if (event.type === 'mousedown') {
+    onAdElMouseDown(url);
+  } else if (event.type === 'mouseup') {
+    onAdElMouseUp(url);
+  }
+}
 
 // 编辑
 function onEdit(item) {
@@ -183,7 +213,7 @@ function onImgError(item) {
     white-space: nowrap;
     cursor: move;
     border: 1px solid transparent;
-    transition: all .2s;
+    transition: all 0.2s;
     &:hover {
       background-color: #f1f1f1;
       border-color: #f1f1f1;

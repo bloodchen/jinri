@@ -72,7 +72,7 @@ export default [
     id: '07',
     title: '京东商城',
     titleImg: '',
-    url: 'https://tb.j5k6.com/iaTOD',
+    url: '360',
     color: null,
     bold: false,
     icon: '/images/home-websites/jd.png',
@@ -80,7 +80,7 @@ export default [
     subUrl: '',
     subColor: '#383838',
     subBold: false,
-    bubbleUrl: 'https://tb.j5k6.com/iaTOD',
+    bubbleUrl: '360',
     bubbleImg: '/images/home-websites/jd-2.png'
   },
   {
