@@ -72,7 +72,7 @@ export default [
     id: '07',
     title: '京东商城',
     titleImg: '',
-    url: '360',
+    url: 'curl-jd',
     color: null,
     bold: false,
     icon: '/images/home-websites/jd.png',
@@ -80,7 +80,7 @@ export default [
     subUrl: '',
     subColor: '#383838',
     subBold: false,
-    bubbleUrl: '360',
+    bubbleUrl: 'curl-jd',
     bubbleImg: '/images/home-websites/jd-2.png'
   },
   {
@@ -108,11 +108,11 @@ export default [
     id: '10',
     title: '阿里1688',
     titleImg: '',
-    url: 'https://tb.j5k6.com/hqVMl',
+    url: 'curl-1688',
     icon: '/images/home-websites/1688.png',
     subTitle: '',
     subUrl: '',
-    bubbleUrl: 'https://www.amazon.cn/?tag=maxthon02-23',
+    bubbleUrl: '',
     bubbleImg: ''
   },
   {

@@ -95,7 +95,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { use360Crul } from '@/utils/use-360-curl.js';
+import { use360Curl } from '@/utils/use-360-curl.js';
 
 const props = defineProps({
   data: { type: Array, default: null },
@@ -122,7 +122,7 @@ const dataGroup = computed(() => {
 });
 
 // 点击链接
-const { onAdElMouseDown, onAdElMouseUp } = use360Crul();
+const { onAdElMouseDown, onAdElMouseUp } = use360Curl();
 // 打开链接
 function openUrl(url) {
   if (dragStatus.value) return;
@@ -133,7 +133,7 @@ function openUrl(url) {
 // 打开360特定链接
 function openAdUrl(event, url) {
   if (dragStatus.value) return;
-  if (url !== '360') return;
+  if (!url.startsWith('curl')) return;
   if (event.type === 'mousedown') {
     onAdElMouseDown(url);
   } else if (event.type === 'mouseup') {

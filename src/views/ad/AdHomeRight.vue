@@ -20,8 +20,8 @@
 
 <script setup>
 import { adHomeRight } from '@/data/ad.js';
-import { use360Crul } from '@/utils/use-360-curl.js';
-const { onAdElMouseDown, onAdElMouseUp } = use360Crul();
+import { use360Curl } from '@/utils/use-360-curl.js';
+const { onAdElMouseDown, onAdElMouseUp } = use360Curl('curl-jd');
 </script>
 
 <style lang="scss">
