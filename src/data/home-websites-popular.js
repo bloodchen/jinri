@@ -87,11 +87,11 @@ export default [
     id: '08',
     title: '淘宝',
     titleImg: '',
-    url: 'https://www.taobao.com/?pid=mm_12431063_2220385_111469400049',
+    url: 'https://s.click.taobao.com/gPNukcl', // 'https://www.taobao.com/?pid=mm_12431063_2220385_111469400049',
     icon: '/images/home-websites/taobao.png',
     subTitle: '',
     subUrl: '',
-    bubbleUrl: 'https://www.taobao.com/?pid=mm_12431063_2220385_111469400049',
+    bubbleUrl: 'https://s.click.taobao.com/gPNukcl', // 'https://www.taobao.com/?pid=mm_12431063_2220385_111469400049',
     bubbleImg: '/images/home-websites/taobao-2.gif?t=20250515'
   },
   {
@@ -140,7 +140,7 @@ export default [
     subTitle: '',
     subUrl: '',
     subColor: null,
-    bubbleUrl: 'https://www.tmall.com/?pid=mm_12431063_2220385_111469400049',
+    bubbleUrl: 'https://s.click.taobao.com/gPNukcl', // 'https://www.tmall.com/?pid=mm_12431063_2220385_111469400049'
     bubbleImg: '/images/home-websites/tmall-2.gif?t=20250515'
   },
   {
@@ -414,7 +414,7 @@ export default [
     id: '38',
     title: '爱淘宝',
     titleImg: '',
-    url: 'https://s.click.taobao.com/t?union_lens=lensId%3APUB%401750651884%4021059491_1c66_1979afbd2ff_d367%4001%40eyJmbG9vcklkIjozODg1Miiwiic3BtQiiI6Il9wb3J0YWxfdjJfcGFnZXNfYWN0aXZpdHlfb2ZmaWNpYWxfaW5kZXhfaHRtIn0ie%3BeventPageId%3A20150318020018244&e=m%3D2%26s%3DLUFAJOYytJ0cQipKwQzePCperVdZeJviAMbqNcPEYg5o096vQWAemjLxqsKAeUFqs%2BuIS9g6XE8WpIFXOotQwxpSKt1ovWpc6uWfDGik9ZGLxBkN6jwjA7VkZxwV%2BHATDkJuPx8kAyq%2FpnpwoKx2mIzBfF0GvhQUwURT0gzdDtBcTiAxlHsudc7ngtD9XDUv53D%2FZrEqbUCPlDBN6u9C2a%2BFynahc0dfvdcXdKYEGkORj8t%2FW9cGcQch%2F5ozgto4Q7ZGXw%2FpKPW3AtSR1svSzNWFPob3eYfxPO0vyOgNUR3iGo3WQBJ1HNZSg96eNKpoDrSoQvqEVK8H78IOy79Eng3G0oSVAhvq8dJ646N9%2BfO7vvm531tkvug%2FfQU9MESZpHyWyKDSGGXXRiQu0hOQcj9ig7bHnVBtT%2FQ64AjHQp6ieEHpTw4Og36ur8y1TX7YcSpj5qSCmbA%3D',
+    url: 'https://s.click.taobao.com/gPNukcl', // 'https://s.click.taobao.com/t?union_lens=lensId%3APUB%401750651884%4021059491_1c66_1979afbd2ff_d367%4001%40eyJmbG9vcklkIjozODg1Miiwiic3BtQiiI6Il9wb3J0YWxfdjJfcGFnZXNfYWN0aXZpdHlfb2ZmaWNpYWxfaW5kZXhfaHRtIn0ie%3BeventPageId%3A20150318020018244&e=m%3D2%26s%3DLUFAJOYytJ0cQipKwQzePCperVdZeJviAMbqNcPEYg5o096vQWAemjLxqsKAeUFqs%2BuIS9g6XE8WpIFXOotQwxpSKt1ovWpc6uWfDGik9ZGLxBkN6jwjA7VkZxwV%2BHATDkJuPx8kAyq%2FpnpwoKx2mIzBfF0GvhQUwURT0gzdDtBcTiAxlHsudc7ngtD9XDUv53D%2FZrEqbUCPlDBN6u9C2a%2BFynahc0dfvdcXdKYEGkORj8t%2FW9cGcQch%2F5ozgto4Q7ZGXw%2FpKPW3AtSR1svSzNWFPob3eYfxPO0vyOgNUR3iGo3WQBJ1HNZSg96eNKpoDrSoQvqEVK8H78IOy79Eng3G0oSVAhvq8dJ646N9%2BfO7vvm531tkvug%2FfQU9MESZpHyWyKDSGGXXRiQu0hOQcj9ig7bHnVBtT%2FQ64AjHQp6ieEHpTw4Og36ur8y1TX7YcSpj5qSCmbA%3D',
     color: null,
     icon: '/images/home-websites/ai.taobao.png',
     subTitle: '',

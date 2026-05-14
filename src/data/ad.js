@@ -12,10 +12,10 @@ export function setReopenDate(data) {
 export const adSkin = {
   key: 'skin',
   title: '天猫',
-  url: 'https://s.click.taobao.com/XmLDq1q',
-  img: '/images/ad/skin-bg-1111-tm.png?t=20251015',
-  beginTime: '2025/10/15 10:00:00',
-  endTime: '2025/11/12 23:59:00'
+  url: 'https://s.click.taobao.com/gPNukcl',
+  img: '/images/ad/skin-bg-618-tm.png?t=20251015',
+  beginTime: '2026/05/14 10:00:00',
+  endTime: '2026/6/18 23:59:00'
 };
 
 // 红包雨：1天1次
@@ -24,9 +24,9 @@ export const adRain = {
   title: '天猫',
   reopenDaysAfterClose: 1,
   openCenterAfterClose: true,
-  url: 'https://s.click.taobao.com/XmLDq1q',
-  beginTime: '2025/10/15 10:00:00',
-  endTime: '2025/11/12 23:59:00'
+  url: 'https://s.click.taobao.com/gPNukcl',
+  beginTime: '2026/05/14 10:00:00',
+  endTime: '2026/6/18 23:59:00'
 };
 
 // 开屏中间：1天1次
@@ -34,20 +34,20 @@ export const adCenter = {
   key: 'center',
   title: '天猫',
   reopenDaysAfterClose: 1,
-  url: 'https://s.click.taobao.com/XmLDq1q',
+  url: 'https://s.click.taobao.com/gPNukcl',
   img: '/images/ad/center-bg.png?t=20251015',
-  beginTime: '2025/10/15 10:00:00',
-  endTime: '2025/11/12 23:59:00'
+  beginTime: '2026/05/14 10:00:00',
+  endTime: '2026/6/18 23:59:00'
 };
 
 // 顶栏-右上角吊坠
 export const adTopbarPendant = {
   key: 'topbarCenter',
   title: '天猫',
-  url: 'https://s.click.taobao.com/XmLDq1q',
+  url: 'https://s.click.taobao.com/gPNukcl',
   img: '/images/ad/topbar-center.gif?t=20251015',
-  beginTime: '2025/10/15 10:00:00',
-  endTime: '2025/11/12 23:59:00'
+  beginTime: '2026/05/14 10:00:00',
+  endTime: '2026/6/18 23:59:00'
 };
 
 // 顶栏-右侧撕角
@@ -69,7 +69,7 @@ export const adTopbarSliders = [
   },
   {
     name: 'taobao',
-    url: 'https://s.click.taobao.com/XmLDq1q',
+    url: 'https://s.click.taobao.com/gPNukcl',
     img: '/images/ad/topbar-sliders-tb.png?t=20251015'
   },
   {
