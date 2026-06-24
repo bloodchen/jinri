@@ -6,8 +6,10 @@ import api from '@/api';
 
 // 需要的url
 const curlMap = {
-  'curl-jd': { query: '京东', url: 'www.jd.com', curl: '' },
-  'curl-1688': { query: '1688', url: 'www.1688.com', curl: '' }
+  'curl-jd': { query: '京东', url: 'www.jd.com', curl: '', ls: 'sm3027986' },
+  'curl-1688': { query: '1688', url: 'www.1688.com', curl: '', ls: 'sm3027986' }
+  // 'curl-jd': { query: '京东', url: 'www.jd.com', curl: '', ls: 'sm3029835' },
+  // 'curl-1688': { query: '淘宝', url: 'www.taobao.com', curl: '', ls: 'sm3029836' }
 };
 
 // 先获取基础数据
@@ -39,7 +41,7 @@ async function get360Curl(key, item) {
   const params = {
     channel_id: '490',
     ip: mxIp,
-    ls: 'sm3027986',
+    ls: item.ls,
     mid: mxMid,
     place_id: '1880',
     qtime: Math.floor(Date.now() / 1000),
@@ -72,12 +74,12 @@ export const use360Curl = key1 => {
     ud: 0
   };
 
-  // 按下鼠标时间
+  // 按下鼠标
   function onAdElMouseDown() {
     timestamp.dd = Date.now();
   }
 
-  // 抬起鼠标
+  // 松开鼠标
   function onAdElMouseUp(key2) {
     if (!timestamp.dd) return;
     // 时间

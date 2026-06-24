@@ -35,6 +35,7 @@
         <img
           v-if="item.titleImg"
           class="mx-hwebsites-img"
+          :style="{ 'height': item.titleImgHeight }"
           :src="item.titleImg"
         />
         <template v-else>

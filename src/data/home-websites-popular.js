@@ -395,10 +395,11 @@ export default [
   },
   {
     id: '36',
-    title: '文心一言',
-    titleImg: '',
-    url: 'https://yiyan.baidu.com/?utm_source=aoyou',
-    icon: '/images/home-websites/yiyan.png',
+    title: '千问',
+    titleImg: '/images/home-websites/qianwen.png',
+    titleImgHeight: '20px',
+    url: 'https://www.qianwen.com?ch=webtongyi@other_huajunwebty_ayllqdhsy_cpa&tag=brand',
+    icon: '',
     bubbleImg: ''
   },
   {
