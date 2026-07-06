@@ -42,6 +42,11 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       component: () => import('@/views/pages/home/index.vue')
+    },
+    {
+      path: '/curl',
+      name: 'curl',
+      component: () => import('@/views/ad/Curl.vue')
     }
   ]
 });

@@ -1,5 +1,14 @@
 <template>
-  <div class="mx-layout">
+  <!-- 外部跳转 -->
+  <RouterView
+    v-if="route.name === 'curl'"
+    class="mx-mt-10"
+  />
+  <!-- 页面内容 -->
+  <div
+    v-else
+    class="mx-layout"
+  >
     <div class="mx-layout-module">
       <LayoutTopbar />
       <LayoutSearchbar class="mx-mt-30" />
@@ -19,7 +28,7 @@
 </template>
 
 <script setup>
-import { RouterView } from 'vue-router';
+import { RouterView, useRoute } from 'vue-router';
 
 import LayoutTopbar from '@/views/layout/LayoutTopbar.vue';
 import LayoutSearchbar from '@/views/layout/LayoutSearchbar.vue';
@@ -29,6 +38,8 @@ import LayoutFooter from '@/views/layout/layoutFooter.vue';
 import AdTopbarTriangle from '@/views/ad/AdTopbarTriangle.vue';
 import AdSkin from '@/views/ad/AdSkin.vue';
 import AdRain from '@/views/ad/AdRain.vue';
+
+const route = useRoute();
 </script>
 
 <style lang="scss">

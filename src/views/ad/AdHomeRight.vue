@@ -8,7 +8,7 @@
   <div
     class="mx-ad-home-right"
     @mousedown="onAdElMouseDown"
-    @mouseup="onAdElMouseUp"
+    @mouseup="onAdElMouseUp('curl-jd')"
   >
     <img
       class="mx-ad-home-right-img"
@@ -21,7 +21,7 @@
 <script setup>
 import { adHomeRight } from '@/data/ad.js';
 import { use360Curl } from '@/utils/use-360-curl.js';
-const { onAdElMouseDown, onAdElMouseUp } = use360Curl('curl-jd');
+const { onAdElMouseDown, onAdElMouseUp } = use360Curl();
 </script>
 
 <style lang="scss">

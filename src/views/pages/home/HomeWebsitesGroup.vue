@@ -136,7 +136,7 @@ function openAdUrl(event, url) {
   if (dragStatus.value) return;
   if (!url.startsWith('curl')) return;
   if (event.type === 'mousedown') {
-    onAdElMouseDown(url);
+    onAdElMouseDown();
   } else if (event.type === 'mouseup') {
     onAdElMouseUp(url);
   }
