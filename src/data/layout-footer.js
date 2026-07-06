@@ -10,7 +10,7 @@ export const footerLinks = [
   },
   {
     label: '傲游论坛',
-    url: 'https://bbs.maxthon.cn/'
+    url: 'https://bbs.mxfast.com/'
   },
   {
     label: '关于我们',
