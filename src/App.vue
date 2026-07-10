@@ -6,7 +6,7 @@
   />
   <!-- 页面内容 -->
   <div
-    v-else
+    v-else-if="route.name"
     class="mx-layout"
   >
     <div class="mx-layout-module">
