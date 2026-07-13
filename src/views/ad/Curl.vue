@@ -9,6 +9,8 @@ import { use360Curl } from '@/utils/use-360-curl.js';
 
 const route = useRoute();
 const { onAdElMouseDown, onAdElMouseUp } = use360Curl();
-onAdElMouseDown();
-onAdElMouseUp(route.query.type, '_self');
+
+// 模拟点击事件：必须延时执行，否则会触发反作弊
+setTimeout(onAdElMouseDown, 100);
+setTimeout(() => onAdElMouseUp(route.query.type, '_self'), 200);
 </script>

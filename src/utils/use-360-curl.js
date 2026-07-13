@@ -68,6 +68,7 @@ async function get360Curl(key) {
 
 // 跳转链接追加反作弊参数
 export const use360Curl = () => {
+  // 时间戳
   const timestamp = {
     st: Date.now(),
     dd: 0,
