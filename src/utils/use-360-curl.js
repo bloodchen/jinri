@@ -28,10 +28,22 @@ async function getMid() {
 
 // 目前支持的网址
 const curlMap = {
-  'curl-jd': { query: '京东', url: 'www.jd.com', ls: 'sm3027986' },
-  'curl-1688': { query: '1688', url: 'www.1688.com', ls: 'sm3027986' },
-  'jd2': { query: '京东', url: 'www.jd.com', ls: 'sm3029835' },
-  'tb2': { query: '淘宝', url: 'www.taobao.com', ls: 'sm3029836' }
+  'curl-jd': { query: '京东', url: 'www.jd.com' },
+  'curl-1688': { query: '1688', url: 'www.1688.com' },
+  'trae': { query: 'trae', url: 'www.trae.cn' },
+  'tb': { query: '淘宝', url: 'www.taobao.com', ls: 'sm3027987' },
+  'tb2': { query: '淘宝', url: 'www.taobao.com', ls: 'sm3029836' },
+  'jd2': { query: '京东', url: 'www.jd.com', ls: 'sm3029835' }
+};
+
+// 傲游配置
+const mxConfig = {
+  testSecret: 'wVZdC3d5MVqM1MYc',
+  prodSecret: 'WGjls8RZqHkOfT7Y',
+  channel_id: '490',
+  place_id: '1880',
+  src: 'aoyou_mstation',
+  ls: 'sm3027986'
 };
 
 // 获取curl：每次点击都要新的请求
@@ -39,15 +51,15 @@ async function get360Curl(key) {
   // 请求参数：顺序不能变
   const item = curlMap[key];
   const params = {
-    channel_id: '490',
+    channel_id: mxConfig.channel_id,
     ip: await getIp(),
-    ls: item.ls,
+    ls: item.ls || mxConfig.ls,
     mid: await getMid(),
-    place_id: '1880',
+    place_id: mxConfig.place_id,
     qtime: Math.floor(Date.now() / 1000),
     query: item.query,
     sid: randomString(32),
-    src: 'aoyou_mstation',
+    src: mxConfig.src,
     ua: window.navigator.userAgent,
     url: item.url
     // signature: '',
@@ -56,11 +68,10 @@ async function get360Curl(key) {
     // scheme: '',
   };
   // 签名：参数不能转码
-  const secret = 'WGjls8RZqHkOfT7Y';
   const queryString = Object.entries(params)
     .map(([key, value]) => `${key}=${value}`)
     .join('&');
-  const signature = CryptoJS.HmacSHA256(queryString, secret).toString();
+  const signature = CryptoJS.HmacSHA256(queryString, mxConfig.prodSecret).toString();
   // 请求：参数必须转码（axios自动转码）
   const res = await api.get360Curl({ ...params, signature });
   return res.data.data[0]?.curl;
@@ -87,7 +98,10 @@ export const use360Curl = () => {
     // 拼接参数并打开链接
     const queryString = new URLSearchParams(timestamp).toString();
     const curl = await get360Curl(key);
-    window.open(`${curl}&${queryString}`, target);
+    if (!curl) return;
+    const url = `${curl}&${queryString}`;
+    // console.log({ timestamp, curl, url });
+    window.open(url, target);
   }
 
   return { onAdElMouseDown, onAdElMouseUp };
