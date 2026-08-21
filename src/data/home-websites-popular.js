@@ -208,7 +208,7 @@ export default [
     id: '18',
     title: '抖音',
     titleImg: '',
-    url: 'https://www.douyin.com/?ug_source=csj_maxthon',
+    url: 'https://www.douyin.com/jingxuan?ug_source=doutui_hw_dy_ayllq_f92qyy',
     color: null,
     bold: false,
     icon: '/images/home-websites/douyin.png',
