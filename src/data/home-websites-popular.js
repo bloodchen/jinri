@@ -212,8 +212,8 @@ export default [
     color: null,
     bold: false,
     icon: '/images/home-websites/douyin.png',
-    subTitle: '快手',
-    subUrl: 'https://www.kuaishou.com/',
+    subTitle: '',
+    subUrl: '',
     bubbleImg: ''
   },
   {
@@ -259,9 +259,9 @@ export default [
   },
   {
     id: '23',
-    title: '京东红包',
+    title: '快手',
     titleImg: '',
-    url: 'https://tb.j5k6.com/iaTOD',
+    url: 'https://www.kuaishou.com/',
     icon: '',
     subTitle: '',
     subUrl: '',
@@ -457,11 +457,11 @@ export default [
   {
     id: '43',
     title: '豆包',
-    titleImg: '/images/home-websites/doubao.png',
+    titleImg: '',
     url: 'https://www.doubao.com/chat/?channel=doutui_hw_db_ayllq_n24pwx&source=doutui_hw_db_ayllq_n24pwx',
     color: null,
     bold: false,
-    icon: '',
+    icon: '/images/home-websites/doubao2.png',
     subTitle: '',
     subUrl: '',
     subColor: null,

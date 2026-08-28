@@ -1,0 +1,1 @@
+import{y as s,o as r,b as u}from"./index-c28e2dd4.js";import{u as n}from"./use-360-curl-76207a7e.js";const c={style:{"text-align":"center"}},i={__name:"Curl",setup(a){const e=s(),{onAdElMouseDown:t,onAdElMouseUp:o}=n();return setTimeout(t,100),setTimeout(()=>o(e.query.type,"_self"),200),(l,_)=>(r(),u("div",c,"正在跳转..."))}};export{i as default};
