@@ -395,11 +395,10 @@ export default [
   },
   {
     id: '36',
-    title: '千问',
-    titleImg: '/images/home-websites/qianwen.png',
-    titleImgHeight: '20px',
-    url: 'https://www.qianwen.com?ch=webtongyi@other_huajunwebty_ayllqdhsy_cpa&tag=brand',
-    icon: '',
+    title: 'WorkBuddy',
+    titleImg: '',
+    url: 'curl-workbuddy',
+    icon: '/images/home-websites/workbuddy.jpg',
     bubbleImg: ''
   },
   {
