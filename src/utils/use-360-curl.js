@@ -30,7 +30,7 @@ async function getMid() {
 const curlMap = {
   'curl-jd': { query: '京东', url: 'www.jd.com' },
   'curl-1688': { query: '1688', url: 'www.1688.com' },
-  'curl-workbuddy': { query: 'WorkBuddy', url: 'www.workbuddy.cn' },
+  'curl-workbuddy': { query: 'WorkBuddy', url: 'www.workbuddy.cn', ls: 'sm3035827' },
   'trae': { query: 'trae', url: 'www.trae.cn' },
   'tb': { query: '淘宝', url: 'www.taobao.com', ls: 'sm3027987' },
   'tb2': { query: '淘宝', url: 'www.taobao.com', ls: 'sm3029836' },
