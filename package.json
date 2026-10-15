@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^5.2.0",
+    "@vueuse/core": "^15.0.0",
     "@vueuse/integrations": "^10.11.0",
     "axios": "^1.7.2",
     "crypto-js": "^4.2.0",
@@ -27,12 +28,5 @@
     "linter-configs": "file:.yalc/linter-configs",
     "sass": "^1.77.6",
     "vite": "^4.3.9"
-  },
-  "prettier": "linter-configs/prettier",
-  "stylelint": {
-    "extends": "linter-configs/stylelint/html-scss"
-  },
-  "eslintConfig": {
-    "extends": "./node_modules/linter-configs/eslint/vue3"
   }
 }

@@ -29,7 +29,7 @@ coverage
 
 # Lint
 .editor*
-.prettier*
-.eslint*
-.stylelint*
+*eslint*
+*prettier*
+*stylelint*
 .yalc
