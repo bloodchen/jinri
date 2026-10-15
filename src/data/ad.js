@@ -12,10 +12,10 @@ export function setReopenDate(data) {
 export const adSkin = {
   key: 'skin',
   title: '天猫',
-  url: 'https://s.click.taobao.com/gPNukcl',
-  img: '/images/ad/skin-bg-618-tm.png?t=20251015',
-  beginTime: '2026/05/14 10:00:00',
-  endTime: '2026/6/18 23:59:00'
+  url: 'https://s.click.taobao.com/6E8Mpbi',
+  img: '/images/ad/skin-bg-1111-tm.png?t=20261015',
+  beginTime: '2026/10/15 10:00:00',
+  endTime: '2026/11/12 23:59:00'
 };
 
 // 红包雨：1天1次
@@ -24,9 +24,9 @@ export const adRain = {
   title: '天猫',
   reopenDaysAfterClose: 1,
   openCenterAfterClose: true,
-  url: 'https://s.click.taobao.com/gPNukcl',
-  beginTime: '2026/05/14 10:00:00',
-  endTime: '2026/6/18 23:59:00'
+  url: 'https://s.click.taobao.com/6E8Mpbi',
+  beginTime: '2026/10/15 10:00:00',
+  endTime: '2026/11/12 23:59:00'
 };
 
 // 开屏中间：1天1次
@@ -34,20 +34,20 @@ export const adCenter = {
   key: 'center',
   title: '天猫',
   reopenDaysAfterClose: 1,
-  url: 'https://s.click.taobao.com/gPNukcl',
-  img: '/images/ad/center-bg.png?t=20251015',
-  beginTime: '2026/05/14 10:00:00',
-  endTime: '2026/6/18 23:59:00'
+  url: 'https://s.click.taobao.com/6E8Mpbi',
+  img: '/images/ad/center-bg.png?t=20261015',
+  beginTime: '2026/10/15 10:00:00',
+  endTime: '2026/11/12 23:59:00'
 };
 
 // 顶栏-右上角吊坠
 export const adTopbarPendant = {
   key: 'topbarCenter',
   title: '天猫',
-  url: 'https://s.click.taobao.com/gPNukcl',
-  img: '/images/ad/topbar-center.gif?t=20251015',
-  beginTime: '2026/05/14 10:00:00',
-  endTime: '2026/6/18 23:59:00'
+  url: 'https://s.click.taobao.com/6E8Mpbi',
+  img: '/images/ad/topbar-center.gif?t=20261015',
+  beginTime: '2026/10/15 10:00:00',
+  endTime: '2026/11/12 23:59:00'
 };
 
 // 顶栏-右侧撕角
@@ -65,17 +65,17 @@ export const adTopbarSliders = [
   {
     name: 'jd',
     url: 'https://u.jd.com/MGnp85J',
-    img: '/images/ad/topbar-sliders-jd.png?t=20241014'
+    img: '/images/ad/topbar-sliders-jd.png?t=20261015'
   },
   {
     name: 'taobao',
-    url: 'https://s.click.taobao.com/gPNukcl',
-    img: '/images/ad/topbar-sliders-tb.png?t=20251015'
+    url: 'https://s.click.taobao.com/6E8Mpbi',
+    img: '/images/ad/topbar-sliders-tb.png?t=20261015'
   },
   {
     name: '58',
     url: 'https://go.mxfast.com/58/',
-    img: '/images/ad/topbar-sliders-58.png?t=20241014'
+    img: '/images/ad/topbar-sliders-58.png?t=20261015'
   }
 ];
 
