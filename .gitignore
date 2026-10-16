@@ -30,6 +30,6 @@ coverage
 # Lint
 .editor*
 *eslint*
-*prettier*
 *stylelint*
-.yalc
+*prettier*
+.pnpmfile.cjs

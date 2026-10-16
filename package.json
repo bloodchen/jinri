@@ -25,7 +25,6 @@
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
-    "linter-configs": "file:.yalc/linter-configs",
     "sass": "^1.77.6",
     "vite": "^4.3.9"
   }
