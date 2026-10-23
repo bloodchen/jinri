@@ -3,11 +3,9 @@ allowBuilds:
   esbuild: false
   unrs-resolver: false
   vue-demi: false
+
 publicHoistPattern:
-  - '*eslint*'
-  - '*stylelint*'
-  - prettier
-  - markdownlint
-  - globals
-  - postcss
-  - postcss-html
+  - "eslint"
+  - "stylelint"
+  - "prettier"
+  - "markdownlint"
