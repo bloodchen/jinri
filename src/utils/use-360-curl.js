@@ -28,9 +28,11 @@ async function getMid() {
 
 // 目前支持的网址
 const curlMap = {
+  // 在推荐站点中使用，添加前缀用于识别
   'curl-jd': { query: '京东', url: 'www.jd.com' },
   'curl-1688': { query: '1688', url: 'www.1688.com' },
   'curl-workbuddy': { query: 'WorkBuddy', url: 'www.workbuddy.cn', ls: 'sm3035827' },
+  // 在其它地方使用
   'trae': { query: 'trae', url: 'www.trae.cn' },
   'tb': { query: '淘宝', url: 'www.taobao.com', ls: 'sm3027987' },
   'tb2': { query: '淘宝', url: 'www.taobao.com', ls: 'sm3029836' },
