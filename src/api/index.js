@@ -62,12 +62,12 @@ export default {
   },
   // 搜索-百度搜索建议
   getSearchSuggestFromBaidu(wd) {
-    return jsonp(`https://unionsug.baidu.com/su?json=1&from=imaxthoncn&wd=${wd}`, { jsonpCallback: 'cb' });
+    return jsonp(`https://unionsug.baidu.com/su?json=1&from=imaxthoncn&wd=${encodeURIComponent(wd)}`, { jsonpCallback: 'cb' });
   },
   // 搜索-汽车之家搜索建议
   getSearchSuggestFromAutohome(wd, cb) {
     window.Sou.Autocomplate.bindAutocomplate = cb;
-    jsonp(`https://sou.autohome.com.cn/Controls/AutoComplateQuery.ashx?q=${wd}`);
+    jsonp(`https://sou.autohome.com.cn/Controls/AutoComplateQuery.ashx?q=${encodeURIComponent(wd)}`);
   },
   // 首页-网址导航
   websitesRequest(url, params = {}) {

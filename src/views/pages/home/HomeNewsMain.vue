@@ -33,6 +33,8 @@
                 class="mx-hmnews-img-img"
                 :src="midImg.img"
                 :alt="midImg.title"
+                loading="lazy"
+                decoding="async"
               />
               <div class="mx-hmnews-img-text">{{ midImg.title }}</div>
             </MxLink>

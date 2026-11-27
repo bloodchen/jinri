@@ -74,7 +74,8 @@
           type="text"
           class="mx-searchbar-input-inner"
           @focus="inputIsFoucs = true"
-          @input="getServerSuggectList"
+          aria-label="搜索关键词"
+          @input="onSearchInput"
           @keydown.enter="searchSubmit"
         />
         <!-- 搜索建议 -->
@@ -142,8 +143,8 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { useStorage, onClickOutside } from '@vueuse/core';
+import { ref, computed, onBeforeUnmount } from 'vue';
+import { useStorage, onClickOutside, useDebounceFn } from '@vueuse/core';
 
 import engineGroupList from '@/data/layout-search-engines.js';
 import api from '@/api';
@@ -208,9 +209,9 @@ function searchSubmit() {
   const params = new URLSearchParams();
   for (const key in currentEngine.value.searchParams) {
     const val = currentEngine.value.searchParams[key];
-    params.append(key, val);
+    params.append(key, String(val).replaceAll('{KEY}', keyword.value));
   }
-  const url = `${currentEngine.value.searchUrl}?${params.toString().replace('%7BKEY%7D', keyword.value)}`;
+  const url = `${currentEngine.value.searchUrl}?${params.toString()}`;
   window.open(url, '_blank');
   addHistory(keyword.value);
 }
@@ -229,8 +230,7 @@ const historyListRef = computed(() => {
   if (!keyword.value) {
     return historyVisible.value ? historyList.value.slice(0, 10) : [];
   }
-  const reg = new RegExp(keyword.value);
-  return historyVisible.value ? historyList.value.filter(item => reg.test(item)).slice(0, 3) : [];
+  return historyVisible.value ? historyList.value.filter(item => item.includes(keyword.value)).slice(0, 3) : [];
 });
 
 // 添加搜索历史
@@ -260,18 +260,39 @@ const suggestListRef = computed(() => {
   return suggestList.value.slice(0, length);
 });
 
+// 输入停顿后再请求；输入一变化就让旧请求失效。
+let suggestRequestId = 0;
+const requestSuggestions = useDebounceFn(getServerSuggectList, 200);
+function onSearchInput() {
+  suggestRequestId++;
+  suggestList.value = [];
+  requestSuggestions();
+}
+onBeforeUnmount(() => { suggestRequestId++; });
+
 // 获取搜索建议
 async function getServerSuggectList() {
-  if (!keyword.value) {
+  const requestId = ++suggestRequestId;
+  const query = keyword.value;
+  const engine = currentEngine.value;
+  const apply = list => {
+    if (requestId === suggestRequestId && query === keyword.value && engine === currentEngine.value) {
+      suggestList.value = Array.isArray(list) ? list : [];
+    }
+  };
+  if (!query) {
     suggestList.value = [];
+    return;
   }
-  if (currentEngine.value.engineTitle === '汽车之家') {
-    api.getSearchSuggestFromAutohome(keyword.value, res => {
-      suggestList.value = res.split(',');
-    });
-  } else {
-    const res = await api.getSearchSuggestFromBaidu(keyword.value);
-    suggestList.value = res.s;
+  try {
+    if (engine.engineTitle === '汽车之家') {
+      api.getSearchSuggestFromAutohome(query, res => apply(String(res).split(',')));
+    } else {
+      const res = await api.getSearchSuggestFromBaidu(query);
+      apply(res.s);
+    }
+  } catch {
+    apply([]);
   }
 }
 
