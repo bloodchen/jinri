@@ -80,6 +80,17 @@ async function get360Curl(key) {
   return res.data.data[0]?.curl;
 }
 
+// 获取跳转链接：接口无广告或请求失败时回落到静态地址
+async function getCurlOrFallback(key) {
+  try {
+    const curl = await get360Curl(key);
+    if (curl) return curl;
+  } catch (e) {
+    console.warn(`[360curl] ${key} 请求失败`, e);
+  }
+  return `https://${curlMap[key].url}/`;
+}
+
 // 跳转链接追加反作弊参数
 export const use360Curl = () => {
   // 时间戳
@@ -96,15 +107,30 @@ export const use360Curl = () => {
 
   // 松开鼠标
   async function onAdElMouseUp(key, target = '_blank') {
-    // 时间
+    if (!curlMap[key]) return;
     timestamp.ud = Date.now();
-    // 拼接参数并打开链接
+    // 在用户操作内同步打开，避免等待接口后被浏览器拦截。
+    const tab = window.open('about:blank', target);
+    if (!tab) return;
+    tab.opener = null;
     const queryString = new URLSearchParams(timestamp).toString();
-    const curl = await get360Curl(key);
-    if (!curl) return;
-    const url = `${curl}&${queryString}`;
-    // console.log({ timestamp, curl, url });
-    window.open(url, target);
+    let timer;
+    let curl;
+    try {
+      curl = await Promise.race([
+        getCurlOrFallback(key),
+        new Promise(resolve => {
+          timer = setTimeout(() => resolve(`https://${curlMap[key].url}/`), 5000);
+        })
+      ]);
+    } finally {
+      clearTimeout(timer);
+    }
+    if (tab.closed) return;
+    const url = new URL(curl);
+    const hash = url.hash;
+    const base = curl.split('#')[0];
+    tab.location.href = `${base}${url.search ? '&' : '?'}${queryString}${hash}`;
   }
 
   return { onAdElMouseDown, onAdElMouseUp };

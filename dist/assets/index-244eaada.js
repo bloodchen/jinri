@@ -1,1 +1,0 @@
-import{_ as o,r as n,o as c,i as t}from"./index-688e1ce0.js";const r={};function a(s,_){const e=n("MxIframe");return c(),t(e,{src:"//toutiao.china.com/qd/ayfinance/index.html",height:"1334px"})}const f=o(r,[["render",a]]);export{f as default};

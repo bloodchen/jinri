@@ -30,7 +30,6 @@
         :style="{ 'color': item.color, 'font-weight': item.bold ? 'bold' : '' }"
         @click.prevent="openUrl(item.url)"
         @mousedown.left="openAdUrl($event, item.url)"
-        @mouseup.left="openAdUrl($event, item.url)"
       >
         <img
           v-if="item.titleImg"
@@ -58,7 +57,6 @@
           :style="{ 'color': item.subColor, 'font-weight': item.subBold ? 'bold' : '' }"
           @click.prevent="openUrl(item.subUrl)"
           @mousedown.left="openAdUrl($event, item.subUrl)"
-          @mouseup.left="openAdUrl($event, item.subUrl)"
         >
           {{ item.subTitle }}
         </MxLink>
@@ -67,9 +65,9 @@
       <MxLink
         v-if="item.bubbleUrl && item.bubbleImg"
         :href="item.bubbleUrl"
-        @click.prevent="openUrl($event, item.bubbleUrl)"
+        :title="item.title"
+        @click.prevent="openUrl(item.bubbleUrl)"
         @mousedown.left="openAdUrl($event, item.bubbleUrl)"
-        @mouseup.left="openAdUrl($event, item.bubbleUrl)"
       >
         <img
           class="mx-hwebsites-bubble"
@@ -126,7 +124,10 @@ const dataGroup = computed(() => {
 const { onAdElMouseDown, onAdElMouseUp } = use360Curl();
 // 打开链接
 function openUrl(url) {
-  if (dragStatus.value) return;
+  if (dragStatus.value || typeof url !== 'string') return;
+  if (url.startsWith('curl')) {
+    return onAdElMouseUp(url);
+  }
   if (url.startsWith('http')) {
     window.open(url, '_blank');
   }
@@ -137,8 +138,6 @@ function openAdUrl(event, url) {
   if (!url.startsWith('curl')) return;
   if (event.type === 'mousedown') {
     onAdElMouseDown();
-  } else if (event.type === 'mouseup') {
-    onAdElMouseUp(url);
   }
 }
 
