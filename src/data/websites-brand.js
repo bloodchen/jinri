@@ -62,7 +62,7 @@ export default [
   },
   {
     title: '天猫精选',
-    url: 'https://s.click.taobao.com/4lTKIYw',
+    url: 'https://www.tmall.com/?pid=mm_12431063_2220385_111469400049',
     logoBase: '/images/websites-brand/tmall-base.png',
     logoActive: '/images/websites-brand/tmall-active.png'
   },
@@ -74,7 +74,7 @@ export default [
   },
   {
     title: '爱淘宝',
-    url: 'https://ai.taobao.com?pid=mm_12431063_2220385_70730376',
+    url: 'https://s.click.taobao.com/t?union_lens=lensId%3APUB%401750651884%4021059491_1c66_1979afbd2ff_d367%4001%40eyJmbG9vcklkIjozODg1Miiwiic3BtQiiI6Il9wb3J0YWxfdjJfcGFnZXNfYWN0aXZpdHlfb2ZmaWNpYWxfaW5kZXhfaHRtIn0ie%3BeventPageId%3A20150318020018244&e=m%3D2%26s%3DLUFAJOYytJ0cQipKwQzePCperVdZeJviAMbqNcPEYg5o096vQWAemjLxqsKAeUFqs%2BuIS9g6XE8WpIFXOotQwxpSKt1ovWpc6uWfDGik9ZGLxBkN6jwjA7VkZxwV%2BHATDkJuPx8kAyq%2FpnpwoKx2mIzBfF0GvhQUwURT0gzdDtBcTiAxlHsudc7ngtD9XDUv53D%2FZrEqbUCPlDBN6u9C2a%2BFynahc0dfvdcXdKYEGkORj8t%2FW9cGcQch%2F5ozgto4Q7ZGXw%2FpKPW3AtSR1svSzNWFPob3eYfxPO0vyOgNUR3iGo3WQBJ1HNZSg96eNKpoDrSoQvqEVK8H78IOy79Eng3G0oSVAhvq8dJ646N9%2BfO7vvm531tkvug%2FfQU9MESZpHyWyKDSGGXXRiQu0hOQcj9ig7bHnVBtT%2FQ64AjHQp6ieEHpTw4Og36ur8y1TX7YcSpj5qSCmbA%3D',
     logoBase: '/images/websites-brand/ai.taobao-base.png',
     logoActive: '/images/websites-brand/ai.taobao-active.png'
   },
@@ -86,7 +86,7 @@ export default [
   },
   {
     title: '淘宝网',
-    url: 'https://www.taobao.com',
+    url: 'https://www.taobao.com/?pid=mm_12431063_2220385_111469400049',
     logoBase: '/images/websites-brand/taobao-base.png',
     logoActive: '/images/websites-brand/taobao-active.png'
   },
